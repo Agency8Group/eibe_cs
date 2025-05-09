@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <title>프로젝트 보고 대시보드</title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/tailwindcss@3.0.0"></script>
+        <style>
+            /* 다크모드 스타일 */
+            body {
+                font-family: "Segoe UI", sans-serif;
+                background-color: #181818;
+                color: #f4f6f8;
+                margin: 0;
+                padding: 20px;
+            }
+
+            .header {
+                background-color: #333;
+                padding: 20px;
+                margin-bottom: 20px;
+                border-radius: 10px;
+            }
+
+            .header h1 {
+                margin: 0;
+                font-size: 32px;
+                font-weight: 700;
+                color: #fff;
+            }
+
+            .summary {
+                margin-top: 10px;
+                font-size: 18px;
+                color: #bbb;
+            }
+
+            .container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 30px;
+                justify-content: space-between;
+            }
+
+            /* 테이블 컨테이너 */
+            .table-container {
+                flex: 2;
+                background-color: #2c2c2c;
+                padding: 30px;
+                border-radius: 12px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+                overflow-x: auto;
+                max-height: 500px;
+                width: 100%;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                font-size: 16px;
+                color: #ddd;
+            }
+
+            th,
+            td {
+                padding: 15px;
+                text-align: left;
+                border: 1px solid #444;
+                font-weight: 500;
+            }
+
+            th {
+                background-color: #444;
+            }
+
+            tr:nth-child(even) {
+                background-color: #333;
+            }
+
+            tr:hover {
+                background-color: #555;
+            }
+
+            .status {
+                font-weight: bold;
+                padding: 4px 8px;
+                border-radius: 4px;
+            }
+
+            .진행 {
+                background-color: #4caf50;
+                color: #fff;
+            }
+
+            .예정 {
+                background-color: #17a2b8;
+                color: #fff;
+            }
+
+            .완료 {
+                background-color: #6c757d;
+                color: #fff;
+            }
+
+            .지연 {
+                background-color: #dc3545;
+                color: #fff;
+            }
+
+            /* 차트 컨테이너 */
+            .chart-container {
+                flex: 1;
+                background-color: #2c2c2c;
+
+                border-radius: 12px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: auto;
+                text-align: center;
+
+                max-width: 350px;
+                margin-left: auto;
+                margin-right: auto;
+                position: relative;
+            }
+
+            .chart-container h3 {
+                position: absolute;
+
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 20px;
+                color: #fff;
+                font-weight: bold;
+            }
+
+            canvas {
+                border-radius: 10px;
+                max-width: 100%;
+                max-height: 250px;
+            }
+
+            button {
+                background-color: #444;
+                color: #f4f6f8;
+                border: none;
+                padding: 12px 24px;
+                border-radius: 8px;
+                cursor: pointer;
+                font-size: 18px;
+                transition: background-color 0.3s;
+                margin-top: 20px;
+            }
+
+            button:hover {
+                background-color: #555;
+            }
+        </style>
+    </head>
+    <body class="dark:bg-gray-800 dark:text-white">
+        <div class="header bg-gray-900 p-6 mb-8 rounded-lg">
+            <h1 class="text-3xl font-semibold text-white">
+                📦 물류센터 시스템 구축
+            </h1>
+            <div class="summary mt-4 text-lg text-gray-400">
+                업데이트: 2025-05-08 | 전체 진행률: <strong>16%</strong>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- 테이블 -->
+            <div class="table-container">
+                <h2 class="text-2xl text-white font-semibold mb-4">
+                    📋 단계별 진행 현황
+                </h2>
+                <table class="min-w-full table-auto text-gray-300">
+                    <thead>
+                        <tr class="border-b border-gray-700">
+                            <th class="py-3 px-4 text-left">단계</th>
+                            <th class="py-3 px-4 text-left">설명</th>
+                            <th class="py-3 px-4 text-left">기간</th>
+                            <th class="py-3 px-4 text-left">상태</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="hover:bg-gray-700">
+                            <td class="py-3 px-4">주문서,재고연동</td>
+                            <td class="py-3 px-4">
+                                외부 api 키 연동 / 주문서 수집 및 업로드
+                            </td>
+                            <td class="py-3 px-4">05/01 ~ 05/11</td>
+                            <td class="py-3 px-4">
+                                <span class="status 진행">진행 중</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-700">
+                            <td class="py-3 px-4">1차 파일럿테스트</td>
+                            <td class="py-3 px-4">
+                                드리미 한정, 주문서 수집 및 출고 테스트 진행
+                                (합포장, 변수조합 등)
+                            </td>
+                            <td class="py-3 px-4">05/12 ~ 05/14</td>
+                            <td class="py-3 px-4">
+                                <span class="status 예정">예정</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-700">
+                            <td class="py-3 px-4">1차 트러블슈팅</td>
+                            <td class="py-3 px-4">
+                                트러블내용 상세 취합 및 개선점 파악 / 미팅 진행
+                            </td>
+                            <td class="py-3 px-4"></td>
+                            <td class="py-3 px-4">
+                                <span class="status 예정">미정</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-700">
+                            <td class="py-3 px-4">2차 파일럿테스트</td>
+                            <td class="py-3 px-4">예정</td>
+                            <td class="py-3 px-4"></td>
+                            <td class="py-3 px-4">
+                                <span class="status 예정">미정</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-700">
+                            <td class="py-3 px-4">통합 테스트</td>
+                            <td class="py-3 px-4">예정</td>
+                            <td class="py-3 px-4"></td>
+                            <td class="py-3 px-4">
+                                <span class="status 예정">미정</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-700">
+                            <td class="py-3 px-4">결과 보고</td>
+                            <td class="py-3 px-4">결과 보고 및 제출</td>
+                            <td class="py-3 px-4"></td>
+                            <td class="py-3 px-4">
+                                <span class="status 예정">미정</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 차트 -->
+            <div class="chart-container">
+                <h3>📊진행률 16%</h3>
+                <!-- 진행률 텍스트 추가 -->
+                <canvas id="progressChart"></canvas>
+            </div>
+        </div>
+
+        <script>
+            const ctx = document
+                .getElementById("progressChart")
+                .getContext("2d");
+
+            new Chart(ctx, {
+                type: "doughnut",
+                data: {
+                    labels: ["진행됨", "남은 작업"],
+                    datasets: [
+                        {
+                            data: [16, 84], // 16% 진행된 작업
+                            backgroundColor: ["#4caf50", "#e0e0e0"],
+                            borderWidth: 1,
+                        },
+                    ],
+                },
+                options: {
+                    cutout: "70%",
+                    plugins: {
+                        legend: {
+                            display: false,
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    return (
+                                        context.label + ": " + context.raw + "%"
+                                    );
+                                },
+                            },
+                        },
+                    },
+                },
+            });
+        </script>
+    </body>
+</html>
