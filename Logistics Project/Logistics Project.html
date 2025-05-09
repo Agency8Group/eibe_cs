@@ -162,6 +162,15 @@
             button:hover {
                 background-color: #555;
             }
+            /* 아코디언 상세 내용 스타일 */
+            .accordion-detail {
+                display: none; /* 기본적으로 숨김 */
+            }
+
+            .accordion-detail p {
+                margin: 10px 0;
+                color: #bbb;
+            }
         </style>
     </head>
     <body class="dark:bg-gray-800 dark:text-white">
@@ -192,14 +201,40 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="hover:bg-gray-700">
-                                <td class="py-3 px-4">주문서,재고연동</td>
+                            <tr
+                                class="hover:bg-gray-700"
+                                onclick="toggleAccordion(1)"
+                            >
+                                <td class="py-3 px-4 flex items-center">
+                                    주문서,재고연동
+
+                                    <span class="ml-2 text-gray-400"
+                                        >(상세내용click)👆</span
+                                    >
+                                    <!-- 클릭 유도 이모지 -->
+                                </td>
                                 <td class="py-3 px-4">
                                     외부 api 키 연동 / 주문서 수집 및 업로드
                                 </td>
                                 <td class="py-3 px-4">05/01 ~ 05/11</td>
                                 <td class="py-3 px-4">
                                     <span class="status 진행">진행 중</span>
+                                </td>
+                            </tr>
+
+                            <tr id="accordion-1" class="accordion-detail">
+                                <td colspan="4" class="py-3 px-4 bg-gray-800">
+                                    <div>
+                                        <p>
+                                            '1차 파일럿테스트'는 전산상 변수
+                                            파악을 위해 '배송~회수' 전 과정을
+                                            테스트 할 예정입니다. <br />
+                                            가주문으로 세일즈팀 및 물류센터의
+                                            협조가 필요한 작업이라, 5월 12일
+                                            (월) 오후에 진행할 예정입니다<br />
+                                            과정 중 상세내용 톡방에 공유예정
+                                        </p>
+                                    </div>
                                 </td>
                             </tr>
 
@@ -313,6 +348,20 @@
                             },
                         },
                     });
+                    function toggleAccordion(id) {
+                        const accordionDetail = document.getElementById(
+                            `accordion-${id}`
+                        );
+
+                        if (
+                            accordionDetail.style.display === "none" ||
+                            accordionDetail.style.display === ""
+                        ) {
+                            accordionDetail.style.display = "table-row"; // 아코디언 내용 펼치기
+                        } else {
+                            accordionDetail.style.display = "none"; // 아코디언 내용 접기
+                        }
+                    }
                 </script>
             </div>
         </div>
