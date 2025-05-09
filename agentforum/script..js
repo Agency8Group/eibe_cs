@@ -94,10 +94,9 @@ function loadTodos() {
         const li = document.createElement("li");
         li.className = "flex justify-between items-center bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded shadow";
         li.innerHTML = `
-       <span class="flex-1 break-all">${todo.text}</span>
-        <button onclick="deleteTodo(${todo.id})" class="ml-4 text-red-500 hover:text-red-700 font-bold">삭제</button>
-    `;
-    
+            <span class="flex-1 break-all">${todo.text}</span>
+            <button onclick="deleteTodo(${todo.id})" class="ml-4 text-red-500 hover:text-red-700 font-bold">삭제</button>
+        `;
         list.appendChild(li);
     });
 }
@@ -155,33 +154,77 @@ let isDragging = false;
 let offsetX = 0;
 let offsetY = 0;
 
-// 시작 시에 position을 fixed로 설정 (마우스 이동에 따른 위치 변경이 가능하도록)
 todoBox.style.position = 'fixed';
 
 todoBox.addEventListener("mousedown", function (e) {
     isDragging = true;
     offsetX = e.clientX - todoBox.offsetLeft;
     offsetY = e.clientY - todoBox.offsetTop;
-    todoBox.style.transition = "none"; // 드래그 중에는 애니메이션을 비활성화
+    todoBox.style.transition = "none";
 });
 
 document.addEventListener("mousemove", function (e) {
     if (isDragging) {
-        todoBox.style.left = `${e.clientX - offsetX}px`;  // 새로운 위치로 이동
-        todoBox.style.top = `${e.clientY - offsetY}px`;  // 새로운 위치로 이동
-        todoBox.style.right = "auto";  // right 속성 해제
+        todoBox.style.left = `${e.clientX - offsetX}px`;
+        todoBox.style.top = `${e.clientY - offsetY}px`;
+        todoBox.style.right = "auto";
     }
 });
 
 document.addEventListener("mouseup", function () {
-    isDragging = false;  // 드래그 종료
+    isDragging = false;
 });
 
-todoBox.addEventListener("mousedown", function (e) {
-    console.log('Mouse down event triggered'); // 이벤트가 제대로 발생하는지 확인
-    isDragging = true;
-    offsetX = e.clientX - todoBox.offsetLeft;
-    offsetY = e.clientY - todoBox.offsetTop;
-    todoBox.style.transition = "none"; // 드래그 중에는 애니메이션을 비활성화
-});
+// api키 받는 2안 
+async function callOpenAI() {
+    const userInput = document.getElementById("userInput").value;
 
+    if (!userInput.trim()) {
+        alert("질문을 입력해주세요.");
+        return;
+    }
+
+    try {
+        const response = await fetch("https://api.openai.com/v1/chat/completions", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer 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"
+            },
+            body: JSON.stringify({
+                model: "gpt-3.5-turbo",
+                messages: [{ role: "user", content: userInput }]
+            })
+        });
+
+        if (!response.ok) {
+            // 응답이 실패한 경우 처리
+            const errorData = await response.json();
+            console.error("API 호출 실패:", errorData);
+            document.getElementById("responseOutput").textContent = `⚠️ 오류: ${errorData.error.message || '응답 실패'}`;
+            return;
+        }
+
+        const data = await response.json();
+        const result = data.choices?.[0]?.message?.content || "❌ 응답이 없습니다.";
+
+        // 마크다운 파싱 및 HTML 렌더링
+        document.getElementById("responseOutput").innerHTML = marked.parse(result);
+
+        // 코드블록 하이라이트 적용
+        document.querySelectorAll('#responseOutput pre code').forEach((block) => {
+            hljs.highlightElement(block);
+        });
+    } catch (error) {
+        console.error("OpenAI 호출 오류:", error);
+        document.getElementById("responseOutput").textContent = "⚠️ 오류: 응답 실패.";
+    }
+}
+
+// 엔터키로 질문 전송 (Shift + Enter는 줄바꿈)
+document.getElementById("userInput").addEventListener("keydown", function (event) {
+    if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault();
+        callOpenAI();
+    }
+});

@@ -58,7 +58,7 @@ footer {
 /* 기본 details summary 스타일 */
 details summary {
     font-size: 1.125rem; /* 글자 크기 */
-    font-weight: 600; /* 볼드체 */
+    font-weight: 30; /* 볼드체 */
     color: #ffd700; /* 세련된 노란색 */
     cursor: pointer; /* 커서 손가락으로 변경 */
     transition: color 0.3s ease, transform 0.3s ease; /* 부드러운 색 변화 */
