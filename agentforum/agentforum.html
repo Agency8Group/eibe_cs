@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko" class="dark">
+    <!-- ✅ 다크모드 초기 적용 -->
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>드리미 상담원 포털</title>
+
+        <!-- TailwindCSS -->
         <script src="https://cdn.tailwindcss.com"></script>
         <script>
             tailwind.config = {
@@ -23,12 +26,39 @@
                 },
             };
         </script>
+
+        <!-- 한글 폰트 -->
         <link
             href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap"
             rel="stylesheet"
         />
+
+        <!-- 사용자 정의 CSS -->
         <link rel="stylesheet" href="./style.css" />
+
+        <!-- ✅ Markdown 변환 (marked.js) -->
+        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+        <!-- ✅ 코드 하이라이트 (highlight.js + 다크 테마) -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github-dark.min.css"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/highlight.min.js"></script>
+
+        <!-- ✅ marked.js 설정 -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                marked.setOptions({
+                    highlight: function (code, lang) {
+                        return hljs.highlightAuto(code).value;
+                    },
+                    langPrefix: "hljs language-",
+                });
+            });
+        </script>
     </head>
+
     <body
         class="bg-white text-black dark:bg-[#121212] dark:text-white transition-colors duration-300 animate-fade-in"
     >
@@ -41,11 +71,12 @@
                 class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg max-w-lg w-full animate-fade-in"
             >
                 <h3 class="text-lg font-bold mb-4 text-yellow-500">
-                    📢 공지사항.
+                    📢 공지사항
                 </h3>
                 <p><strong>🚧상담원 포털 개발 (2025-04-08)</strong></p>
                 <p><strong>🔸cs부서 url 배포(2025-05)</strong></p>
                 <p><strong>🔸X40 Ultra 품절/5월이후 수령가능. </strong></p>
+                <p><strong>🔸프로젝트 진척도 76% </strong></p>
                 <div class="flex justify-end">
                     <button
                         onclick="closeNoticePopup()"
@@ -164,6 +195,9 @@
             <h3 class="text-lg font-bold text-yellow-400 mb-2">
                 📝 To-do 리스트
             </h3>
+            <!-- 창 닫기 버튼 20250508 -->
+
+            <!-- 20250508 -->
             <p class="text-xs text-gray-500 dark:text-red-300 mb-2">
                 인터넷 캐시를 삭제하면, 정보가 사라질 수 있습니다.
             </p>
@@ -197,15 +231,16 @@
                 <h2 class="text-xl font-bold text-yellow-400">🤖 AI 비서</h2>
                 <p class="text-xs">
                     AI 비서는 더 나은 서비스를 위해 지속적으로 업데이트되고
-                    있습니다. <br />유용하게 활용하실 수 있지만, 일부 정보는
-                    정확한 정보를 검증 중이니 가볍게 참고해 주세요.
+                    있습니다. <br />
+                    유용하게 활용하실 수 있지만, 일부 정보는 정확한 정보를 검증
+                    중이니 가볍게 참고해 주세요.
                 </p>
 
-                <!-- 버튼 & 데이터 현황판 한 줄로 나란히 -->
+                <!-- 버튼 & 데이터 현황판 -->
                 <div class="flex items-stretch gap-4">
                     <!-- OpenAI 버튼 -->
                     <a
-                        href="https://chat.openai.com/"
+                        href="https://brand.naver.com/dreame?nt_source=sa&nt_medium=bsa&nt_detail=PC_X50s%20Pro%20Ultra&n_media=27758&n_query=%EB%93%9C%EB%A6%AC%EB%AF%B8&n_rank=1&n_ad_group=grp-a001-04-000000049414587&n_ad=nad-a001-04-000000378176389&n_keyword_id=nkw-a001-04-000007034726010&n_keyword=%EB%93%9C%EB%A6%AC%EB%AF%B8&n_campaign_type=4&n_contract=tct-a001-04-000000001078312&n_ad_group_type=5&NaPm=ct%3Dmae2j3dc%7Cci%3D0yS00012rvHCThZ1h1n%2D%7Ctr%3Dbrnd%7Chk%3Da96aa3a0c3406528556c8159dec2ac6d21e68624%7Cnacn%3DnK7wBkAk4Kp6"
                         target="_blank"
                         class="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-2 px-4 rounded shadow transition-all flex items-center justify-center"
                         style="
@@ -216,7 +251,7 @@
                         onmouseover="this.style.boxShadow='0 0 15px rgba(255,255,0,0.7), 0 0 25px rgba(255,255,0,0.7)'"
                         onmouseout="this.style.boxShadow='0 0 5px rgba(255,255,255,0.5), 0 0 10px rgba(255,255,255,0.5)'"
                     >
-                        🚀 OpenAI로 이동
+                        🚀 공식사이트
                     </a>
 
                     <div class="flex flex-wrap items-stretch gap-4">
@@ -224,7 +259,6 @@
                         <div
                             class="min-w-[8rem] h-14 bg-gray-900 text-white rounded-lg flex flex-col justify-center items-center px-4 py-2 border border-yellow-400 shadow"
                         >
-                            <!-- x5,978.835978835979 -->
                             <div
                                 class="text-yellow-400 text-xl sm:text-2xl font-bold animate-pulse leading-none"
                             >
@@ -235,11 +269,7 @@
                             </p>
                         </div>
 
-                        <!-- 기존 FAQ 데이터는 189개이고, 오늘 0개가 새로 등록됐어. 
-내부 자료 80%, 외부 자료 20% 인용하는 AI 모델이라고 가정할 때,
-기대할 수 있는 답변 조합 수치는 얼마야?
-공식은 내부 * 외부야. -->
-                        <!-- 기대예상 수치 -->
+                        <!-- 동적 추정값 -->
                         <div
                             class="min-w-[8rem] h-14 bg-gray-900 text-white rounded-lg flex flex-col justify-center items-center px-4 py-2 border border-yellow-400 shadow"
                         >
@@ -253,6 +283,7 @@
                                 동적 추정값
                             </p>
                         </div>
+
                         <!-- 검증 필요 -->
                         <div
                             class="min-w-[8rem] h-14 bg-gray-900 text-white rounded-lg flex flex-col justify-center items-center px-4 py-2 border border-yellow-400 shadow"
@@ -269,7 +300,52 @@
                     </div>
                 </div>
 
-                <!-- 아래: 사용방법 안내서 -->
+                <!-- 질문 입력 및 결과 출력 -->
+                <div class="mt-6 space-y-4">
+                    <!-- 궁금한 내용 입력창 -->
+                    <textarea
+                        id="userInput"
+                        rows="4"
+                        class="w-full p-4 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-400 bg-[#121212] text-white"
+                        placeholder="궁금한 내용을 입력하세요..."
+                        style="resize: none"
+                    ></textarea>
+
+                    <!-- 질문 보내기 버튼 (수정 안 함) -->
+                    <button
+                        onclick="callOpenAI()"
+                        class="bg-yellow-400 hover:bg-yellow-500 text-black dark:text-black font-semibold py-1 px-4 rounded shadow transition-all"
+                        style="
+                            white-space: nowrap;
+                            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5),
+                                0 0 10px rgba(255, 255, 255, 0.5);
+                        "
+                        onmouseover="this.style.boxShadow='0 0 15px rgba(255,255,0,0.7), 0 0 25px rgba(255,255,0,0.7)'"
+                        onmouseout="this.style.boxShadow='0 0 5px rgba(255,255,255,0.5), 0 0 10px rgba(255,255,255,0.5)'"
+                    >
+                        ✉️ 질문 보내기
+                    </button>
+
+                    <!-- 응답 결과 박스 -->
+                    <div
+                        class="p-4 rounded-lg border border-gray-700 bg-[#121212]"
+                    >
+                        <h3 class="text-sm font-semi text-yellow-200 mb-2">
+                            📬 응답 결과:
+                        </h3>
+                        <pre
+                            id="responseOutput"
+                            class="bg-[#121212] text-white p-2 rounded whitespace-pre-wrap text-sm leading-relaxed font-sans"
+                            style="
+                                max-height: 300px;
+                                overflow-y: auto;
+                                resize: none; /* 크기 조정 비활성화 */
+                            "
+                        ></pre>
+                    </div>
+                </div>
+
+                <!-- 사용방법 안내서 -->
                 <details class="mt-6">
                     <summary
                         class="text-lg font-semibold text-yellow-400 cursor-pointer"
@@ -277,9 +353,9 @@
                         사용방법 안내서
                     </summary>
                     <iframe
-                        src="pdfs/ai-guide.pdf"
+                        src="./agentforumguide.pdf"
                         title="AI 사용법 가이드"
-                        class="mt-4"
+                        class="mt-4 w-full h-[500px] sm:h-[600px] md:h-[700px] lg:h-[800px]"
                     ></iframe>
                 </details>
             </section>
@@ -304,6 +380,7 @@
                     <iframe
                         src="../appmanual/X50(Master,ultra) Dreame Home APP 사용 설명서.pdf"
                         title="X50(Master,ultra) Dreame Home APP 사용 설명서"
+                        class="mt-4 w-full h-[500px] sm:h-[600px] md:h-[700px] lg:h-[800px]"
                     ></iframe>
                 </details>
 
@@ -317,6 +394,7 @@
                     <iframe
                         src="../appmanual/X50(Master,Ultra) 음성명령어 리스트.pdf"
                         title="X50(Master,Ultra) 음성명령어 리스트"
+                        class="mt-4 w-full h-[500px] sm:h-[600px] md:h-[700px] lg:h-[800px]"
                     ></iframe>
                 </details>
                 <details class="mb-4">
@@ -329,6 +407,7 @@
                     <iframe
                         src="../appmanual/X50 Master 사용 설명서.pdf"
                         title="X50 Master 사용 설명서"
+                        class="mt-4 w-full h-[500px] sm:h-[600px] md:h-[700px] lg:h-[800px]"
                     ></iframe>
                 </details>
 
@@ -342,6 +421,7 @@
                     <iframe
                         src="../appmanual/X50 Ultra 사용 설명서.pdf"
                         title="X50 Ultra 사용 설명서"
+                        class="mt-4 w-full h-[500px] sm:h-[600px] md:h-[700px] lg:h-[800px]"
                     ></iframe>
                 </details>
                 <details class="mb-4">
@@ -360,6 +440,7 @@
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         referrerpolicy="strict-origin-when-cross-origin"
                         allowfullscreen
+                        class="mt-4 w-full h-[500px] sm:h-[600px] md:h-[700px] lg:h-[800px]"
                     ></iframe>
                 </details>
 
@@ -374,6 +455,7 @@
                     <iframe
                         src="../appmanual/X40 (Ultra) Dreame Home APP 사용 설명서.pdf"
                         title="X40 (Ultra) Dreame Home APP 사용 설명서"
+                        class="mt-4 w-full h-[500px] sm:h-[600px] md:h-[700px] lg:h-[800px]"
                     ></iframe>
                 </details>
                 <details class="mb-4">
@@ -392,6 +474,7 @@
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         referrerpolicy="strict-origin-when-cross-origin"
                         allowfullscreen
+                        class="mt-4 w-full h-[500px] sm:h-[600px] md:h-[700px] lg:h-[800px]"
                     ></iframe>
                 </details>
                 <!-- L20 (Ultra) -->
@@ -405,6 +488,7 @@
                     <iframe
                         src="../appmanual/L20 (Ultra) Dreame Home APP 사용 설명서.pdf"
                         title="L20 (Ultra) Dreame Home APP 사용 설명서"
+                        class="mt-4 w-full h-[500px] sm:h-[600px] md:h-[700px] lg:h-[800px]"
                     ></iframe>
                 </details>
                 <details class="mb-4">
@@ -423,6 +507,7 @@
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         referrerpolicy="strict-origin-when-cross-origin"
                         allowfullscreen
+                        class="mt-4 w-full h-[500px] sm:h-[600px] md:h-[700px] lg:h-[800px]"
                     ></iframe>
                 </details>
             </section>
@@ -508,6 +593,7 @@
                         data-src="https://shop-phinf.pstatic.net/20250424_240/17454874782039FdTb_PNG/%EA%B3%B5%EC%9A%A9_%ED%95%98%EB%8B%A8%EC%A0%95%EB%B3%B4%EA%B3%A0%EC%8B%9C.png?type=w860"
                         alt=""
                         class="se-image-resource"
+                        class="mt-4 w-full h-[500px] sm:h-[600px] md:h-[700px] lg:h-[800px]"
                     />
                 </details>
             </section>
@@ -523,37 +609,34 @@
                     <summary
                         class="text-lg text-gray-800 dark:text-gray-100 border border-[#4a4a4a] bg-gray-100 dark:bg-[#333333] rounded-md px-4 py-2"
                     >
-                        CS에서 추가로 업데이트 필요한 정보같은것 공유해주시면<br />
-                        등록할 별도의 공간입니다. (메뉴등)
+                        💬 자주 사용하는 멘트
                     </summary>
                     <div
                         class="text-lg text-gray-800 dark:text-gray-100 border border-[#4a4a4a] bg-gray-100 dark:bg-[#333333] rounded-md px-4 py-2"
                     >
-                        <label class="block text-gray-800 dark:text-gray-100">
-                            알람 시간:
-                            <input
-                                type="time"
-                                id="alarmTime"
-                                class="border p-1 rounded w-full bg-gray-200 dark:bg-[#555555] text-gray-800 dark:text-gray-100"
-                            />
-                        </label>
-                        <label class="block text-gray-800 dark:text-gray-100">
-                            메모:
-                            <input
-                                type="text"
-                                id="alarmMemo"
-                                placeholder="예: 회의 시작"
-                                class="border p-1 rounded w-full bg-gray-200 dark:bg-[#555555] text-gray-800 dark:text-gray-100"
-                            />
-                        </label>
-
-                        <!-- 오른쪽 정렬을 위한 div 추가 -->
-                        <div class="text-right">
+                        <textarea
+                            id="frequentText"
+                            placeholder="자주 사용하는 멘트를 입력하세요..."
+                            class="border p-1 rounded w-full bg-gray-200 dark:bg-[#555555] text-gray-800 dark:text-gray-100"
+                        ></textarea>
+                        <div class="text-right mt-2">
                             <button
-                                onclick="setAlarm()"
+                                onclick="saveFrequentText()"
                                 class="text-lg text-gray-800 dark:text-gray-100 border border-[#4a4a4a] bg-gray-100 dark:bg-[#444444] rounded-md px-4 py-2"
                             >
-                                알람 설정
+                                멘트 저장
+                            </button>
+                            <button
+                                onclick="downloadFrequentText()"
+                                class="text-lg text-gray-800 dark:text-gray-100 border border-[#4a4a4a] bg-gray-100 dark:bg-[#444444] rounded-md px-4 py-2 mt-2"
+                            >
+                                멘트 다운로드
+                            </button>
+                            <button
+                                onclick="uploadFrequentText()"
+                                class="text-lg text-gray-800 dark:text-gray-100 border border-[#4a4a4a] bg-gray-100 dark:bg-[#444444] rounded-md px-4 py-2 mt-2"
+                            >
+                                멘트 업로드
                             </button>
                         </div>
                     </div>
@@ -577,19 +660,5 @@
         <!-- Script -->
 
         <script src="./script..js"></script>
-
-        <!-- 알람 팝업  -->
-        <div
-            id="alarmPopup"
-            class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-70 text-white text-2xl flex flex-col items-center justify-center z-50 hidden"
-        >
-            <div id="alarmText" class="mb-6"></div>
-            <button
-                onclick="closeAlarm()"
-                class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded"
-            >
-                X 닫기
-            </button>
-        </div>
     </body>
 </html>
