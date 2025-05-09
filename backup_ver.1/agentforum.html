@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="ko" class="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>드리미 상담원 포털</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        animation: {
+                            "fade-in": "fadeIn 1s ease forwards",
+                        },
+                        keyframes: {
+                            fadeIn: {
+                                "0%": { opacity: 0 },
+                                "100%": { opacity: 1 },
+                            },
+                        },
+                    },
+                },
+            };
+        </script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./style.css" />
+    </head>
+    <body
+        class="bg-white text-black dark:bg-[#121212] dark:text-white transition-colors duration-300 animate-fade-in"
+    >
+        <!-- 공지 팝업 -->
+        <div
+            id="notice-popup"
+            class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden animate-fade-in"
+        >
+            <div
+                class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg max-w-lg w-full animate-fade-in"
+            >
+                <h3 class="text-lg font-bold mb-4 text-yellow-500">
+                    📢 공지사항.
+                </h3>
+                <p><strong>🚧상담원 포털 개발 (2025-04-08)</strong></p>
+                <p><strong>🔸cs부서 url 배포(2025-05)</strong></p>
+                <p><strong>🔸X40 Ultra 품절/5월이후 수령가능. </strong></p>
+                <div class="flex justify-end">
+                    <button
+                        onclick="closeNoticePopup()"
+                        class="bg-yellow-400 hover:bg-yellow-500 text-black py-2 px-4 rounded transition-all hover:text-white"
+                        style="
+                            transition: all 0.3s ease;
+                            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5),
+                                0 0 10px rgba(255, 255, 255, 0.5);
+                        "
+                        onmouseover="this.style.boxShadow='0 0 15px rgba(255,255,0,0.7), 0 0 25px rgba(255,255,0,0.7)'"
+                        onmouseout="this.style.boxShadow='0 0 5px rgba(255,255,255,0.5), 0 0 10px rgba(255,255,255,0.5)'"
+                    >
+                        <strong>확인</strong>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 헤더 -->
+        <header
+            class="p-4 border-b border-gray-300 dark:border-gray-700 flex justify-between items-center animate-fade-in"
+        >
+            <h1
+                class="text-2xl font-bold text-yellow-500 dark:text-yellow-400"
+                onclick="reloadPage()"
+            >
+                드리미 상담원 포털
+                <!-- 시계를 표시할 곳 -->
+                <span
+                    id="clock"
+                    class="ml-4 text-xl font-semibold text-black dark:text-white"
+                ></span>
+                <span
+                    class="ml-2 text-xs bg-black-600 text-black dark:text-white py-0 px-1 rounded-full"
+                >
+                    DEV VERSION 0.3.0
+                </span>
+                <span
+                    class="ml-2 text-xs bg-green-600 text-white py-0 px-1 rounded-full"
+                >
+                    BETA
+                </span>
+            </h1>
+
+            <div class="flex items-center space-x-4">
+                <span class="text-sm">
+                    <a
+                        href="../secretgame/secretgame.html"
+                        target="_blank"
+                        style="text-decoration: none; color: inherit"
+                    >
+                        안녕하세요 , 상담원님 👋
+                    </a>
+                </span>
+                <button
+                    onclick="toggleTheme()"
+                    class="flicker-always text-sm bg-gray-200 dark:bg-gray-800 px-3 py-1 rounded hover:bg-gray-300 dark:hover:bg-gray-700 transition-all"
+                >
+                    🌓 테마 전환
+                </button>
+            </div>
+        </header>
+
+        <!-- 검색 -->
+        <div class="flex justify-center py-6 animate-fade-in">
+            <input
+                id="search-input"
+                type="text"
+                placeholder="search..."
+                class="px-4 py-2 border rounded-lg dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                oninput="filterContent()"
+            />
+        </div>
+
+        <!-- 탭 메뉴 -->
+        <div
+            class="flex justify-center space-x-6 py-6 text-lg flex-wrap animate-fade-in"
+        >
+            <button
+                onclick="showTab('ai')"
+                class="hover:text-yellow-400 transition-all"
+            >
+                🤖AI 비서
+            </button>
+            <button
+                onclick="showTab('promo')"
+                class="hover:text-yellow-400 transition-all"
+            >
+                📱Dreame Manual
+            </button>
+            <button
+                onclick="showTab('notice')"
+                class="hover:text-yellow-400 transition-all"
+            >
+                📢이벤트/참고자료
+            </button>
+            <button
+                onclick="showTab('edu')"
+                class="hover:text-yellow-400 transition-all"
+            >
+                📚교육자료
+            </button>
+            <button
+                onclick="showTab('vacation')"
+                class="hover:text-yellow-400 transition-all"
+            >
+                🚧 Preparing...
+            </button>
+        </div>
+
+        <!-- 여기에 고정 To-do 리스트 넣기 -->
+        <div
+            id="global-todo"
+            class="fixed left-1/2 top-[calc(50%+70px)] transform -translate-x-1/2 -translate-y-1/2 w-96 bg-white dark:bg-gray-900 border border-yellow-400 rounded-lg shadow-lg p-4 z-40 animate-fade-in hidden md:block"
+        >
+            <h3 class="text-lg font-bold text-yellow-400 mb-2">
+                📝 To-do 리스트
+            </h3>
+            <p class="text-xs text-gray-500 dark:text-red-300 mb-2">
+                인터넷 캐시를 삭제하면, 정보가 사라질 수 있습니다.
+            </p>
+            <div class="flex items-center gap-2 mb-4">
+                <input
+                    id="todo-input"
+                    type="text"
+                    placeholder="할 일을 입력하세요"
+                    class="flex-1 px-3 py-2 border rounded dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                />
+                <button
+                    onclick="addTodo()"
+                    class="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-4 py-1 rounded transition"
+                >
+                    Enter
+                </button>
+            </div>
+            <ul
+                id="todo-list"
+                class="space-y-2 text-sm text-gray-800 dark:text-white"
+            ></ul>
+        </div>
+
+        <!-- 콘텐츠 영역 -->
+        <main class="px-6 md:px-16 lg:px-32 space-y-10 animate-fade-in">
+            <!-- AI 비서 탭 -->
+            <section
+                id="tab-ai"
+                class="glass p-6 hidden animate-fade-in space-y-6"
+            >
+                <h2 class="text-xl font-bold text-yellow-400">🤖 AI 비서</h2>
+                <p class="text-xs">
+                    AI 비서는 더 나은 서비스를 위해 지속적으로 업데이트되고
+                    있습니다. <br />유용하게 활용하실 수 있지만, 일부 정보는
+                    정확한 정보를 검증 중이니 가볍게 참고해 주세요.
+                </p>
+
+                <!-- 버튼 & 데이터 현황판 한 줄로 나란히 -->
+                <div class="flex items-stretch gap-4">
+                    <!-- OpenAI 버튼 -->
+                    <a
+                        href="https://chat.openai.com/"
+                        target="_blank"
+                        class="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-2 px-4 rounded shadow transition-all flex items-center justify-center"
+                        style="
+                            white-space: nowrap;
+                            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5),
+                                0 0 10px rgba(255, 255, 255, 0.5);
+                        "
+                        onmouseover="this.style.boxShadow='0 0 15px rgba(255,255,0,0.7), 0 0 25px rgba(255,255,0,0.7)'"
+                        onmouseout="this.style.boxShadow='0 0 5px rgba(255,255,255,0.5), 0 0 10px rgba(255,255,255,0.5)'"
+                    >
+                        🚀 OpenAI로 이동
+                    </a>
+
+                    <div class="flex flex-wrap items-stretch gap-4">
+                        <!-- 데이터 수 -->
+                        <div
+                            class="min-w-[8rem] h-14 bg-gray-900 text-white rounded-lg flex flex-col justify-center items-center px-4 py-2 border border-yellow-400 shadow"
+                        >
+                            <!-- x5,978.835978835979 -->
+                            <div
+                                class="text-yellow-400 text-xl sm:text-2xl font-bold animate-pulse leading-none"
+                            >
+                                189
+                            </div>
+                            <p class="text-xs text-white opacity-80 mt-1">
+                                러닝 데이터
+                            </p>
+                        </div>
+
+                        <!-- 기존 FAQ 데이터는 189개이고, 오늘 0개가 새로 등록됐어. 
+내부 자료 80%, 외부 자료 20% 인용하는 AI 모델이라고 가정할 때,
+기대할 수 있는 답변 조합 수치는 얼마야?
+공식은 내부 * 외부야. -->
+                        <!-- 기대예상 수치 -->
+                        <div
+                            class="min-w-[8rem] h-14 bg-gray-900 text-white rounded-lg flex flex-col justify-center items-center px-4 py-2 border border-yellow-400 shadow"
+                        >
+                            <div
+                                id="inferenceValue"
+                                class="text-green-400 text-xl sm:text-2xl font-bold animate-pulse leading-none"
+                            >
+                                0000
+                            </div>
+                            <p class="text-xs text-white opacity-80 mt-1">
+                                동적 추정값
+                            </p>
+                        </div>
+                        <!-- 검증 필요 -->
+                        <div
+                            class="min-w-[8rem] h-14 bg-gray-900 text-white rounded-lg flex flex-col justify-center items-center px-4 py-2 border border-yellow-400 shadow"
+                        >
+                            <div
+                                class="text-red-400 text-xl sm:text-2xl font-bold animate-pulse leading-none"
+                            >
+                                52
+                            </div>
+                            <p class="text-xs text-white opacity-80 mt-1">
+                                검증필요
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 아래: 사용방법 안내서 -->
+                <details class="mt-6">
+                    <summary
+                        class="text-lg font-semibold text-yellow-400 cursor-pointer"
+                    >
+                        사용방법 안내서
+                    </summary>
+                    <iframe
+                        src="./agentforumguide.pdf"
+                        title="AI 사용법 가이드"
+                        class="mt-4"
+                    ></iframe>
+                </details>
+            </section>
+
+            <!-- Dreame UI 탭 -->
+            <section id="tab-promo" class="glass p-6 hidden animate-fade-in">
+                <h2 class="text-xl font-bold text-yellow-400 mb-6">
+                    📱 Dreame Manual
+                </h2>
+
+                <!-- 일자 선: CSS로 처리 -->
+                <div class="line"></div>
+                <!-- Dreame UI 아코디언 -->
+                <!-- X50 (Master,Ultra) -->
+                <details class="mb-4">
+                    <summary
+                        class="text-lg text-gray-800 dark:text-gray-100 border border-[#4a4a4a] bg-gray-100 dark:bg-[#2a2a2a] rounded-md px-4 py-2"
+                    >
+                        <span class="text-yellow-400">X50</span>
+                        (Master,Ultra) Dreame Home APP 사용 설명서📱
+                    </summary>
+                    <iframe
+                        src="../appmanual/X50(Master,ultra) Dreame Home APP 사용 설명서.pdf"
+                        title="X50(Master,ultra) Dreame Home APP 사용 설명서"
+                    ></iframe>
+                </details>
+
+                <details class="mb-4">
+                    <summary
+                        class="text-lg text-gray-800 dark:text-gray-100 border border-[#4a4a4a] bg-gray-100 dark:bg-[#2a2a2a] rounded-md px-4 py-2"
+                    >
+                        <span class="text-yellow-400">X50</span>
+                        (Master,Ultra) 음성명령어 리스트📱
+                    </summary>
+                    <iframe
+                        src="../appmanual/X50(Master,Ultra) 음성명령어 리스트.pdf"
+                        title="X50(Master,Ultra) 음성명령어 리스트"
+                    ></iframe>
+                </details>
+                <details class="mb-4">
+                    <summary
+                        class="text-lg text-gray-800 dark:text-gray-100 border border-[#4a4a4a] bg-gray-100 dark:bg-[#2a2a2a] rounded-md px-4 py-2"
+                    >
+                        <span class="text-yellow-400">X50</span>
+                        (Master) 사용 설명서📄
+                    </summary>
+                    <iframe
+                        src="../appmanual/X50 Master 사용 설명서.pdf"
+                        title="X50 Master 사용 설명서"
+                    ></iframe>
+                </details>
+
+                <details class="mb-4">
+                    <summary
+                        class="text-lg text-gray-800 dark:text-gray-100 border border-[#4a4a4a] bg-gray-100 dark:bg-[#2a2a2a] rounded-md px-4 py-2"
+                    >
+                        <span class="text-yellow-400">X50</span>
+                        (Ultra) 사용 설명서📄
+                    </summary>
+                    <iframe
+                        src="../appmanual/X50 Ultra 사용 설명서.pdf"
+                        title="X50 Ultra 사용 설명서"
+                    ></iframe>
+                </details>
+                <details class="mb-4">
+                    <summary
+                        class="text-lg text-gray-800 dark:text-gray-100 border border-[#4a4a4a] bg-gray-100 dark:bg-[#2a2a2a] rounded-md px-4 py-2"
+                    >
+                        <span class="text-yellow-400">X50</span>
+                        (Master) 직배수 키트 가이드🎬
+                    </summary>
+                    <iframe
+                        width="895"
+                        height="503"
+                        src="https://www.youtube.com/embed/6ma-ta-_zg4?list=TLGGsCu2tDPFU40yNTA0MjAyNQ"
+                        title="X50 Ultra Master 설치 방법 안내"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen
+                    ></iframe>
+                </details>
+
+                <!-- X40 (Ultra) -->
+                <details class="mb-4">
+                    <summary
+                        class="text-lg text-gray-800 dark:text-gray-100 border border-[#4a4a4a] bg-gray-100 dark:bg-[#2a2a2a] rounded-md px-4 py-2"
+                    >
+                        <span class="text-green-400">X40</span>
+                        (Ultra) Dreame Home APP 사용 설명서📱
+                    </summary>
+                    <iframe
+                        src="../appmanual/X40 (Ultra) Dreame Home APP 사용 설명서.pdf"
+                        title="X40 (Ultra) Dreame Home APP 사용 설명서"
+                    ></iframe>
+                </details>
+                <details class="mb-4">
+                    <summary
+                        class="text-lg text-gray-800 dark:text-gray-100 border border-[#4a4a4a] bg-gray-100 dark:bg-[#2a2a2a] rounded-md px-4 py-2"
+                    >
+                        <span class="text-green-400">X40</span>
+                        (Ultra) 직배수 키트 가이드🎬
+                    </summary>
+                    <iframe
+                        width="800"
+                        height="450"
+                        src="https://www.youtube.com/embed/eF1rPZ7goLQ?list=TLGGuy-uUe89kvcyNTA0MjAyNQ"
+                        title="드리미 L10s 히트 전용 직배수 키트 설치 지도"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen
+                    ></iframe>
+                </details>
+                <!-- L20 (Ultra) -->
+                <details class="mb-4">
+                    <summary
+                        class="text-lg text-gray-800 dark:text-gray-100 border border-[#4a4a4a] bg-gray-100 dark:bg-[#2a2a2a] rounded-md px-4 py-2"
+                    >
+                        <span class="text-blue-400">L20</span>
+                        (Ultra) Dreame Home APP 사용 설명서📱
+                    </summary>
+                    <iframe
+                        src="../appmanual/L20 (Ultra) Dreame Home APP 사용 설명서.pdf"
+                        title="L20 (Ultra) Dreame Home APP 사용 설명서"
+                    ></iframe>
+                </details>
+                <details class="mb-4">
+                    <summary
+                        class="text-lg text-gray-800 dark:text-gray-100 border border-[#4a4a4a] bg-gray-100 dark:bg-[#2a2a2a] rounded-md px-4 py-2"
+                    >
+                        <span class="text-blue-400">L20</span>
+                        (Ultra) 직배수 키트 가이드🎬
+                    </summary>
+                    <iframe
+                        width="800"
+                        height="450"
+                        src="https://www.youtube.com/embed/xeUibNf0WgM?list=TLGGLO7QAyaJVU8yNTA0MjAyNQ"
+                        title="드리미 L20 Ulta 직배수 키트 설치 지도"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen
+                    ></iframe>
+                </details>
+            </section>
+
+            <!-- 이벤트/프로모션 탭 -->
+            <section id="tab-notice" class="glass p-6 hidden animate-fade-in">
+                <h2 class="text-xl font-bold text-yellow-400 mb-6">
+                    📢 이벤트/참고자료
+                </h2>
+                <!-- 일자 선: CSS로 처리 -->
+                <div class="line"></div>
+                <!-- 이벤트/프로모션 아코디언 -->
+                <details class="mb-4">
+                    <summary
+                        class="text-lg text-gray-800 dark:text-gray-100 border border-[#4a4a4a] bg-gray-100 dark:bg-[#2a2a2a] rounded-md px-4 py-2"
+                    >
+                        이벤트 및 프로모션 URL
+                    </summary>
+                    <div class="mt-2">
+                        <a
+                            href="https://brand.naver.com/dreame/shoppingstory/list?cp=1"
+                            target="_blank"
+                            class="text-blue-400 underline hover:text-blue-600 transition"
+                        >
+                            🎁 지금 진행 중인 쇼핑스토리 & 프로모션 보기
+                        </a>
+                    </div>
+                    <div class="mt-2">
+                        <a
+                            href="https://dreametechkorea.com/support/service_center"
+                            target="_blank"
+                            class="text-blue-400 underline hover:text-blue-600 transition"
+                        >
+                            🛠 가까운 오프라인 매장 및 A/S 센터 찾기
+                        </a>
+                    </div>
+                    <div class="mt-2">
+                        <a
+                            href="https://dreametechkorea.com/event/live"
+                            target="_blank"
+                            class="text-blue-400 underline hover:text-blue-600 transition"
+                        >
+                            📺 지금 바로! 드리미 라이브 방송 보기
+                        </a>
+                    </div>
+                    <div class="mt-2">
+                        <a
+                            href="https://dreametechkorea.com/event/benefits"
+                            target="_blank"
+                            class="text-blue-400 underline hover:text-blue-600 transition"
+                        >
+                            🎉 이달의 특별한 혜택 확인하기
+                        </a>
+                    </div>
+                    <div class="mt-2">
+                        <a
+                            href="../Logistics Project/Logistics Project.html"
+                            target="_blank"
+                            class="text-blue-400 underline hover:text-blue-600 transition"
+                        >
+                            🚚 Logistics Project
+                        </a>
+                    </div>
+                </details>
+            </section>
+
+            <!-- 교육자료 탭 -->
+            <section id="tab-edu" class="glass p-6 hidden animate-fade-in">
+                <h2 class="text-xl font-bold text-yellow-400 mb-6">
+                    📚 교육자료
+                </h2>
+                <!-- 일자 선: CSS로 처리 -->
+                <div class="line"></div>
+                <!-- 교육자료 아코디언 -->
+                <details class="mb-4">
+                    <summary
+                        class="text-lg text-gray-800 dark:text-gray-100 border border-[#4a4a4a] bg-gray-100 dark:bg-[#2a2a2a] rounded-md px-4 py-2"
+                    >
+                        배송&교환&반품정책 및 제품별 품질 보증기간
+                    </summary>
+                    <img
+                        src="https://shop-phinf.pstatic.net/20250424_240/17454874782039FdTb_PNG/%EA%B3%B5%EC%9A%A9_%ED%95%98%EB%8B%A8%EC%A0%95%EB%B3%B4%EA%B3%A0%EC%8B%9C.png?type=w860"
+                        data-src="https://shop-phinf.pstatic.net/20250424_240/17454874782039FdTb_PNG/%EA%B3%B5%EC%9A%A9_%ED%95%98%EB%8B%A8%EC%A0%95%EB%B3%B4%EA%B3%A0%EC%8B%9C.png?type=w860"
+                        alt=""
+                        class="se-image-resource"
+                    />
+                </details>
+            </section>
+
+            <!-- 🚧 Preparing...  탭 -->
+            <section id="tab-vacation" class="glass p-6 hidden animate-fade-in">
+                <h2 class="text-xl font-bold text-yellow-400 mb-6">
+                    🚧 Preparing...
+                </h2>
+                <!-- 일자 선: CSS로 처리 -->
+                <div class="line"></div>
+                <details class="mb-4">
+                    <summary
+                        class="text-lg text-gray-800 dark:text-gray-100 border border-[#4a4a4a] bg-gray-100 dark:bg-[#333333] rounded-md px-4 py-2"
+                    >
+                        CS에서 추가로 업데이트 필요한 정보같은것 공유해주시면<br />
+                        등록할 별도의 공간입니다. (메뉴등)
+                    </summary>
+                    <div
+                        class="text-lg text-gray-800 dark:text-gray-100 border border-[#4a4a4a] bg-gray-100 dark:bg-[#333333] rounded-md px-4 py-2"
+                    >
+                        <label class="block text-gray-800 dark:text-gray-100">
+                            알람 시간:
+                            <input
+                                type="time"
+                                id="alarmTime"
+                                class="border p-1 rounded w-full bg-gray-200 dark:bg-[#555555] text-gray-800 dark:text-gray-100"
+                            />
+                        </label>
+                        <label class="block text-gray-800 dark:text-gray-100">
+                            메모:
+                            <input
+                                type="text"
+                                id="alarmMemo"
+                                placeholder="예: 회의 시작"
+                                class="border p-1 rounded w-full bg-gray-200 dark:bg-[#555555] text-gray-800 dark:text-gray-100"
+                            />
+                        </label>
+
+                        <!-- 오른쪽 정렬을 위한 div 추가 -->
+                        <div class="text-right">
+                            <button
+                                onclick="setAlarm()"
+                                class="text-lg text-gray-800 dark:text-gray-100 border border-[#4a4a4a] bg-gray-100 dark:bg-[#444444] rounded-md px-4 py-2"
+                            >
+                                알람 설정
+                            </button>
+                        </div>
+                    </div>
+                </details>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="animate-fade-in">
+            <p class="text-xs" style="color: #e5d7b6">
+                For support or inquiries, contact me at:
+                <a href="tel:+82-010-5871-7232" class="text-yellow-400"
+                    >+82 010-5871-7232</a
+                >
+            </p>
+            <p class="text-xs" style="color: #e5d7b6">
+                © 2025 yoonwhan-ji. Frontend.Publishing. All rights reserved.
+            </p>
+        </footer>
+
+        <!-- Script -->
+
+        <script src="./script..js"></script>
+
+        <!-- 알람 팝업  -->
+        <div
+            id="alarmPopup"
+            class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-70 text-white text-2xl flex flex-col items-center justify-center z-50 hidden"
+        >
+            <div id="alarmText" class="mb-6"></div>
+            <button
+                onclick="closeAlarm()"
+                class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded"
+            >
+                X 닫기
+            </button>
+        </div>
+    </body>
+</html>
