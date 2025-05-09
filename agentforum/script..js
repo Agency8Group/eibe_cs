@@ -189,7 +189,7 @@ async function callOpenAI() {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: "Bearer sk-proj-qLwQ6LJ7--GaSvDyTZgvNwZmza-86WaQSz6Qm-nySsAH2xIGR-PruwfFC3pGu9H0AjXZbhYT3BlbkFJ9jtGj__nQH9eWCH4u49qwOoF8bhvhRb3eJtSWdO5R8WP-l63yxJTQOQ8izYqbHxqt2xIQqZekA"
+                Authorization: "" 
             },
             body: JSON.stringify({
                 model: "gpt-3.5-turbo",
