@@ -176,6 +176,7 @@ document.addEventListener("mouseup", function () {
 });
 
 // api키 받는 2안 
+// OpenAI API 호출 함수
 async function callOpenAI() {
     const userInput = document.getElementById("userInput").value;
 
@@ -183,13 +184,14 @@ async function callOpenAI() {
         alert("질문을 입력해주세요.");
         return;
     }
-const apiKey = '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';  // 여기서 YOUR_API_KEY는 발급받은 API 키로 교체하세요.
+
+    const apiKey = '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';  // 여기에 본인의 OpenAI API 키를 넣어주세요.
     try {
         const response = await fetch("https://api.openai.com/v1/chat/completions", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-           
+                "Authorization": `Bearer ${apiKey}`
             },
             body: JSON.stringify({
                 model: "gpt-3.5-turbo",
@@ -220,6 +222,7 @@ const apiKey = 'sk-proj-qLwQ6LJ7--GaSvDyTZgvNwZmza-86WaQSz6Qm-nySsAH2xIGR-PruwfF
         document.getElementById("responseOutput").textContent = "⚠️ 오류: 응답 실패.";
     }
 }
+
 
 // 엔터키로 질문 전송 (Shift + Enter는 줄바꿈)
 document.getElementById("userInput").addEventListener("keydown", function (event) {
