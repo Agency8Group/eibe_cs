@@ -1,0 +1,97 @@
+body {
+    font-family: "Gowun Dodum", sans-serif;
+}
+
+main {
+    min-height: calc(100vh - 60px);
+    padding-bottom: 60px;
+}
+
+.glass {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border-radius: 0.5rem;
+    border: 1px solid #444;
+    transition: opacity 0.5s ease;
+}
+
+iframe.hidden {
+    opacity: 0;
+}
+
+@keyframes flicker-loop {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.4;
+    }
+}
+
+.flicker-always {
+    animation: flicker-loop 1.5s infinite;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(18, 18, 18, 0.5);
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+/* 기본 details summary 스타일 */
+details summary {
+    font-size: 1.125rem; /* 글자 크기 */
+    font-weight: 30; /* 볼드체 */
+    color: #ffd700; /* 세련된 노란색 */
+    cursor: pointer; /* 커서 손가락으로 변경 */
+    transition: color 0.3s ease, transform 0.3s ease; /* 부드러운 색 변화 */
+}
+
+/* 다크모드에서 details summary 기본 색상 */
+.dark details summary {
+    color: #ffcc00; /* 다크모드에서 기본 글자 색상 */
+}
+
+/* 호버 시 색상 변경 */
+details summary:hover {
+    color: #ffa500; /* Hover 시 색상 변경 (주황색) */
+    transform: translateX(5px); /* 오른쪽으로 살짝 이동 */
+}
+
+/* 다크모드에서 호버 시 색상 변경 */
+.dark details summary:hover {
+    color: #ff6600; /* 다크모드에서 호버 시 색상 변경 (다크 주황) */
+}
+
+/* 열린 상태에서는 색상이 다르게 */
+details[open] summary {
+    color: #c2965c !important;
+    font-weight: 700 !important;
+}
+
+/* 열린 상태에서 hover 효과 제거 */
+details[open] summary:hover {
+    transform: none; /* 열린 상태에서 hover 효과 제거 */
+}
+
+.line {
+    border-top: 1px solid #ccc; /* 1px 두께의 회색 선 */
+    margin: 20px 0; /* 위와 아래에 여백 추가 */
+}
