@@ -231,12 +231,18 @@ document.getElementById("userInput").addEventListener("keydown", function (event
 
 
 // 보안
-    // 페이지 로드 시 로그인 상태를 확인
-        window.onload = function() {
-            // 로컬 스토리지에서 'loggedIn' 값 확인
+  window.onload = function () {
+        try {
+            // localStorage 정상 접근 확인용 로그
+            console.log("loggedIn =", localStorage.getItem('loggedIn'));
+
             if (localStorage.getItem('loggedIn') !== 'true') {
-                // 로그인되지 않은 경우 로그인 페이지로 이동
                 alert("로그인이 필요합니다.");
+                // 정확한 상대 경로 지정 (중요)
                 window.location.href = "../index.html";
             }
-        };
+        } catch (e) {
+            alert("로컬 스토리지 접근 오류 발생");
+            console.error(e);
+        }
+    };
