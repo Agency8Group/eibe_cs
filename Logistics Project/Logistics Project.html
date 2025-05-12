@@ -186,20 +186,19 @@
                 justify-content: center;
                 align-items: center;
             }
-            /* 초록색 배경의 이쁜 박스 스타일 */
             .detail-click {
-                background-color: #4caf50; /* 초록색 배경 */
-                color: #fff; /* 텍스트 색은 흰색 */
-                padding: 6px 12px; /* 적당한 여백 */
-                border-radius: 12px; /* 둥근 모서리 */
-                font-weight: bold; /* 글씨를 더 굵게 */
-                font-size: 14px; /* 글씨 크기 */
-                transition: background-color 0.3s ease; /* 배경 색 변경 애니메이션 */
+                background-color: #6c757d; /* 회색 배경 */
+                color: #f4f6f8; /* 흰색 텍스트 */
+                padding: 4px 8px;
+                border-radius: 6px;
+                font-weight: bold;
+                transition: background-color 0.3s, color 0.3s; /* 배경색과 텍스트 색 변경 시 애니메이션 */
             }
 
             .detail-click:hover {
-                background-color: #388e3c; /* 호버 시 어두운 초록색 */
-                cursor: pointer; /* 커서를 손 모양으로 */
+                background-color: #495057; /* 호버 시 조금 더 어두운 회색 */
+                color: #fff; /* 호버 시 흰색 텍스트 */
+                cursor: pointer; /* 커서 손 모양으로 */
             }
         </style>
     </head>
@@ -240,10 +239,10 @@
                             >
                                 <td class="py-3 px-4 flex items-center">
                                     주문서,재고연동
-                                    <span class="ml-2 text-gray-400"
-                                        >(상세내용click)👆</span
+                                    <span
+                                        class="ml-2 text-gray-400 detail-click"
+                                        >(상세내용)👆</span
                                     >
-
                                     <!-- 클릭 유도 이모지 -->
                                 </td>
                                 <td class="py-3 px-4">
