@@ -189,14 +189,14 @@ const apiKey = 'sk-proj-qLwQ6LJ7--GaSvDyTZgvNwZmza-86WaQSz6Qm-nySsAH2xIGR-PruwfF
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-           
+            "Authorization": `Bearer ${apiKey}` // ← 이 줄 추가해야 API가 작동함
             },
             body: JSON.stringify({
-                model: "gpt-3.5-turbo",
+                model: "gpt-3.5-turbo",  
                 messages: [{ role: "user", content: userInput }]
             })
         });
-
+// 모델 만약 GPT-4를 사용하고 싶다면 model: "gpt-4"로 변경하면 되고, GPT-3.5를 사용하려면 model: "gpt-3.5-turbo"를 사용해야 해요.
         if (!response.ok) {
             // 응답이 실패한 경우 처리
             const errorData = await response.json();
