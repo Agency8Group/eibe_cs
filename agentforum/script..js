@@ -228,3 +228,19 @@ document.getElementById("userInput").addEventListener("keydown", function (event
         callOpenAI();
     }
 });
+function hideTodo() {
+    document.getElementById("global-todo").style.display = "none";
+}
+
+function minimizeTodo() {
+    const list = document.getElementById("todo-list");
+    const inputArea = document.querySelector("#global-todo .flex.items-center");
+    const warning = document.querySelector("#global-todo p");
+
+    // toggle display
+    const isHidden = list.style.display === "none";
+    list.style.display = isHidden ? "block" : "none";
+    inputArea.style.display = isHidden ? "flex" : "none";
+    warning.style.display = isHidden ? "block" : "none";
+}
+// 정상작동하니 건들지 않기로 

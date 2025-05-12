@@ -161,6 +161,7 @@
             >
                 🤖AI 비서
             </button>
+
             <button
                 onclick="showTab('promo')"
                 class="hover:text-yellow-400 transition-all"
@@ -192,10 +193,19 @@
             id="global-todo"
             class="fixed left-1/2 top-[calc(50%+70px)] transform -translate-x-1/2 -translate-y-1/2 w-96 bg-white dark:bg-gray-900 border border-yellow-400 rounded-lg shadow-lg p-4 z-40 animate-fade-in hidden md:block"
         >
-            <h3 class="text-lg font-bold text-yellow-400 mb-2">
-                📝 To-do 리스트
+            <h3
+                class="text-lg font-bold text-yellow-400 mb-2 flex justify-between items-center"
+            >
+                <span>📝 To-do 리스트</span>
+                <div class="flex gap-1">
+                    <button
+                        onclick="hideTodo()"
+                        class="text-xs px-2 py-1 text-red-500 hover:text-red-600"
+                    >
+                        ✖
+                    </button>
+                </div>
             </h3>
-            <!-- 창 닫기 버튼 20250508 -->
 
             <!-- 20250508 -->
             <p class="text-xs text-gray-500 dark:text-red-300 mb-2">
