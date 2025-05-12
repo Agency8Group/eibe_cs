@@ -189,7 +189,7 @@ async function callOpenAI() {
         return;
     }
 
-    const apiKey = 'sk-proj-...'; // 실제 API 키는 보안을 위해 숨김 처리
+    const apiKey = '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'; // 실제 API 키는 보안을 위해 숨김 처리
 
     try {
         // OpenAI API에 POST 요청 보내기
