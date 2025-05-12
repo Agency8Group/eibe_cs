@@ -180,59 +180,6 @@ document.addEventListener("mouseup", function () {
     isDragging = false; // 마우스를 놓으면 드래그 종료
 });
 
-// OpenAI API 호출 함수
-async function callOpenAI() {
-    const userInput = document.getElementById("userInput").value; // 사용자 입력 가져오기
-
-    if (!userInput.trim()) {
-        alert("질문을 입력해주세요.");
-        return;
-    }
-
-    const apiKey = ''
-
-    try {
-        // OpenAI API에 POST 요청 보내기
-        const response = await fetch("https://api.openai.com/v1/chat/completions", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ` // API 키를 인증 헤더에 포함
-            },
-            body: JSON.stringify({
-                model: "gpt-3.5-turbo",
-                messages: [{ role: "user", content: userInput }] // 사용자 입력 전송
-            })
-        });
-
-        if (!response.ok) {
-            const errorData = await response.json();
-            console.error("API 호출 실패:", errorData);
-            document.getElementById("responseOutput").textContent = `⚠️ 오류: ${errorData.error.message || '응답 실패'}`;
-            return;
-        }
-
-        const data = await response.json();
-        const result = data.choices?.[0]?.message?.content || "❌ 응답이 없습니다."; // 응답 데이터 처리
-        document.getElementById("responseOutput").innerHTML = marked.parse(result);
-
-        // 코드 블록 하이라이트 처리
-        document.querySelectorAll('#responseOutput pre code').forEach((block) => {
-            hljs.highlightElement(block);
-        });
-    } catch (error) {
-        console.error("OpenAI 호출 오류:", error);
-        document.getElementById("responseOutput").textContent = "⚠️ 오류: 응답 실패.";
-    }
-}
-
-// 사용자가 입력하고 Enter 키를 누르면 OpenAI 호출
-document.getElementById("userInput").addEventListener("keydown", function (event) {
-    if (event.key === "Enter" && !event.shiftKey) {
-        event.preventDefault();
-        callOpenAI();
-    }
-});
 
 // 초기화 및 로딩
 document.addEventListener("DOMContentLoaded", function () {
