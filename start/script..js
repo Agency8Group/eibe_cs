@@ -28,3 +28,12 @@ document
         }
     }, 1000);
 });
+
+// 보안
+
+   function login() {
+            // 로그인 버튼 클릭 시 로컬 스토리지에 'loggedIn' 값을 true로 저장
+            localStorage.setItem('loggedIn', 'true');
+            // 로그인 후 바로 agentforum으로 이동
+            window.location.href = "agentforum/agentforum.html";
+        }
