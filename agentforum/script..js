@@ -69,8 +69,9 @@ function updateInferenceValue() {
     }
 }
 
-setInterval(updateInferenceValue, 1200); // 조금 더 부드럽게
+setInterval(updateInferenceValue, 1200);
 
+// 시계 업데이트
 function updateClock() {
     const now = new Date();
     const hours = String(now.getHours()).padStart(2, "0");
@@ -80,15 +81,13 @@ function updateClock() {
 
     document.getElementById("clock").textContent = timeString;
 }
-
-// 시계를 1초마다 갱신
 setInterval(updateClock, 1000);
 
-// 로컬 스토리지에서 할 일 리스트를 불러오는 함수 todo list 
+// todo list 관련 함수들
 function loadTodos() {
     const todos = JSON.parse(localStorage.getItem('todos')) || [];
     const list = document.getElementById("todo-list");
-    list.innerHTML = ''; // 기존 리스트를 지우고 새로 추가
+    list.innerHTML = '';
 
     todos.forEach(todo => {
         const li = document.createElement("li");
@@ -101,7 +100,6 @@ function loadTodos() {
     });
 }
 
-// 할 일을 추가하는 함수 (이제 엔터키로만 추가됨)
 function addTodo(event) {
     const input = document.getElementById("todo-input");
     const text = input.value.trim();
@@ -109,43 +107,27 @@ function addTodo(event) {
 
     const todos = JSON.parse(localStorage.getItem('todos')) || [];
     const newTodo = {
-        id: Date.now(), // 고유한 id로 사용할 타임스탬프
+        id: Date.now(),
         text: text
     };
 
     todos.push(newTodo);
-    localStorage.setItem('todos', JSON.stringify(todos)); // 로컬 스토리지에 저장
-
-    loadTodos(); // 새로고침된 리스트 로드
-    input.value = ""; // 입력창 초기화
+    localStorage.setItem('todos', JSON.stringify(todos));
+    loadTodos();
+    input.value = "";
 }
 
-// 할 일을 삭제하는 함수
 function deleteTodo(id) {
     let todos = JSON.parse(localStorage.getItem('todos')) || [];
     todos = todos.filter(todo => todo.id !== id);
-    localStorage.setItem('todos', JSON.stringify(todos)); // 로컬 스토리지에 저장
-
-    loadTodos(); // 리스트 새로 고침
+    localStorage.setItem('todos', JSON.stringify(todos));
+    loadTodos();
 }
 
-// 엔터키로 할 일을 추가하는 기능 추가
 document.getElementById("todo-input").addEventListener("keydown", function(event) {
     if (event.key === "Enter") {
-        addTodo(event); // 엔터키를 눌렀을 때만 addTodo 호출
+        addTodo(event);
     }
-});
-
-// 페이지가 로드될 때 실행되는 함수
-window.onload = function () {
-    showTab("ai");
-    showNoticePopup();
-    loadTodos(); // 페이지 로드 시 To-do 리스트를 불러옵니다.
-};
-
-document.addEventListener("DOMContentLoaded", function () {
-    showTab("ai");
-    loadTodos();
 });
 
 // 드래그 기능
@@ -175,7 +157,7 @@ document.addEventListener("mouseup", function () {
     isDragging = false;
 });
 
-// api키 받는 2안 
+// OpenAI API 호출
 async function callOpenAI() {
     const userInput = document.getElementById("userInput").value;
 
@@ -183,22 +165,23 @@ async function callOpenAI() {
         alert("질문을 입력해주세요.");
         return;
     }
-const apiKey = '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';  // 여기서 YOUR_API_KEY는 발급받은 API 키로 교체하세요.
+
+    const apiKey = 'sk-proj-...'; // 보안을 위해 실제 키는 노출 X
+
     try {
         const response = await fetch("https://api.openai.com/v1/chat/completions", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-            "Authorization": `Bearer ${apiKey}` // ← 이 줄 추가해야 API가 작동함
+                "Authorization": `Bearer ${apiKey}`
             },
             body: JSON.stringify({
-                model: "gpt-3.5-turbo",  
+                model: "gpt-3.5-turbo",
                 messages: [{ role: "user", content: userInput }]
             })
         });
-// 모델 만약 GPT-4를 사용하고 싶다면 model: "gpt-4"로 변경하면 되고, GPT-3.5를 사용하려면 model: "gpt-3.5-turbo"를 사용해야 해요.
+
         if (!response.ok) {
-            // 응답이 실패한 경우 처리
             const errorData = await response.json();
             console.error("API 호출 실패:", errorData);
             document.getElementById("responseOutput").textContent = `⚠️ 오류: ${errorData.error.message || '응답 실패'}`;
@@ -207,11 +190,8 @@ const apiKey = 'sk-proj-qLwQ6LJ7--GaSvDyTZgvNwZmza-86WaQSz6Qm-nySsAH2xIGR-PruwfF
 
         const data = await response.json();
         const result = data.choices?.[0]?.message?.content || "❌ 응답이 없습니다.";
-
-        // 마크다운 파싱 및 HTML 렌더링
         document.getElementById("responseOutput").innerHTML = marked.parse(result);
 
-        // 코드블록 하이라이트 적용
         document.querySelectorAll('#responseOutput pre code').forEach((block) => {
             hljs.highlightElement(block);
         });
@@ -221,7 +201,6 @@ const apiKey = 'sk-proj-qLwQ6LJ7--GaSvDyTZgvNwZmza-86WaQSz6Qm-nySsAH2xIGR-PruwfF
     }
 }
 
-// 엔터키로 질문 전송 (Shift + Enter는 줄바꿈)
 document.getElementById("userInput").addEventListener("keydown", function (event) {
     if (event.key === "Enter" && !event.shiftKey) {
         event.preventDefault();
@@ -229,20 +208,25 @@ document.getElementById("userInput").addEventListener("keydown", function (event
     }
 });
 
+// ✅ 모든 초기화는 여기서
+document.addEventListener("DOMContentLoaded", function () {
+    try {
+        const isLoggedIn = localStorage.getItem('loggedIn');
+        console.log("loggedIn =", isLoggedIn);
 
-// 보안
-  window.onload = function () {
-        try {
-            // localStorage 정상 접근 확인용 로그
-            console.log("loggedIn =", localStorage.getItem('loggedIn'));
-
-            if (localStorage.getItem('loggedIn') !== 'true') {
-                alert("로그인이 필요합니다.");
-                // 정확한 상대 경로 지정 (중요)
-                window.location.href = "../index.html";
-            }
-        } catch (e) {
-            alert("로컬 스토리지 접근 오류 발생");
-            console.error(e);
+        if (isLoggedIn !== 'true') {
+            alert("로그인이 필요합니다.");
+            window.location.href = "../index.html";
+            return;
         }
-    };
+
+        showTab("ai");
+        showNoticePopup();
+        loadTodos();
+        updateClock();
+        updateInferenceValue();
+    } catch (e) {
+        alert("로컬 스토리지 접근 오류 발생");
+        console.error(e);
+    }
+});
