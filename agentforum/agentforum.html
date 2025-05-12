@@ -143,16 +143,13 @@
                 </button>
             </div>
         </header>
-
-        <!-- 검색 -->
-        <div class="flex justify-center py-6 animate-fade-in">
-            <input
-                id="search-input"
-                type="text"
-                placeholder="search..."
-                class="px-4 py-2 border rounded-lg dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-yellow-400"
-                oninput="filterContent()"
-            />
+        <div class="flex justify-end my-0">
+            <button
+                onclick="document.getElementById('global-todo').style.display = 'block'"
+                class="bg-yellow-400 px-3 py-1 rounded shadow z-50 opacity-30 transition-opacity duration-300 hover:opacity-100 hidden md:block"
+            >
+                📋 숨겨진 To-do 보기
+            </button>
         </div>
 
         <!-- 탭 메뉴 -->
@@ -194,13 +191,6 @@
 
         <!-- 여기에 고정 To-do 리스트 넣기 -->
 
-        <button
-            onclick="document.getElementById('global-todo').style.display = 'block'"
-            class="fixed bottom-14 right-30 bg-yellow-400 px-3 py-1 rounded shadow z-50 opacity-30 transition-opacity duration-300 hover:opacity-100 hidden md:block"
-            style="right: 130px"
-        >
-            📋 숨겨진 To-do 보기
-        </button>
         <div
             id="global-todo"
             class="fixed left-1/2 top-[calc(50%+70px)] transform -translate-x-1/2 -translate-y-1/2 w-96 bg-white dark:bg-gray-900 border border-yellow-400 rounded-lg shadow-lg p-4 z-40 animate-fade-in hidden md:block"
