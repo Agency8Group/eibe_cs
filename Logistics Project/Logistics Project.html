@@ -5,7 +5,12 @@
         <title>프로젝트 대시보드</title>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/tailwindcss@3.0.0"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+            rel="stylesheet"
+        />
         <style>
+            <style>
             /* 전체 화면 슬라이드 애니메이션 */
             @keyframes slideIn {
                 0% {
@@ -29,6 +34,7 @@
                 padding: 0;
                 overflow-x: hidden;
                 animation: slideIn 1s ease-out; /* 애니메이션 적용 */
+                font-family: "Poppins", sans-serif;
             }
 
             .header {
@@ -202,7 +208,7 @@
             }
         </style>
     </head>
-    <body class="dark:bg-gray-800 dark:text-white">
+    <body class="dark:bg-gray-800 dark:text-white w-full h-screen">
         <div class="header bg-gray-900 p-6 mb-8 rounded-lg">
             <h1 class="text-3xl font-semibold text-white">
                 📦 물류센터 시스템 구축
