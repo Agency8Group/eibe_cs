@@ -243,7 +243,6 @@
                                         class="ml-2 text-gray-400 detail-click"
                                         >(상세내용)👆</span
                                     >
-                                    <!-- 클릭 유도 이모지 -->
                                 </td>
                                 <td class="py-3 px-4">
                                     외부 api 키 연동 / 주문서 수집 및 업로드
@@ -262,25 +261,40 @@
                                         <p>
                                             '1차 파일럿테스트'는 전산상 변수
                                             파악을 위해 '배송~회수' 전 과정을
-                                            테스트 할 예정입니다. <br />
-                                            가주문으로 세일즈팀 및 물류센터의
-                                            협조가 필요한 작업이라, 5월 12일
-                                            (월) 오후에 진행할 예정입니다<br />
-                                            과정 중 상세내용 톡방에 공유예정
+                                            테스트 할 예정입니다.
                                         </p>
                                     </div>
                                 </td>
                             </tr>
 
-                            <tr class="hover:bg-gray-700">
-                                <td class="py-3 px-4">1차 파일럿테스트</td>
+                            <tr
+                                class="hover:bg-gray-700"
+                                onclick="toggleAccordion(2)"
+                            >
+                                <td class="py-3 px-4 flex items-center">
+                                    1차 파일럿테스트
+                                    <span
+                                        class="ml-2 text-gray-400 detail-click"
+                                        >(상세내용)👆</span
+                                    >
+                                </td>
                                 <td class="py-3 px-4">
                                     [dreame] 주문서 수집 및 출고 테스트 진행
                                     (합포장, 변수조합 등)
                                 </td>
                                 <td class="py-3 px-4">05/12 ~ 05/16 (3주차)</td>
                                 <td class="py-3 px-4">
-                                    <span class="status 진행">진행</span>
+                                    <span class="status 진행">진행중</span>
+                                </td>
+                            </tr>
+
+                            <tr id="accordion-2" class="accordion-detail">
+                                <td colspan="4" class="py-3 px-4 bg-gray-800">
+                                    <div>
+                                        <p>
+                                            ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
+                                        </p>
+                                    </div>
                                 </td>
                             </tr>
 
@@ -294,6 +308,7 @@
                                     <span class="status 예정">예정</span>
                                 </td>
                             </tr>
+
                             <tr class="hover:bg-gray-700">
                                 <td class="py-3 px-4">2차 파일럿테스트</td>
                                 <td class="py-3 px-4">
@@ -404,6 +419,18 @@
                             accordionDetail.style.display = "table-row"; // 아코디언 내용 펼치기
                         } else {
                             accordionDetail.style.display = "none"; // 아코디언 내용 접기
+                        }
+                    }
+                    function toggleAccordion(id) {
+                        var accordion = document.getElementById(
+                            "accordion-" + id
+                        );
+
+                        // 아코디언이 열려있는지 확인
+                        if (accordion.style.display === "table-row") {
+                            accordion.style.display = "none"; // 아코디언 닫기
+                        } else {
+                            accordion.style.display = "table-row"; // 아코디언 열기
                         }
                     }
                 </script>
