@@ -84,6 +84,11 @@ function updateClock() {
 setInterval(updateClock, 1000);
 
 // todo list 관련 함수들
+function hideTodo() {
+    document.getElementById('global-todo').style.display = 'none';
+}
+
+
 function loadTodos() {
     const todos = JSON.parse(localStorage.getItem('todos')) || [];
     const list = document.getElementById("todo-list");

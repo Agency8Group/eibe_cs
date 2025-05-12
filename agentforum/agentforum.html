@@ -194,10 +194,12 @@
 
         <!-- 여기에 고정 To-do 리스트 넣기 -->
 
-        <!-- <button onclick="document.getElementById('global-todo').style.display = 'block'"
-        class="fixed bottom-4 right-4 bg-yellow-400 px-4 py-2 rounded shadow z-50">
-    📋 숨겨진 To-do 보기
-</button> -->
+        <button
+            onclick="document.getElementById('global-todo').style.display = 'block'"
+            class="fixed bottom-14 right-4 bg-yellow-400 px-4 py-2 rounded shadow z-50 opacity-30 transition-opacity duration-300 hover:opacity-100 hidden md:block"
+        >
+            📋 숨겨진 To-do 보기
+        </button>
         <div
             id="global-todo"
             class="fixed left-1/2 top-[calc(50%+70px)] transform -translate-x-1/2 -translate-y-1/2 w-96 bg-white dark:bg-gray-900 border border-yellow-400 rounded-lg shadow-lg p-4 z-40 animate-fade-in hidden md:block"
