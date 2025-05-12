@@ -189,7 +189,8 @@ async function callOpenAI() {
         return;
     }
 
-    const apiKey = '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'; // 실제 API 키는 보안을 위해 숨김 처리
+    const apiKey = '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
+'; 
 
     try {
         // OpenAI API에 POST 요청 보내기
