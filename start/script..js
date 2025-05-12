@@ -12,8 +12,8 @@ document
     footer.classList.add("footer-fade-out");
 
     setTimeout(function () {
-        const validUsername = "admin";
-        const validPassword = "1234";
+        const validUsername = "eibe05";
+        const validPassword = "202505";
 
         if (
             username === validUsername &&
