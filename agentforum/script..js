@@ -189,7 +189,7 @@ async function callOpenAI() {
         return;
     }
 
-    const apiKey = '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'
+    const apiKey = ''
 
     try {
         // OpenAI API에 POST 요청 보내기
@@ -197,7 +197,7 @@ async function callOpenAI() {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${apiKey}` // API 키를 인증 헤더에 포함
+                "Authorization": `Bearer ` // API 키를 인증 헤더에 포함
             },
             body: JSON.stringify({
                 model: "gpt-3.5-turbo",
