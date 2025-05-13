@@ -59,9 +59,10 @@ function showNoticePopup() {
 function closeNoticePopup() {
     document.getElementById("notice-popup").classList.add("hidden");
 }
+// 30배정도 유추가능 
 
 // 추론 값 동적 변화 (랜덤 변화)
-let baseValue = 5700;
+let baseValue = 4710;
 
 function updateInferenceValue() {
     const fluctuation = Math.floor(Math.random() * 100) - 50; // -50 ~ +50 사이의 변동
