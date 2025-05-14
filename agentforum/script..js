@@ -287,3 +287,8 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error(e);
     }
 });
+
+// 첫화면 이동 
+   function goToForum() {
+        window.location.href = 'agentforum.html';
+    }
