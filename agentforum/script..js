@@ -143,7 +143,7 @@ function closeNoticePopup() {
 // 250	5.75 × 250 × log(250) ≈ 5.75 × 250 × 5.52 ≈ 7,900
 
 // 추론 값 동적 변화 (랜덤 변화)
-let baseValue = 4710;
+let baseValue = 10410;
 
 function updateInferenceValue() {
     const fluctuation = Math.floor(Math.random() * 100) - 50; // -50 ~ +50 사이의 변동
