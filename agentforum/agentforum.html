@@ -160,6 +160,14 @@
                 📋 숨겨진 To-do 보기
             </button>
         </div>
+        <!-- 검색 입력창 -->
+        <input
+            type="text"
+            id="search-input"
+            placeholder="검색어를 입력하세요.."
+            oninput="filterContent()"
+            class="w-[250px] mx-auto block px-4 py-2 my-6 rounded bg-[#1e1e1e] text-white border border-[#555] focus:border-[#FFD700] focus:outline-none"
+        />
 
         <!-- 탭 메뉴 -->
         <div
@@ -201,7 +209,7 @@
         <!-- 여기에 고정 To-do 리스트 넣기 -->
         <div
             id="global-todo"
-            class="fixed top-[calc(24%+67px)] transform -translate-x-1/2 -translate-y-1/2 w-96 bg-white dark:bg-gray-900 border border-yellow-400 rounded-lg shadow-lg p-4 z-40 animate-fade-in hidden md:block"
+            class="fixed top-[calc(34%+66px)] transform -translate-x-1/2 -translate-y-1/2 w-96 bg-white dark:bg-gray-900 border border-yellow-400 rounded-lg shadow-lg p-4 z-40 animate-fade-in hidden md:block"
             style="left: calc(50% + 135px)"
         >
             <h3
