@@ -146,7 +146,7 @@ function closeNoticePopup() {
 
 // pdf 파일하나당 평균 25개 추출
 
-let baseValue = 14070;
+let baseValue = 14170;
 
 function updateInferenceValue() {
     const fluctuation = Math.floor(Math.random() * 100) - 50; // -50 ~ +50 사이의 변동
