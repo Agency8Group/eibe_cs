@@ -62,16 +62,15 @@ function closeNoticePopup() {
 
 
 
-let baseValue = 14170;
+let baseValue = 14070;
 
 function updateInferenceValue() {
-    const fluctuation = Math.floor(Math.random() * 100) - 50; // -50 ~ +50 사이의 변동
+    const fluctuation = Math.floor(Math.random() * 100) - 50;
     const newValue = baseValue + fluctuation;
 
     const target = document.getElementById("inferenceValue");
     if (target) {
-        // 값 표시 및 애니메이션 효과
-        target.textContent = newValue.toLocaleString(); // 쉼표 추가해서 보기 좋게
+        target.textContent = newValue.toLocaleString();
         target.style.transform = "scale(1.1)";
         target.style.transition = "transform 0.2s ease";
 
@@ -80,6 +79,7 @@ function updateInferenceValue() {
         }, 200);
     }
 }
+
 
 // 1.2초마다 추론 값 업데이트
 setInterval(updateInferenceValue, 1200);
