@@ -6,6 +6,7 @@
         <link rel="apple-touch-icon" href="../image/dreamelogo.png" />
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
         <title>드리미 상담원 포털</title>
 
         <!-- TailwindCSS -->
@@ -259,7 +260,23 @@
                 id="tab-ai"
                 class="glass p-6 hidden animate-fade-in space-y-6"
             >
-                <h2 class="text-xl font-bold text-yellow-400">🤖 AI 비서</h2>
+                <h2
+                    class="text-xl font-bold text-yellow-400 flex items-center gap-2"
+                >
+                    🤖 AI 비서
+                    <span class="relative flex items-center gap-1">
+                        <span class="relative flex size-3">
+                            <span
+                                class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"
+                            ></span>
+                            <span
+                                class="relative inline-flex size-3 rounded-full bg-green-500"
+                            ></span>
+                        </span>
+                        <span class="text-xs text-green-600">online</span>
+                    </span>
+                </h2>
+
                 <p class="text-xs">
                     AI 비서는 더 나은 서비스를 위해 지속적으로 업데이트되고
                     있습니다. <br />
