@@ -104,51 +104,43 @@
 
         <!-- 헤더 -->
         <header
-            class="p-4 border-b border-gray-300 dark:border-gray-700 flex justify-between items-center animate-fade-in"
+            class="p-4 border-b border-gray-300 dark:border-gray-700 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 md:gap-0 animate-fade-in"
         >
+            <!-- 왼쪽: 로고 & 상태 -->
             <h1
-                class="text-2xl font-bold text-yellow-500 dark:text-yellow-400 flex items-center space-x-4"
+                class="text-yellow-500 dark:text-yellow-400 flex flex-wrap items-center gap-2 text-base md:text-2xl font-bold"
             >
                 <span
                     onclick="goToForum()"
-                    class="cursor-pointer inline-block transition-all duration-300 ease-in-out transform hover:scale-105 text-base sm:text-sm md:text-base whitespace-nowrap"
+                    class="cursor-pointer transition-all duration-300 ease-in-out hover:scale-105 text-base whitespace-nowrap"
                 >
                     드리미 상담원 포털
                 </span>
                 <span
                     id="clock"
-                    class="text-xl font-semibold text-black dark:text-white"
+                    class="text-black dark:text-white text-sm md:text-xl font-semibold"
                 ></span>
-
-                <span
-                    id="clock"
-                    class="ml-4 text-xl font-semibold text-black dark:text-white"
-                ></span>
-
-                <span
-                    class="ml-2 text-xs bg-black text-white py-0 px-1 rounded-full"
+                <span class="text-xs bg-black text-white py-0 px-1 rounded-full"
+                    >DEV VERSION 0.9.0</span
                 >
-                    DEV VERSION 0.9.0
-                </span>
-
                 <span
-                    class="ml-2 text-xs bg-green-600 text-white py-0 px-1 rounded-full"
+                    class="text-xs bg-green-600 text-white py-0 px-1 rounded-full"
+                    >BETA</span
                 >
-                    BETA
-                </span>
             </h1>
 
-            <div class="flex items-center space-x-4">
-                <span class="text-sm">
-                    <a
-                        href="../secretgame/secretgame.html"
-                        target="_blank"
-                        class="inline-block text-base sm:text-sm md:text-base whitespace-nowrap transition-all duration-300 ease-in-out hover:underline"
-                        style="text-decoration: none; color: inherit"
-                    >
-                        안녕하세요 , 상담원님 👋
-                    </a>
-                </span>
+            <!-- 오른쪽: 사용자 인사 & 테마 전환 -->
+            <div
+                class="flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-4 text-sm"
+            >
+                <a
+                    href="../secretgame/secretgame.html"
+                    target="_blank"
+                    class="inline-block text-sm hover:underline text-black dark:text-white"
+                    style="text-decoration: none"
+                >
+                    안녕하세요, 상담원님 👋
+                </a>
                 <button
                     onclick="toggleTheme()"
                     class="flicker-always text-sm bg-gray-200 dark:bg-gray-800 px-3 py-1 rounded hover:bg-gray-300 dark:hover:bg-gray-700 transition-all"
@@ -157,6 +149,7 @@
                 </button>
             </div>
         </header>
+
         <div class="flex justify-end my-0">
             <button
                 onclick="document.getElementById('global-todo').style.display = 'block'"
