@@ -62,7 +62,7 @@ function closeNoticePopup() {
 
 
 
-let baseValue = 14070;
+let baseValue = 16808;
 function updateInferenceValue() {
     const fluctuation = Math.floor(Math.random() * 100) - 50; // -50 ~ +50 사이의 변동
     const newValue = baseValue + fluctuation;
