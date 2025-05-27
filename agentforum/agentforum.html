@@ -167,7 +167,7 @@
             id="search-input"
             placeholder="검색어를 입력하세요.."
             oninput="filterContent()"
-            class="w-[250px] mx-auto block px-4 py-2 my-6 rounded bg-[#1e1e1e] text-white border border-[#555] focus:border-[#FFD700] focus:outline-none"
+            class="w-[250px] mx-auto block px-4 py-2 my-6 rounded bg-white text-black border border-[#bbb] focus:border-[#FFD700] focus:outline-none dark:bg-[#1e1e1e] dark:text-white dark:border-[#555] dark:focus:border-[#FFD700]"
         />
 
         <!-- 탭 메뉴 -->
@@ -303,55 +303,62 @@
                     <div class="flex flex-wrap items-stretch gap-4">
                         <!-- 데이터 수 -->
                         <div
-                            class="min-w-[8rem] h-14 bg-gray-900 text-white rounded-lg flex flex-col justify-center items-center px-4 py-2 border border-yellow-400 shadow"
+                            class="min-w-[8rem] h-14 bg-white text-black rounded-lg flex flex-col justify-center items-center px-4 py-2 border border-yellow-400 shadow dark:bg-gray-900 dark:text-white"
                         >
                             <div
-                                class="text-yellow-400 text-xl sm:text-2xl font-bold animate-pulse leading-none"
+                                class="text-yellow-500 text-xl sm:text-2xl font-bold animate-pulse leading-none"
                             >
                                 248
                             </div>
-                            <p class="text-xs text-white opacity-80 mt-1">
+                            <p
+                                class="text-xs text-black opacity-80 mt-1 dark:text-white"
+                            >
                                 러닝 데이터
                             </p>
                         </div>
+                        <!-- 내부 자료 -->
                         <div
-                            class="min-w-[8rem] h-14 bg-gray-900 text-white rounded-lg flex flex-col justify-center items-center px-4 py-2 border border-yellow-400 shadow"
+                            class="min-w-[8rem] h-14 bg-white text-black rounded-lg flex flex-col justify-center items-center px-4 py-2 border border-yellow-400 shadow dark:bg-gray-900 dark:text-white"
                         >
                             <div
-                                class="text-yellow-400 text-xl sm:text-2xl font-bold animate-pulse leading-none"
+                                class="text-yellow-500 text-xl sm:text-2xl font-bold animate-pulse leading-none"
                             >
                                 312
                             </div>
-                            <p class="text-xs text-white opacity-80 mt-1">
+                            <p
+                                class="text-xs text-black opacity-80 mt-1 dark:text-white"
+                            >
                                 내부 자료
                             </p>
                         </div>
-
                         <!-- 동적 추정값 -->
                         <div
-                            class="min-w-[8rem] h-14 bg-gray-900 text-white rounded-lg flex flex-col justify-center items-center px-4 py-2 border border-yellow-400 shadow"
+                            class="min-w-[8rem] h-14 bg-white text-black rounded-lg flex flex-col justify-center items-center px-4 py-2 border border-yellow-400 shadow dark:bg-gray-900 dark:text-white"
                         >
                             <div
                                 id="inferenceValue"
-                                class="text-green-400 text-xl sm:text-2xl font-bold animate-pulse leading-none"
+                                class="text-green-500 text-xl sm:text-2xl font-bold animate-pulse leading-none"
                             >
                                 0000
                             </div>
-                            <p class="text-xs text-white opacity-80 mt-1">
+                            <p
+                                class="text-xs text-black opacity-80 mt-1 dark:text-white"
+                            >
                                 동적 추정값
                             </p>
                         </div>
-
-                        <!-- 검증 필요 -->
+                        <!-- 검증필요 -->
                         <div
-                            class="min-w-[8rem] h-14 bg-gray-900 text-white rounded-lg flex flex-col justify-center items-center px-4 py-2 border border-yellow-400 shadow"
+                            class="min-w-[8rem] h-14 bg-white text-black rounded-lg flex flex-col justify-center items-center px-4 py-2 border border-yellow-400 shadow dark:bg-gray-900 dark:text-white"
                         >
                             <div
-                                class="text-red-400 text-xl sm:text-2xl font-bold animate-pulse leading-none"
+                                class="text-red-500 text-xl sm:text-2xl font-bold animate-pulse leading-none"
                             >
                                 0
                             </div>
-                            <p class="text-xs text-white opacity-80 mt-1">
+                            <p
+                                class="text-xs text-black opacity-80 mt-1 dark:text-white"
+                            >
                                 검증필요
                             </p>
                         </div>
