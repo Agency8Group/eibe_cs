@@ -206,7 +206,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-// 첫화면 이동 
+// 첫화면 이동 20250604
    function goToForum() {
         window.location.href = 'agentforum.html';
     }
