@@ -12,8 +12,8 @@ document
     footer.classList.add("footer-fade-out");
 
     setTimeout(function () {
-        const validUsername = "eibe05";
-        const validPassword = "202505";
+        const validUsername = "eibe22";
+        const validPassword = "222222";
 
         if (username === validUsername && password === validPassword) {
             // ✅ 여기서 로그인 성공 처리
