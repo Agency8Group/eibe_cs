@@ -63,7 +63,7 @@ function updateHeaderTitle(tabName) {
         // 부드러운 페이드 효과
         headerTitle.style.opacity = '0.5';
         setTimeout(() => {
-            headerTitle.innerHTML = `<span class="bg-gradient-to-r from-dreame-yellow via-yellow-400 to-dreame-yellow bg-clip-text text-transparent">드리미 상담원 포털</span>`;
+            headerTitle.innerHTML = `<span class="bg-gradient-to-r from-dreame-yellow via-yellow-400 to-dreame-yellow bg-clip-text text-transparent">드리미 상담포털</span>`;
             headerTitle.style.opacity = '1';
         }, 150);
     }
