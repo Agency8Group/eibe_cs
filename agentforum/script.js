@@ -1,14 +1,72 @@
 // 탭 전환 함수
-function showTab(tab) {
-    // 모든 섹션을 숨김 처리
-    document
-        .querySelectorAll("section")
-        .forEach((el) => el.classList.add("hidden"));
+function showTab(tabName) {
+    // 모든 탭 콘텐츠 숨기기
+    const tabContents = document.querySelectorAll('[id^="tab-"]');
+    tabContents.forEach(content => {
+        content.classList.add('hidden');
+    });
+    
+    // 모든 탭 버튼 비활성화
+    const tabButtons = document.querySelectorAll('[role="tab"]');
+    tabButtons.forEach(button => {
+        button.setAttribute('aria-selected', 'false');
+        button.classList.remove('text-dreame-yellow', 'bg-black/30', 'border-b-2', 'border-indigo-500');
+        button.classList.add('text-gray-300');
+    });
+    
+    // 선택된 탭 콘텐츠 표시
+    const selectedContent = document.getElementById(`tab-${tabName}`);
+    if (selectedContent) {
+        selectedContent.classList.remove('hidden');
+        selectedContent.classList.add('animate-fade-in');
+    }
+    
+    // 선택된 탭 버튼 활성화
+    const selectedButton = document.querySelector(`[onclick="showTab('${tabName}')"]`);
+    if (selectedButton) {
+        selectedButton.setAttribute('aria-selected', 'true');
+        selectedButton.classList.remove('text-gray-300');
+        selectedButton.classList.add('text-dreame-yellow', 'bg-black/30', 'border-b-2', 'border-indigo-500');
+    }
+    
+    // URL 해시 업데이트 (선택사항)
+    if (history.pushState) {
+        history.pushState(null, null, `#${tabName}`);
+    }
+    
+    // 모바일에서 탭 전환 시 스크롤 최적화
+    if (isMobile) {
+        setTimeout(() => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }, 100);
+    }
+    
+    // 헤더 타이틀 업데이트 (선택사항)
+    updateHeaderTitle(tabName);
+}
 
-    // 해당 탭만 보이도록 처리
-    document
-        .getElementById("tab-" + tab)
-        .classList.remove("hidden");
+// 헤더 타이틀 업데이트
+function updateHeaderTitle(tabName) {
+    const titleMap = {
+        'ai': '🤖 AI 비서',
+        'promo': '📱 Dreame Manual',
+        'notice': '📢 이벤트/참고자료',
+        'edu': '📚 교육자료',
+        'vacation': '🚧 Preparing...'
+    };
+    
+    const headerTitle = document.querySelector('header h1');
+    if (headerTitle && titleMap[tabName]) {
+        // 부드러운 페이드 효과
+        headerTitle.style.opacity = '0.5';
+        setTimeout(() => {
+            headerTitle.innerHTML = `<span class="bg-gradient-to-r from-dreame-yellow via-yellow-400 to-dreame-yellow bg-clip-text text-transparent">드리미 상담원 포털</span>`;
+            headerTitle.style.opacity = '1';
+        }, 150);
+    }
 }
 
 // 입력된 텍스트 정규화 함수 (소문자화, 공백 제거, 특수 문자 제거)
@@ -43,170 +101,364 @@ function filterContent() {
     });
 }
 
-// 다크모드와 라이트모드 전환
-function toggleTheme() {
-    document.documentElement.classList.toggle("dark");
-}
-
 // 알림 팝업 표시
 function showNoticePopup() {
-    document
-        .getElementById("notice-popup")
-        .classList.remove("hidden");
+    const popup = document.getElementById("notice-popup");
+    if (popup) {
+        popup.classList.remove("hidden");
+        popup.focus(); // 포커스 이동
+    }
 }
 
 // 알림 팝업 닫기
 function closeNoticePopup() {
-    document.getElementById("notice-popup").classList.add("hidden");
-}
-
-
-
-let baseValue = 16808;
-function updateInferenceValue() {
-    const fluctuation = Math.floor(Math.random() * 100) - 50; // -50 ~ +50 사이의 변동
-    const newValue = baseValue + fluctuation;
-
-    const target = document.getElementById("inferenceValue");
-    if (target) {
-        // 값 표시 및 애니메이션 효과
-        target.textContent = newValue.toLocaleString(); // 쉼표 추가해서 보기 좋게
-        target.style.transform = "scale(1.1)";
-        target.style.transition = "transform 0.2s ease";
-
-        setTimeout(() => {
-            target.style.transform = "scale(1)";
-        }, 200);
+    const popup = document.getElementById("notice-popup");
+    if (popup) {
+        popup.classList.add("hidden");
     }
 }
 
-// 1.2초마다 추론 값 업데이트
-setInterval(updateInferenceValue, 1200);
-
-// 시계 업데이트 (현재 시간 표시)
-function updateClock() {
-    const now = new Date();
-    const hours = String(now.getHours()).padStart(2, "0");
-    const minutes = String(now.getMinutes()).padStart(2, "0");
-    const seconds = String(now.getSeconds()).padStart(2, "0");
-    const timeString = `${hours}:${minutes}:${seconds}`;
-
-    document.getElementById("clock").textContent = timeString; // 시계 업데이트
+// 메인으로 이동 함수
+function goToForum() {
+    // 현재 페이지가 이미 메인인 경우 아무것도 하지 않음
+    if (window.location.pathname.includes('agentforum.html')) {
+        return;
+    }
+    // 다른 페이지에서 메인으로 이동하는 경우
+    window.location.href = './agentforum.html';
 }
 
-// 1초마다 시계 업데이트
-setInterval(updateClock, 1000);
-
-// 할 일 목록 관련 함수들
-function hideTodo() {
-    document.getElementById('global-todo').style.display = 'none'; // 할 일 목록 숨기기
+// 키보드 단축키 처리
+function handleKeyboardShortcuts(event) {
+    // Ctrl/Cmd + K: 검색창 포커스
+    if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
+        event.preventDefault();
+        const searchInput = document.getElementById('search-input');
+        if (searchInput) {
+            searchInput.focus();
+        }
+    }
+    
+    // Escape: 팝업 닫기
+    if (event.key === 'Escape') {
+        const popup = document.getElementById('notice-popup');
+        if (popup && !popup.classList.contains('hidden')) {
+            closeNoticePopup();
+        }
+    }
 }
 
-// 로컬스토리지에서 할 일 목록 불러오기
-function loadTodos() {
-    const todos = JSON.parse(localStorage.getItem('todos')) || []; // 로컬스토리지에서 할 일 목록 불러오기
-    const list = document.getElementById("todo-list");
-    list.innerHTML = ''; // 목록 초기화
+// 모바일 환경 감지
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-    todos.forEach(todo => {
-        // 각 할 일 항목을 HTML로 추가
-        const li = document.createElement("li");
-        li.className = "flex justify-between items-center bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded shadow";
-        li.innerHTML = `
-            <span class="flex-1 break-all">${todo.text}</span>
-            <button onclick="deleteTodo(${todo.id})" class="ml-4 text-red-500 hover:text-red-700 font-bold">삭제</button>
-        `;
-        list.appendChild(li);
+// 모바일 최적화 설정
+if (isMobile) {
+    // 모바일에서 뷰포트 설정
+    const viewport = document.querySelector('meta[name="viewport"]');
+    if (viewport) {
+        viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
+    }
+    
+    // 모바일에서 터치 이벤트 최적화
+    document.addEventListener('touchstart', function() {}, {passive: true});
+    document.addEventListener('touchmove', function() {}, {passive: true});
+}
+
+// PPT 뷰어 전환 함수
+function switchPPTViewer(viewerType) {
+    const pptViewer = document.getElementById('ppt-viewer');
+    const baseUrl = '../education/상담교육자료.pdf';
+    
+    // 모든 버튼 스타일 초기화
+    document.querySelectorAll('[id$="-viewer-btn"]').forEach(btn => {
+        btn.className = 'px-3 py-1 bg-gray-600 text-white rounded text-sm hover:bg-gray-500 transition-colors';
+    });
+    
+    // 선택된 버튼 스타일 변경
+    const selectedBtn = document.getElementById(`${viewerType}-viewer-btn`);
+    if (selectedBtn) {
+        selectedBtn.className = 'px-3 py-1 bg-dreame-yellow text-black rounded text-sm hover:bg-yellow-500 transition-colors';
+    }
+    
+    // 뷰어 타입에 따라 URL 설정
+    let viewerUrl = baseUrl;
+    
+    switch (viewerType) {
+        case 'google':
+            // Google Docs Viewer 사용
+            viewerUrl = `https://docs.google.com/viewer?url=${encodeURIComponent(window.location.origin + '/' + baseUrl)}&embedded=true`;
+            break;
+        case 'microsoft':
+            // Microsoft Office Online Viewer 사용
+            viewerUrl = `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(window.location.origin + '/' + baseUrl)}`;
+            break;
+        case 'native':
+        default:
+            // 기본 브라우저 뷰어 사용
+            viewerUrl = baseUrl;
+            break;
+    }
+    
+    // iframe 소스 변경
+    if (pptViewer) {
+        pptViewer.src = viewerUrl;
+        
+        // 로딩 상태 표시
+        pptViewer.style.opacity = '0.5';
+        pptViewer.addEventListener('load', function() {
+            pptViewer.style.opacity = '1';
+        }, { once: true });
+    }
+    
+    // 사용자 설정 저장 (선택사항)
+    if (typeof(Storage) !== "undefined") {
+        localStorage.setItem('preferredPPTViewer', viewerType);
+    }
+}
+
+// 저장된 PPT 뷰어 설정 복원
+function restorePPTViewerPreference() {
+    if (typeof(Storage) !== "undefined") {
+        const savedViewer = localStorage.getItem('preferredPPTViewer');
+        if (savedViewer) {
+            switchPPTViewer(savedViewer);
+        }
+    }
+}
+
+// 페이지 로드 시 초기화
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('드리미 상담원 포털 로드됨');
+    
+    // 초기 탭 설정
+    showTab('ai');
+    
+    // 검색 입력창 포커스
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) {
+        searchInput.focus();
+    }
+    
+    // 모바일에서 스크롤 최적화
+    if (isMobile) {
+        optimizeMobileScroll();
+    }
+    
+    // 키보드 단축키 설정
+    setupKeyboardShortcuts();
+    
+    // PDF 로딩 최적화
+    optimizePDFLoading();
+    
+    // 저장된 PPT 뷰어 설정 복원
+    restorePPTViewerPreference();
+    
+    // 헤더 애니메이션 시작
+    setTimeout(() => {
+        const header = document.querySelector('header');
+        if (header) {
+            header.style.opacity = '1';
+        }
+    }, 100);
+});
+
+// 페이지 언로드 시 정리
+window.addEventListener('beforeunload', function() {
+    // 필요한 정리 작업이 있다면 여기에 추가
+    console.log("페이지 언로드");
+});
+
+// 성능 모니터링 (개발용)
+if (typeof performance !== 'undefined') {
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+            console.log(`페이지 로드 시간: ${loadTime}ms`);
+        }, 0);
     });
 }
 
-// 새 할 일 추가
-function addTodo(event) {
-    const input = document.getElementById("todo-input");
-    const text = input.value.trim();
-    if (text === "") return; // 입력 값이 비었으면 추가하지 않음
-
-    const todos = JSON.parse(localStorage.getItem('todos')) || []; // 로컬스토리지에서 할 일 목록 가져오기
-    const newTodo = {
-        id: Date.now(), // 고유한 ID 생성
-        text: text
-    };
-
-    todos.push(newTodo); // 새로운 할 일 추가
-    localStorage.setItem('todos', JSON.stringify(todos)); // 로컬스토리지에 저장
-    loadTodos(); // 할 일 목록 갱신
-    input.value = ""; // 입력 필드 초기화
-}
-
-// 할 일 삭제
-function deleteTodo(id) {
-    let todos = JSON.parse(localStorage.getItem('todos')) || []; // 로컬스토리지에서 할 일 목록 가져오기
-    todos = todos.filter(todo => todo.id !== id); // 해당 ID의 할 일 삭제
-    localStorage.setItem('todos', JSON.stringify(todos)); // 로컬스토리지에 수정된 목록 저장
-    loadTodos(); // 할 일 목록 갱신
-}
-
-// 할 일 입력 필드에서 Enter 키 누르면 추가
-document.getElementById("todo-input").addEventListener("keydown", function(event) {
-    if (event.key === "Enter") {
-        addTodo(event); // Enter 키 누르면 할 일 추가
-    }
-});
-
-// 할 일 목록 드래그 기능
-const todoBox = document.getElementById("global-todo");
-let isDragging = false; // 드래그 상태 확인
-let offsetX = 0;
-let offsetY = 0;
-
-todoBox.style.position = 'fixed'; // 고정된 위치로 설정
-
-todoBox.addEventListener("mousedown", function (e) {
-    isDragging = true;
-    offsetX = e.clientX - todoBox.offsetLeft;
-    offsetY = e.clientY - todoBox.offsetTop;
-    todoBox.style.transition = "none"; // 드래그 시 애니메이션 비활성화
-});
-
-document.addEventListener("mousemove", function (e) {
-    if (isDragging) {
-        todoBox.style.left = `${e.clientX - offsetX}px`; // 마우스 위치에 따라 좌측 이동
-        todoBox.style.top = `${e.clientY - offsetY}px`; // 마우스 위치에 따라 상단 이동
-        todoBox.style.right = "auto";
-    }
-});
-
-document.addEventListener("mouseup", function () {
-    isDragging = false; // 마우스를 놓으면 드래그 종료
-});
-
-
-// 초기화 및 로딩
-document.addEventListener("DOMContentLoaded", function () {
-    try {
-        const isLoggedIn = localStorage.getItem('loggedIn');
-        console.log("loggedIn =", isLoggedIn);
-
-        // 로그인 체크
-        if (isLoggedIn !== 'true') {
-            alert("로그인이 필요합니다.");
-            window.location.href = "../index.html"; // 로그인 페이지로 리다이렉트
-            return;
+// 모바일 스크롤 최적화
+function optimizeMobileScroll() {
+    // iframe 내부 스크롤 최적화
+    const iframes = document.querySelectorAll('iframe');
+    iframes.forEach(iframe => {
+        iframe.addEventListener('load', function() {
+            try {
+                // iframe 내부에 스크롤 최적화 스타일 적용
+                const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                if (iframeDoc) {
+                    const style = iframeDoc.createElement('style');
+                    style.textContent = `
+                        body {
+                            -webkit-overflow-scrolling: touch;
+                            overscroll-behavior: contain;
+                        }
+                        * {
+                            -webkit-tap-highlight-color: transparent;
+                        }
+                    `;
+                    iframeDoc.head.appendChild(style);
+                }
+            } catch (e) {
+                // CORS 정책으로 인해 접근할 수 없는 경우 무시
+                console.log('iframe 최적화 스킵:', e.message);
+            }
+        });
+    });
+    
+    // details 요소 터치 최적화
+    const details = document.querySelectorAll('details');
+    details.forEach(detail => {
+        const summary = detail.querySelector('summary');
+        if (summary) {
+            // 터치 이벤트로 details 토글
+            summary.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                detail.toggleAttribute('open');
+                
+                // 모바일에서 부드러운 애니메이션
+                if (detail.hasAttribute('open')) {
+                    detail.style.transition = 'all 0.3s ease';
+                }
+            }, {passive: false});
         }
+    });
+}
 
-        // 초기 설정
-        showTab("ai");
-        showNoticePopup();
-        loadTodos();
-        updateClock();
-        updateInferenceValue();
-    } catch (e) {
-        alert("로컬 스토리지 접근 오류 발생");
-        console.error(e);
+// PDF 로딩 최적화
+function optimizePDFLoading() {
+    const pdfIframes = document.querySelectorAll('iframe[src*=".pdf"]');
+    
+    pdfIframes.forEach(iframe => {
+        // 로딩 상태 표시
+        const container = iframe.closest('.pdf-container');
+        if (container) {
+            container.style.position = 'relative';
+            
+            // 로딩 스피너 추가
+            const spinner = document.createElement('div');
+            spinner.className = 'pdf-loading-spinner';
+            spinner.innerHTML = `
+                <div class="spinner-border text-dreame-yellow" role="status">
+                    <span class="sr-only">로딩중...</span>
+                </div>
+                <p class="text-sm text-gray-400 mt-2">PDF 로딩중...</p>
+            `;
+            spinner.style.cssText = `
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 10;
+                text-align: center;
+            `;
+            container.appendChild(spinner);
+            
+            // iframe 로드 완료 시 스피너 제거
+            iframe.addEventListener('load', function() {
+                spinner.remove();
+                iframe.style.opacity = '1';
+            });
+            
+            // 초기 투명도 설정
+            iframe.style.opacity = '0';
+            iframe.style.transition = 'opacity 0.3s ease';
+        }
+    });
+}
+
+// 키보드 단축키 설정
+function setupKeyboardShortcuts() {
+    document.addEventListener('keydown', function(e) {
+        // Ctrl/Cmd + K: 검색창 포커스
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+            e.preventDefault();
+            const searchInput = document.getElementById('search-input');
+            if (searchInput) {
+                searchInput.focus();
+                searchInput.select();
+            }
+        }
+        
+        // ESC: 검색창 초기화
+        if (e.key === 'Escape') {
+            const searchInput = document.getElementById('search-input');
+            if (searchInput && document.activeElement === searchInput) {
+                searchInput.value = '';
+                filterContent();
+                searchInput.blur();
+            }
+        }
+        
+        // 숫자 키로 탭 전환 (1-5)
+        if (e.key >= '1' && e.key <= '5' && !e.ctrlKey && !e.metaKey) {
+            const tabs = ['ai', 'promo', 'notice', 'edu', 'vacation'];
+            const tabIndex = parseInt(e.key) - 1;
+            if (tabs[tabIndex]) {
+                showTab(tabs[tabIndex]);
+            }
+        }
+    });
+}
+
+// 텍스트 하이라이트 함수
+function highlightText(element, searchTerm) {
+    const text = element.textContent;
+    const regex = new RegExp(`(${searchTerm})`, 'gi');
+    element.innerHTML = text.replace(regex, '<mark class="bg-dreame-yellow text-black px-1 rounded">$1</mark>');
+}
+
+// 검색어 초기화
+function clearSearch() {
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) {
+        searchInput.value = '';
+        filterContent();
+        
+        // 하이라이트 제거
+        const marks = document.querySelectorAll('mark');
+        marks.forEach(mark => {
+            const parent = mark.parentNode;
+            parent.textContent = parent.textContent;
+        });
+    }
+}
+
+// 포럼으로 이동
+function goToForum() {
+    // 현재 페이지가 이미 포럼이므로 새로고침
+    location.reload();
+}
+
+// 페이지 로드 시 공지사항 팝업 표시 (선택사항)
+window.addEventListener('load', function() {
+    // 개발 환경에서만 공지사항 표시
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        const popup = document.getElementById('notice-popup');
+        if (popup) {
+            setTimeout(() => {
+                popup.classList.remove('hidden');
+            }, 1000);
+        }
     }
 });
 
-// 첫화면 이동 20250604
-   function goToForum() {
-        window.location.href = 'agentforum.html';
-    }
+// 네트워크 상태 감지
+window.addEventListener('online', function() {
+    console.log('네트워크 연결됨');
+});
+
+window.addEventListener('offline', function() {
+    console.log('네트워크 연결 끊어짐');
+});
+
+// 성능 모니터링
+if ('performance' in window) {
+    window.addEventListener('load', function() {
+        setTimeout(() => {
+            const perfData = performance.getEntriesByType('navigation')[0];
+            console.log('페이지 로드 시간:', perfData.loadEventEnd - perfData.loadEventStart, 'ms');
+        }, 0);
+    });
+}

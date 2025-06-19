@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ko" class="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
+        <title>모바일 테스트 - 드리미 상담원 포털</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+            body {
+                font-family: "Gowun Dodum", sans-serif;
+                -webkit-tap-highlight-color: transparent;
+                touch-action: manipulation;
+            }
+
+            .test-item {
+                background: rgba(0, 0, 0, 0.2);
+                border: 1px solid rgba(255, 215, 0, 0.3);
+                border-radius: 0.75rem;
+                padding: 1rem;
+                margin: 0.5rem 0;
+            }
+
+            .pdf-test {
+                width: 100%;
+                height: 300px;
+                border: 1px solid #444;
+                border-radius: 0.5rem;
+            }
+
+            .touch-area {
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: rgba(255, 215, 0, 0.1);
+                border-radius: 0.5rem;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+
+            .touch-area:active {
+                background: rgba(255, 215, 0, 0.3);
+                transform: scale(0.95);
+            }
+        </style>
+    </head>
+    <body class="bg-gray-900 text-white p-4">
+        <h1 class="text-2xl font-bold text-yellow-400 mb-6">
+            📱 모바일 테스트 페이지
+        </h1>
+
+        <div class="space-y-4">
+            <!-- 기본 정보 -->
+            <div class="test-item">
+                <h2 class="text-lg font-semibold text-yellow-400 mb-2">
+                    📊 디바이스 정보
+                </h2>
+                <div id="device-info" class="text-sm space-y-1">
+                    <p>User Agent: <span id="user-agent"></span></p>
+                    <p>화면 크기: <span id="screen-size"></span></p>
+                    <p>뷰포트: <span id="viewport-size"></span></p>
+                    <p>터치 지원: <span id="touch-support"></span></p>
+                    <p>PWA 지원: <span id="pwa-support"></span></p>
+                </div>
+            </div>
+
+            <!-- 터치 테스트 -->
+            <div class="test-item">
+                <h2 class="text-lg font-semibold text-yellow-400 mb-2">
+                    👆 터치 테스트
+                </h2>
+                <div class="touch-area" onclick="testTouch(this)">
+                    터치해보세요 (클릭 이벤트)
+                </div>
+                <div
+                    class="touch-area"
+                    ontouchstart="testTouchStart(this)"
+                    ontouchend="testTouchEnd(this)"
+                >
+                    터치해보세요 (터치 이벤트)
+                </div>
+                <div id="touch-result" class="mt-2 text-sm text-gray-400"></div>
+            </div>
+
+            <!-- 스크롤 테스트 -->
+            <div class="test-item">
+                <h2 class="text-lg font-semibold text-yellow-400 mb-2">
+                    📜 스크롤 테스트
+                </h2>
+                <div
+                    style="
+                        height: 200px;
+                        overflow-y: auto;
+                        border: 1px solid #444;
+                        padding: 1rem;
+                    "
+                >
+                    <p>이 영역을 스크롤해보세요.</p>
+                    <p>스크롤이 부드럽게 작동하는지 확인합니다.</p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Sed do eiusmod tempor incididunt ut labore et dolore
+                        magna aliqua.
+                    </p>
+                    <p>
+                        Ut enim ad minim veniam, quis nostrud exercitation
+                        ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <p>
+                        Duis aute irure dolor in reprehenderit in voluptate
+                        velit esse cillum dolore eu fugiat nulla pariatur.
+                    </p>
+                    <p>
+                        Excepteur sint occaecat cupidatat non proident, sunt in
+                        culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </div>
+            </div>
+
+            <!-- PDF 뷰어 테스트 -->
+            <div class="test-item">
+                <h2 class="text-lg font-semibold text-yellow-400 mb-2">
+                    📄 PDF 뷰어 테스트
+                </h2>
+                <iframe
+                    src="agentforumguide.pdf"
+                    class="pdf-test"
+                    title="PDF 테스트"
+                ></iframe>
+            </div>
+
+            <!-- 성능 테스트 -->
+            <div class="test-item">
+                <h2 class="text-lg font-semibold text-yellow-400 mb-2">
+                    ⚡ 성능 테스트
+                </h2>
+                <button
+                    onclick="runPerformanceTest()"
+                    class="bg-yellow-400 text-black px-4 py-2 rounded"
+                >
+                    성능 테스트 실행
+                </button>
+                <div
+                    id="performance-result"
+                    class="mt-2 text-sm text-gray-400"
+                ></div>
+            </div>
+
+            <!-- 메인 포털로 이동 -->
+            <div class="test-item">
+                <h2 class="text-lg font-semibold text-yellow-400 mb-2">
+                    🏠 메인 포털
+                </h2>
+                <a
+                    href="agentforum.html"
+                    class="bg-blue-500 text-white px-4 py-2 rounded inline-block"
+                >
+                    메인 포털로 이동
+                </a>
+            </div>
+        </div>
+
+        <script>
+            // 디바이스 정보 표시
+            function displayDeviceInfo() {
+                document.getElementById("user-agent").textContent =
+                    navigator.userAgent;
+                document.getElementById(
+                    "screen-size"
+                ).textContent = `${screen.width}x${screen.height}`;
+                document.getElementById(
+                    "viewport-size"
+                ).textContent = `${window.innerWidth}x${window.innerHeight}`;
+                document.getElementById("touch-support").textContent =
+                    "ontouchstart" in window ? "✅ 지원" : "❌ 미지원";
+                document.getElementById("pwa-support").textContent =
+                    "serviceWorker" in navigator ? "✅ 지원" : "❌ 미지원";
+            }
+
+            // 터치 테스트
+            function testTouch(element) {
+                element.style.background = "rgba(0, 255, 0, 0.3)";
+                document.getElementById("touch-result").textContent =
+                    "클릭 이벤트 감지됨";
+                setTimeout(() => {
+                    element.style.background = "rgba(255, 215, 0, 0.1)";
+                }, 500);
+            }
+
+            function testTouchStart(element) {
+                element.style.background = "rgba(255, 0, 0, 0.3)";
+                document.getElementById("touch-result").textContent =
+                    "터치 시작 감지됨";
+            }
+
+            function testTouchEnd(element) {
+                element.style.background = "rgba(255, 215, 0, 0.1)";
+                document.getElementById("touch-result").textContent =
+                    "터치 종료 감지됨";
+            }
+
+            // 성능 테스트
+            function runPerformanceTest() {
+                const start = performance.now();
+
+                // 간단한 DOM 조작 테스트
+                for (let i = 0; i < 1000; i++) {
+                    const div = document.createElement("div");
+                    div.textContent = "테스트";
+                    document.body.appendChild(div);
+                    document.body.removeChild(div);
+                }
+
+                const end = performance.now();
+                const duration = end - start;
+
+                document.getElementById(
+                    "performance-result"
+                ).textContent = `DOM 조작 테스트 완료: ${duration.toFixed(
+                    2
+                )}ms`;
+            }
+
+            // 페이지 로드 시 초기화
+            document.addEventListener("DOMContentLoaded", function () {
+                displayDeviceInfo();
+
+                // 화면 크기 변경 감지
+                window.addEventListener("resize", function () {
+                    document.getElementById(
+                        "viewport-size"
+                    ).textContent = `${window.innerWidth}x${window.innerHeight}`;
+                });
+            });
+        </script>
+    </body>
+</html>
