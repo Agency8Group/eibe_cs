@@ -148,7 +148,6 @@ iframe {
 }
 
 iframe:hover {
-    transform: scale(1.01);
     border-color: rgba(99, 102, 241, 0.3);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(99, 102, 241, 0.1);
 }

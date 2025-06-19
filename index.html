@@ -96,40 +96,102 @@
         <!-- 공지 팝업 -->
         <div
             id="notice-popup"
-            class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden animate-fade-in"
+            class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 hidden animate-fade-in"
             role="dialog"
             aria-labelledby="notice-title"
         >
             <div
-                class="bg-gray-800 p-6 rounded-lg shadow-lg max-w-lg w-full mx-4 animate-fade-in"
+                class="bg-gradient-to-br from-gray-900/95 via-gray-800/95 to-gray-900/95 p-8 rounded-2xl shadow-2xl max-w-md w-full mx-4 animate-fade-in border border-gray-700/50 backdrop-blur-md"
             >
-                <h3
-                    id="notice-title"
-                    class="text-lg font-bold mb-4 text-dreame-yellow"
-                >
-                    📢 공지사항
-                </h3>
-                <div class="space-y-2 text-sm">
-                    <p><strong>🚧상담포털 개발 (2025-04-진행중)</strong></p>
-                    <p><strong>🔸2025-00-00 ~ cs부서 url 배포예정</strong></p>
-                    <p><strong>🔸2025-05-14 ~ AI학습 자료변경</strong></p>
-                    <p>
-                        <strong>🔸2025-05-16 ~ DEV VERSION 0.9.0 BETA</strong>
-                    </p>
-                    <p><strong>🔸2025-05-20 ~ 1차 배포테스트진행</strong></p>
-                    <p>
-                        <strong
-                            >🔸2025-06-02 ~ AI학습등 검증완료 / 개발완료</strong
+                <!-- 헤더 -->
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="flex-shrink-0">
+                        <div
+                            class="w-10 h-10 bg-gradient-to-br from-dreame-yellow to-yellow-500 rounded-full flex items-center justify-center shadow-lg"
                         >
-                    </p>
+                            <span class="text-lg">📢</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3
+                            id="notice-title"
+                            class="text-xl font-bold text-dreame-yellow"
+                        >
+                            공지사항
+                        </h3>
+                        <p class="text-xs text-gray-400 mt-1">
+                            최신 업데이트 정보
+                        </p>
+                    </div>
                 </div>
-                <div class="flex justify-end mt-4">
+
+                <!-- 내용 -->
+                <div class="space-y-3 mb-6">
+                    <div
+                        class="bg-black/20 rounded-lg p-3 border-l-4 border-dreame-yellow"
+                    >
+                        <p class="text-sm font-semibold text-white">
+                            🚧 상담포털 개발 (2025-04-진행중)
+                        </p>
+                    </div>
+
+                    <div class="space-y-2">
+                        <div class="flex items-start gap-2">
+                            <span class="text-dreame-yellow text-xs mt-1"
+                                >🔸</span
+                            >
+                            <p class="text-sm text-gray-300">
+                                <span class="font-medium">2025-00-00</span> ~
+                                cs부서 url 배포예정
+                            </p>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="text-dreame-yellow text-xs mt-1"
+                                >🔸</span
+                            >
+                            <p class="text-sm text-gray-300">
+                                <span class="font-medium">2025-05-14</span> ~
+                                AI학습 자료변경
+                            </p>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="text-dreame-yellow text-xs mt-1"
+                                >🔸</span
+                            >
+                            <p class="text-sm text-gray-300">
+                                <span class="font-medium">2025-05-16</span> ~
+                                DEV VERSION 0.9.0 BETA
+                            </p>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="text-dreame-yellow text-xs mt-1"
+                                >🔸</span
+                            >
+                            <p class="text-sm text-gray-300">
+                                <span class="font-medium">2025-05-20</span> ~
+                                1차 배포테스트진행
+                            </p>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="text-dreame-yellow text-xs mt-1"
+                                >🔸</span
+                            >
+                            <p class="text-sm text-gray-300">
+                                <span class="font-medium">2025-06-02</span> ~
+                                AI학습등 검증완료 / 개발완료
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 버튼 -->
+                <div class="flex justify-end">
                     <button
                         onclick="closeNoticePopup()"
-                        class="bg-dreame-yellow hover:bg-yellow-500 text-black py-2 px-4 rounded transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50"
+                        class="bg-gradient-to-r from-dreame-yellow to-yellow-500 hover:from-yellow-400 hover:to-yellow-600 text-black font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 shadow-lg hover:shadow-xl"
                         aria-label="공지사항 닫기"
                     >
-                        <strong>확인</strong>
+                        확인
                     </button>
                 </div>
             </div>
@@ -410,7 +472,7 @@
                         </summary>
                         <div class="mt-4 pdf-container">
                             <iframe
-                                src="/agentforumguide.pdf"
+                                src="./appmanual/agentforumguide.pdf"
                                 title="AI 사용법 가이드"
                                 class="w-full h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px] xl:h-[500px] rounded-lg border border-gray-600"
                                 loading="lazy"
