@@ -9,7 +9,7 @@
         />
         <meta name="author" content="yoonwhan-ji" />
 
-        <title>드리미 상담포털 ver.2</title>
+        <title>Dreame 상담포털 ver1.2.0</title>
 
         <!-- Favicon -->
         <link rel="icon" href="./image/dreamelogo.png" />
@@ -54,7 +54,7 @@
 
         <!-- 한글 폰트 -->
         <link
-            href="https://fonts.googleapis.com/css2?family=Gowun+Dodum:wght@400;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
             rel="stylesheet"
         />
 
@@ -89,7 +89,7 @@
         <!-- 통합 CSS 스타일 -->
         <style>
             body {
-                font-family: "Gowun Dodum", -apple-system, BlinkMacSystemFont,
+                font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont,
                     "Segoe UI", Roboto, sans-serif;
                 line-height: 1.6;
                 -webkit-font-smoothing: antialiased;
@@ -282,11 +282,9 @@
                 text-align: center;
                 padding: 12px 0;
                 font-size: 14px;
-                box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.4);
                 z-index: 10;
                 backdrop-filter: blur(12px);
                 -webkit-backdrop-filter: blur(12px);
-                border-top: 1px solid rgba(30, 30, 30, 0.3);
             }
 
             details summary {
@@ -410,26 +408,21 @@
             }
 
             ::-webkit-scrollbar-track {
-                background: rgba(0, 0, 0, 0.3);
+                background: transparent;
             }
 
             ::-webkit-scrollbar-thumb {
-                background: linear-gradient(180deg, #070707, #050505);
+                background: rgba(100, 100, 100, 0.1);
                 border-radius: 4px;
+                transition: background 0.2s ease-in-out;
             }
 
             ::-webkit-scrollbar-thumb:hover {
-                background: linear-gradient(180deg, #050505, #000000);
+                background: rgba(100, 100, 100, 0.3);
             }
 
             *:focus {
                 outline: none;
-            }
-
-            *:focus-visible {
-                outline: 2px solid #ffd700;
-                outline-offset: 2px;
-                border-radius: 4px;
             }
 
             @keyframes shimmer {
@@ -741,9 +734,7 @@
         </div>
 
         <!-- 헤더 -->
-        <header
-            class="sticky top-0 z-40 bg-gradient-to-r from-gray-900/95 via-gray-800/95 to-gray-900/95 border-b border-gray-700/50 shadow-lg backdrop-blur-md"
-        >
+        <header class="sticky top-0 z-40 bg-black/20 backdrop-blur-sm">
             <div class="container mx-auto px-6 py-4">
                 <!-- 메인 헤더 영역 -->
                 <div class="flex items-center justify-center">
@@ -753,14 +744,14 @@
                         onclick="location.reload()"
                         title="클릭하면 새로고침됩니다"
                     >
-                        드리미 상담포털 ver.2
+                        Dreame 상담포털 ver1.2.0
                     </h1>
                 </div>
             </div>
         </header>
 
         <!-- 검색 및 네비게이션 영역 -->
-        <div class="bg-black/20 backdrop-blur-sm border-b border-gray-800/30">
+        <div class="bg-black/20 backdrop-blur-sm">
             <div class="container mx-auto px-6 py-3">
                 <!-- 검색창 -->
                 <div class="flex justify-center mb-4">
@@ -770,14 +761,9 @@
                             id="search-input"
                             placeholder="검색어를 입력하세요..."
                             oninput="filterContent()"
-                            class="w-full px-4 py-2.5 pl-12 rounded-lg bg-black/30 text-white border border-gray-700/50 focus:border-indigo-500/70 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 transition-all duration-200 placeholder-gray-400 text-sm"
+                            class="w-full px-4 py-2.5 rounded-lg bg-black/30 text-white border border-gray-700/50 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 transition-all duration-200 placeholder-gray-400 text-sm"
                             aria-label="콘텐츠 검색"
                         />
-                        <div
-                            class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
-                        >
-                            <span class="text-gray-400 text-sm">🔍</span>
-                        </div>
                     </div>
                 </div>
 
@@ -788,39 +774,39 @@
                     >
                         <button
                             onclick="showTab('ai')"
-                            class="hover:text-dreame-yellow transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 rounded-lg px-3 py-2 hover:bg-black/30 text-gray-300"
+                            class="hover:text-dreame-yellow transition-colors duration-200 focus:outline-none rounded-lg px-3 py-2 text-gray-300"
                             role="tab"
                             aria-selected="true"
                         >
-                            🤖 AI 비서
+                            A.I
                         </button>
                         <button
                             onclick="showTab('promo')"
-                            class="hover:text-dreame-yellow transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 rounded-lg px-3 py-2 hover:bg-black/30 text-gray-300"
+                            class="hover:text-dreame-yellow transition-colors duration-200 focus:outline-none rounded-lg px-3 py-2 text-gray-300"
                             role="tab"
                             aria-selected="false"
                         >
-                            📱 Manual
+                            Dreame Manual
                         </button>
                         <button
                             onclick="showTab('notice')"
-                            class="hover:text-dreame-yellow transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 rounded-lg px-3 py-2 hover:bg-black/30 text-gray-300"
+                            class="hover:text-dreame-yellow transition-colors duration-200 focus:outline-none rounded-lg px-3 py-2 text-gray-300"
                             role="tab"
                             aria-selected="false"
                         >
-                            📢 이벤트
+                            이벤트
                         </button>
                         <button
                             onclick="showTab('edu')"
-                            class="hover:text-dreame-yellow transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 rounded-lg px-3 py-2 hover:bg-black/30 text-gray-300"
+                            class="hover:text-dreame-yellow transition-colors duration-200 focus:outline-none rounded-lg px-3 py-2 text-gray-300"
                             role="tab"
                             aria-selected="false"
                         >
-                            📚 교육
+                            교육자료
                         </button>
                         <button
                             onclick="showTab('vacation')"
-                            class="transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 rounded-lg px-3 py-2 opacity-50 cursor-not-allowed text-gray-500"
+                            class="transition-colors duration-200 focus:outline-none rounded-lg px-3 py-2 opacity-50 cursor-not-allowed text-gray-500"
                             role="tab"
                             aria-selected="false"
                             disabled
@@ -833,8 +819,10 @@
         </div>
 
         <!-- 콘텐츠 영역 -->
-        <main class="px-6 md:px-16 lg:px-32 space-y-10 animate-fade-in">
-            <!-- AI 비서 탭 -->
+        <main
+            class="px-6 md:px-16 lg:px-32 py-10 space-y-10 animate-fade-in bg-black/20 backdrop-blur-sm"
+        >
+            <!-- Dreame A.I 탭 -->
             <section
                 id="tab-ai"
                 class="glass p-6 hidden animate-fade-in w-full max-w-[1200px] mx-auto"
@@ -862,7 +850,7 @@
                     <!-- Right: Content (유동폭) -->
                     <div class="flex-1 space-y-4 lg:space-y-6">
                         <p class="text-xm text-gray-400">
-                            AI 비서는 더 나은 서비스를 위해 지속적으로
+                            A.I 서비스는 더 나은 서비스를 위해 지속적으로
                             업데이트되고 있습니다.<br />
                             유용하게 활용하실 수 있지만, 일부 정보는 정확한
                             정보를 검증 중이니 가볍게 참고해 주세요.
@@ -870,7 +858,7 @@
 
                         <!-- 버튼 & 데이터 현황판 -->
                         <div
-                            class="flex flex-col lg:flex-row items-stretch gap-3"
+                            class="flex flex-col items-center lg:flex-row lg:items-stretch gap-3"
                         >
                             <!-- OpenAI 버튼 -->
                             <a
@@ -881,8 +869,15 @@
                                 aria-label="OpenAI로 이동"
                             >
                                 <div class="glow"></div>
-                                <span class="text-lg">🚀</span>
-                                <span>Open AI 이동</span>
+                                <dotlottie-player
+                                    src="https://lottie.host/7ed38c4a-4553-4d12-9007-6947cdb39576/tlk9gIIrQI.lottie"
+                                    background="transparent"
+                                    speed="1"
+                                    style="width: 28px; height: 28px"
+                                    loop
+                                    autoplay
+                                ></dotlottie-player>
+                                <span>Dreame AI 이동</span>
                             </a>
 
                             <div class="flex gap-2">
@@ -980,6 +975,10 @@
                                     class="text-xs bg-cyan-500 text-black py-1 px-2 rounded-full"
                                     >L10Prime</span
                                 >
+                                <span
+                                    class="text-xs bg-yellow-900 text-white py-1 px-2 rounded-full"
+                                    >LIVO</span
+                                >
                             </div>
                         </div>
                     </div>
@@ -990,7 +989,7 @@
                     <!-- 사용방법 안내서 -->
                     <details class="mt-4 lg:mt-6">
                         <summary
-                            class="text-lg font-semibold text-dreame-yellow cursor-pointer focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                            class="text-lg font-semibold text-dreame-yellow cursor-pointer rounded px-2 py-1"
                         >
                             사용방법 안내서
                         </summary>
@@ -1007,7 +1006,7 @@
 
                     <details class="mt-4 lg:mt-6">
                         <summary
-                            class="text-lg font-semibold text-dreame-yellow cursor-pointer focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                            class="text-lg font-semibold text-dreame-yellow cursor-pointer rounded px-2 py-1"
                         >
                             오류접수 양식
                         </summary>
@@ -1050,7 +1049,7 @@
                 <!-- X50 (Master,Ultra) -->
                 <details class="mb-4">
                     <summary
-                        class="text-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                        class="text-lg text-gray-100 focus:outline-none rounded px-2 py-1"
                     >
                         <span class="text-dreame-yellow">X50</span>
                         (Master,Ultra) Dreame Home APP 사용 설명서📱
@@ -1068,7 +1067,7 @@
 
                 <details class="mb-4">
                     <summary
-                        class="text-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                        class="text-lg text-gray-100 focus:outline-none rounded px-2 py-1"
                     >
                         <span class="text-dreame-yellow">X50</span>
                         (Master,Ultra) 음성명령어 리스트📱
@@ -1086,7 +1085,7 @@
 
                 <details class="mb-4">
                     <summary
-                        class="text-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                        class="text-lg text-gray-100 focus:outline-none rounded px-2 py-1"
                     >
                         <span class="text-dreame-yellow">X50</span>
                         (sProUltra) 사용 설명서📄
@@ -1104,7 +1103,7 @@
 
                 <details class="mb-4">
                     <summary
-                        class="text-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                        class="text-lg text-gray-100 focus:outline-none rounded px-2 py-1"
                     >
                         <span class="text-dreame-yellow">X50</span>
                         (Master) 사용 설명서📄
@@ -1122,7 +1121,7 @@
 
                 <details class="mb-4">
                     <summary
-                        class="text-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                        class="text-lg text-gray-100 focus:outline-none rounded px-2 py-1"
                     >
                         <span class="text-dreame-yellow">X50</span>
                         (Ultra) 사용 설명서📄
@@ -1140,7 +1139,7 @@
 
                 <details class="mb-4">
                     <summary
-                        class="text-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                        class="text-lg text-gray-100 focus:outline-none rounded px-2 py-1"
                     >
                         <span class="text-dreame-yellow">X50</span>
                         (Master) 직배수 키트 가이드🎬
@@ -1160,7 +1159,7 @@
                 <!-- X40 (Ultra) -->
                 <details class="mb-4">
                     <summary
-                        class="text-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                        class="text-lg text-gray-100 focus:outline-none rounded px-2 py-1"
                     >
                         <span class="text-green-400">X40</span>
                         (Ultra) Dreame Home APP 사용 설명서📱
@@ -1178,7 +1177,7 @@
 
                 <details class="mb-4">
                     <summary
-                        class="text-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                        class="text-lg text-gray-100 focus:outline-none rounded px-2 py-1"
                     >
                         <span class="text-green-400">X40</span>
                         (Ultra) 사용 설명서📄
@@ -1196,7 +1195,7 @@
 
                 <details class="mb-4">
                     <summary
-                        class="text-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                        class="text-lg text-gray-100 focus:outline-none rounded px-2 py-1"
                     >
                         <span class="text-green-400">X40</span>
                         (Ultra) L10s히트 직배수 키트 가이드🎬
@@ -1217,7 +1216,7 @@
                 <!-- L20 (Ultra) -->
                 <details class="mb-4">
                     <summary
-                        class="text-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                        class="text-lg text-gray-100 focus:outline-none rounded px-2 py-1"
                     >
                         <span class="text-blue-400">L20</span>
                         (Ultra) Dreame Home APP 사용 설명서📱
@@ -1235,7 +1234,7 @@
 
                 <details class="mb-4">
                     <summary
-                        class="text-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                        class="text-lg text-gray-100 focus:outline-none rounded px-2 py-1"
                     >
                         <span class="text-blue-400">L20</span>
                         (Ultra) 사용 설명서📄
@@ -1253,7 +1252,7 @@
 
                 <details class="mb-4">
                     <summary
-                        class="text-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                        class="text-lg text-gray-100 focus:outline-none rounded px-2 py-1"
                     >
                         <span class="text-blue-400">L20</span>
                         (Ultra) 직배수 키트 가이드🎬
@@ -1274,7 +1273,7 @@
                 <!-- L10 Prime -->
                 <details class="mb-4">
                     <summary
-                        class="text-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                        class="text-lg text-gray-100 focus:outline-none rounded px-2 py-1"
                     >
                         <span class="text-pink-400">L10</span>
                         (Prime) 사용 설명서📄
@@ -1305,7 +1304,7 @@
                 <!-- 이벤트/프로모션 아코디언 -->
                 <details class="mb-4">
                     <summary
-                        class="text-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                        class="text-lg text-gray-100 focus:outline-none rounded px-2 py-1"
                     >
                         이벤트 및 프로모션 URL
                     </summary>
@@ -1371,7 +1370,7 @@
                 <!-- 제품 교육 자료 -->
                 <details class="mb-4">
                     <summary
-                        class="text-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                        class="text-lg text-gray-100 focus:outline-none rounded px-2 py-1"
                     >
                         <span class="text-blue-400">제품</span>
                         교육 자료📋
@@ -1391,7 +1390,7 @@
                 <!-- 서비스 교육 자료 -->
                 <details class="mb-4">
                     <summary
-                        class="text-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                        class="text-lg text-gray-100 focus:outline-none rounded px-2 py-1"
                     >
                         <span class="text-green-400">서비스</span>
                         교육 자료📖
@@ -1412,7 +1411,7 @@
                 <!-- 추가 교육 자료 (확장용) -->
                 <details class="mb-4">
                     <summary
-                        class="text-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                        class="text-lg text-gray-100 focus:outline-none rounded px-2 py-1"
                     >
                         <span class="text-purple-400">기타</span>
                         교육 자료📚
@@ -1446,7 +1445,7 @@
 
                 <details class="mb-4">
                     <summary
-                        class="text-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                        class="text-lg text-gray-100 focus:outline-none rounded px-2 py-1"
                     >
                         💬 Preparing...
                     </summary>
@@ -1482,12 +1481,7 @@
                 const tabButtons = document.querySelectorAll('[role="tab"]');
                 tabButtons.forEach((button) => {
                     button.setAttribute("aria-selected", "false");
-                    button.classList.remove(
-                        "text-dreame-yellow",
-                        "bg-black/30",
-                        "border-b-2",
-                        "border-indigo-500"
-                    );
+                    button.classList.remove("text-dreame-yellow");
                     button.classList.add("text-gray-300");
                 });
 
@@ -1507,12 +1501,7 @@
                 if (selectedButton) {
                     selectedButton.setAttribute("aria-selected", "true");
                     selectedButton.classList.remove("text-gray-300");
-                    selectedButton.classList.add(
-                        "text-dreame-yellow",
-                        "bg-black/30",
-                        "border-b-2",
-                        "border-indigo-500"
-                    );
+                    selectedButton.classList.add("text-dreame-yellow");
                 }
 
                 // URL 해시 업데이트 (선택사항)
@@ -1537,7 +1526,7 @@
             // 헤더 타이틀 업데이트
             function updateHeaderTitle(tabName) {
                 const titleMap = {
-                    ai: "🤖 AI 비서",
+                    ai: "🤖 Dreame A.I",
                     promo: "📱 Dreame Manual",
                     notice: "📢 이벤트/참고자료",
                     edu: "📚 교육자료",
@@ -1546,12 +1535,7 @@
 
                 const headerTitle = document.querySelector("header h1");
                 if (headerTitle && titleMap[tabName]) {
-                    // 부드러운 페이드 효과
-                    headerTitle.style.opacity = "0.5";
-                    setTimeout(() => {
-                        headerTitle.innerHTML = `<span class="bg-gradient-to-r from-dreame-yellow via-yellow-400 to-dreame-yellow bg-clip-text text-transparent">드리미 상담포털 ver.2</span>`;
-                        headerTitle.style.opacity = "1";
-                    }, 150);
+                    // 부드러운 페이드 효과를 제거하여 깜빡임 방지
                 }
             }
 
@@ -1654,7 +1638,7 @@
 
             // 페이지 로드 시 초기화
             document.addEventListener("DOMContentLoaded", function () {
-                // 기본 탭 설정 (AI 비서)
+                // 기본 탭 설정 (Dreame A.I)
                 showTab("ai");
 
                 // 키보드 이벤트 리스너 추가
