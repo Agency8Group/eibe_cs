@@ -406,20 +406,20 @@
             }
 
             ::-webkit-scrollbar {
-                width: 8px;
+                width: 5px;
             }
 
             ::-webkit-scrollbar-track {
-                background: rgba(0, 0, 0, 0.3);
+                background: transparent;
             }
 
             ::-webkit-scrollbar-thumb {
-                background: linear-gradient(180deg, #ffd700, #fbbf24);
-                border-radius: 4px;
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 5px;
             }
 
             ::-webkit-scrollbar-thumb:hover {
-                background: linear-gradient(180deg, #fbbf24, #ffd700);
+                background: rgba(255, 255, 255, 0.2);
             }
 
             *:focus {
@@ -764,7 +764,7 @@
             <div class="container mx-auto px-6 py-3">
                 <!-- 검색창 -->
                 <div class="flex justify-center mb-4">
-                    <div class="relative w-full max-w-lg">
+                    <div class="relative w-full max-w-xs">
                         <input
                             type="text"
                             id="search-input"
@@ -788,44 +788,100 @@
                     >
                         <button
                             onclick="showTab('ai')"
-                            class="hover:text-dreame-yellow transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 rounded-lg px-3 py-2 hover:bg-black/30 text-gray-300"
+                            class="flex items-center gap-2 hover:text-dreame-yellow transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 rounded-lg px-3 py-2 hover:bg-black/30 text-gray-300"
                             role="tab"
                             aria-selected="true"
+                            title="AI 비서"
                         >
-                            🤖 AI 비서
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                                class="w-5 h-5"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M8.25 3v1.5M4.5 8.25H3v1.5M4.5 12.75H3v1.5M12.75 3v1.5M12.75 21v-1.5M21 12.75h-1.5V12M15.75 4.5v-1.5H15M8.25 21v-1.5M19.5 8.25h1.5V7.5M19.5 15.75h1.5v-1.5M15.75 19.5v1.5H15m-3.375-7.5c-1.036 0-1.875.84-1.875 1.875s.84 1.875 1.875 1.875 1.875-.84 1.875-1.875-.84-1.875-1.875-1.875Zm-.75 4.5a.75.75 0 0 0 0 1.5h1.5a.75.75 0 0 0 0-1.5h-1.5Zm-3.75-3.75a.75.75 0 0 0 0 1.5h1.5a.75.75 0 0 0 0-1.5h-1.5Zm0 7.5a.75.75 0 0 0 0 1.5h1.5a.75.75 0 0 0 0-1.5h-1.5Zm7.5-7.5a.75.75 0 0 0 0 1.5h1.5a.75.75 0 0 0 0-1.5h-1.5Zm0 7.5a.75.75 0 0 0 0 1.5h1.5a.75.75 0 0 0 0-1.5h-1.5Zm-3.75-15a.75.75 0 0 0 0 1.5h1.5a.75.75 0 0 0 0-1.5h-1.5Zm0 15a.75.75 0 0 0 0 1.5h1.5a.75.75 0 0 0 0-1.5h-1.5Z"
+                                />
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M9 3.75H6.75A2.25 2.25 0 0 0 4.5 6v12a2.25 2.25 0 0 0 2.25 2.25h10.5A2.25 2.25 0 0 0 19.5 18V6A2.25 2.25 0 0 0 17.25 3.75H15"
+                                />
+                            </svg>
+                            <span>AI 비서</span>
                         </button>
                         <button
                             onclick="showTab('promo')"
-                            class="hover:text-dreame-yellow transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 rounded-lg px-3 py-2 hover:bg-black/30 text-gray-300"
+                            class="flex items-center gap-2 hover:text-dreame-yellow transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 rounded-lg px-3 py-2 hover:bg-black/30 text-gray-300"
                             role="tab"
                             aria-selected="false"
+                            title="Manual"
                         >
-                            📱 Manual
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                                class="w-5 h-5"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6-2.292m0 0V3.75m0 16.5a8.966 8.966 0 0 1-6-2.292m6 2.292a8.966 8.966 0 0 0 6-2.292m-6 2.292V3.75m0 16.5a8.966 8.966 0 0 1-6-2.292m6 2.292a8.966 8.966 0 0 0 6-2.292"
+                                />
+                            </svg>
+                            <span>Manual</span>
                         </button>
                         <button
                             onclick="showTab('notice')"
-                            class="hover:text-dreame-yellow transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 rounded-lg px-3 py-2 hover:bg-black/30 text-gray-300"
+                            class="flex items-center gap-2 hover:text-dreame-yellow transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 rounded-lg px-3 py-2 hover:bg-black/30 text-gray-300"
                             role="tab"
                             aria-selected="false"
+                            title="이벤트"
                         >
-                            📢 이벤트
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                                class="w-5 h-5"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75"
+                                />
+                            </svg>
+                            <span>이벤트</span>
                         </button>
                         <button
                             onclick="showTab('edu')"
-                            class="hover:text-dreame-yellow transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 rounded-lg px-3 py-2 hover:bg-black/30 text-gray-300"
+                            class="flex items-center gap-2 hover:text-dreame-yellow transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 rounded-lg px-3 py-2 hover:bg-black/30 text-gray-300"
                             role="tab"
                             aria-selected="false"
+                            title="교육"
                         >
-                            📚 교육
-                        </button>
-                        <button
-                            onclick="showTab('vacation')"
-                            class="transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 rounded-lg px-3 py-2 opacity-50 cursor-not-allowed text-gray-500"
-                            role="tab"
-                            aria-selected="false"
-                            disabled
-                        >
-                            🚧 준비중
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                                class="w-5 h-5"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.627 48.627 0 0 1 12 20.904a48.627 48.627 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.57 50.57 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"
+                                />
+                            </svg>
+                            <span>교육</span>
                         </button>
                     </div>
                 </nav>
@@ -833,11 +889,11 @@
         </div>
 
         <!-- 콘텐츠 영역 -->
-        <main class="px-6 md:px-16 lg:px-32 space-y-10 animate-fade-in">
+        <main class="px-6 md:px-16 lg:px-32 animate-fade-in">
             <!-- AI 비서 탭 -->
             <section
                 id="tab-ai"
-                class="glass p-6 hidden animate-fade-in w-full max-w-[1200px] mx-auto"
+                class="glass p-6 hidden animate-fade-in w-full max-w-[1200px] mx-auto mt-10"
                 role="tabpanel"
                 aria-labelledby="ai-tab"
             >
@@ -861,27 +917,8 @@
 
                     <!-- Right: Content (유동폭) -->
                     <div class="flex-1 space-y-4 lg:space-y-6">
-                        <h2
-                            class="text-xl font-bold text-dreame-yellow flex items-center gap-2"
-                        >
-                            🤖 AI 비서
-                            <span class="relative flex items-center gap-1">
-                                <span class="relative flex size-3">
-                                    <span
-                                        class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"
-                                    ></span>
-                                    <span
-                                        class="relative inline-flex size-3 rounded-full bg-green-500"
-                                    ></span>
-                                </span>
-                                <span class="text-xs text-green-600"
-                                    >online</span
-                                >
-                            </span>
-                        </h2>
-
                         <p class="text-xm text-gray-400">
-                            AI 비서는 더 나은 서비스를 위해 지속적으로
+                            AI 서비스 는 더 나은 서비스를 위해 지속적으로
                             업데이트되고 있습니다.<br />
                             유용하게 활용하실 수 있지만, 일부 정보는 정확한
                             정보를 검증 중이니 가볍게 참고해 주세요.
@@ -1054,7 +1091,7 @@
             <!-- Dreame UI 탭 -->
             <section
                 id="tab-promo"
-                class="glass p-6 hidden animate-fade-in"
+                class="glass p-6 hidden animate-fade-in mt-10"
                 role="tabpanel"
                 aria-labelledby="promo-tab"
             >
@@ -1310,7 +1347,7 @@
             <!-- 이벤트/프로모션 탭 -->
             <section
                 id="tab-notice"
-                class="glass p-6 hidden animate-fade-in"
+                class="glass p-6 hidden animate-fade-in mt-10"
                 role="tabpanel"
                 aria-labelledby="notice-tab"
             >
@@ -1376,7 +1413,7 @@
             <!-- 교육자료 탭 -->
             <section
                 id="tab-edu"
-                class="glass p-6 hidden animate-fade-in"
+                class="glass p-6 hidden animate-fade-in mt-10"
                 role="tabpanel"
                 aria-labelledby="edu-tab"
             >
@@ -1445,33 +1482,6 @@
                                 새로운 자료는 언제든지 쉽게 추가할 수 있습니다.
                             </p>
                         </div>
-                    </div>
-                </details>
-            </section>
-
-            <!-- 🚧 Preparing... 탭 -->
-            <section
-                id="tab-vacation"
-                class="glass p-6 hidden animate-fade-in"
-                role="tabpanel"
-                aria-labelledby="vacation-tab"
-            >
-                <h2 class="text-xl font-bold text-dreame-yellow mb-6">
-                    🚧 Preparing...
-                </h2>
-
-                <!-- 구분선 -->
-                <div class="line"></div>
-
-                <details class="mb-4">
-                    <summary
-                        class="text-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
-                    >
-                        💬 Preparing...
-                    </summary>
-                    <div class="mt-4 text-center text-gray-400">
-                        <p>🚧 이 섹션은 현재 개발 중입니다.</p>
-                        <p>곧 새로운 기능으로 찾아뵙겠습니다!</p>
                     </div>
                 </details>
             </section>
@@ -1556,21 +1566,15 @@
             // 헤더 타이틀 업데이트
             function updateHeaderTitle(tabName) {
                 const titleMap = {
-                    ai: "🤖 AI 비서",
-                    promo: "📱 Dreame Manual",
-                    notice: "📢 이벤트/참고자료",
-                    edu: "📚 교육자료",
-                    vacation: "🚧 Preparing...",
+                    ai: "AI 비서",
+                    promo: "Dreame Manual",
+                    notice: "이벤트/참고자료",
+                    edu: "교육자료",
                 };
 
                 const headerTitle = document.querySelector("header h1");
                 if (headerTitle && titleMap[tabName]) {
-                    // 부드러운 페이드 효과
-                    headerTitle.style.opacity = "0.5";
-                    setTimeout(() => {
-                        headerTitle.innerHTML = `<span class="bg-gradient-to-r from-dreame-yellow via-yellow-400 to-dreame-yellow bg-clip-text text-transparent">드리미 상담포털</span>`;
-                        headerTitle.style.opacity = "1";
-                    }, 150);
+                    headerTitle.innerHTML = `<span class="bg-gradient-to-r from-dreame-yellow via-yellow-400 to-dreame-yellow bg-clip-text text-transparent">드리미 상담포털</span>`;
                 }
             }
 
@@ -1693,10 +1697,7 @@
 
                 // URL 해시가 있으면 해당 탭으로 이동
                 const hash = window.location.hash.substring(1);
-                if (
-                    hash &&
-                    ["ai", "promo", "notice", "edu", "vacation"].includes(hash)
-                ) {
+                if (hash && ["ai", "promo", "notice", "edu"].includes(hash)) {
                     showTab(hash);
                 }
 
