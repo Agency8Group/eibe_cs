@@ -9,7 +9,7 @@
         />
         <meta name="author" content="yoonwhan-ji" />
 
-        <title>드리미 상담포털</title>
+        <title>드리미 상담포털 ver.2</title>
 
         <!-- Favicon -->
         <link rel="icon" href="./image/dreamelogo.png" />
@@ -44,8 +44,12 @@
                             },
                         },
                         colors: {
-                            "dreame-yellow": "#FFD700",
-                            "dreame-dark": "#121212",
+                            primary: "#4f46e5",
+                            "primary-hover": "#6d28d9",
+                            "primary-light": "#a5b4fc",
+                            "accent-red": "#fb7185",
+                            "text-base": "#d1d5db",
+                            "text-muted": "#9ca3af",
                         },
                     },
                 },
@@ -99,9 +103,9 @@
                 padding-top: 0;
                 background: linear-gradient(
                     135deg,
-                    #000000 0%,
-                    #0a0a0a 50%,
-                    #000000 100%
+                    #0a0715 0%,
+                    #121212 50%,
+                    #0a0715 100%
                 );
                 min-height: 100vh;
             }
@@ -141,7 +145,7 @@
             }
 
             header h1 {
-                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+                text-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
                 font-weight: 700;
                 letter-spacing: -0.025em;
                 user-select: none;
@@ -150,9 +154,9 @@
             .bg-gradient-to-r {
                 background: linear-gradient(
                     135deg,
-                    #ffd700 0%,
-                    #fbbf24 50%,
-                    #ffd700 100%
+                    #a5b4fc 0%,
+                    #4f46e5 50%,
+                    #a5b4fc 100%
                 );
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
@@ -160,19 +164,13 @@
             }
 
             .glass {
-                background: linear-gradient(
-                    135deg,
-                    rgba(0, 0, 0, 0.6) 0%,
-                    rgba(15, 23, 42, 0.3) 50%,
-                    rgba(0, 0, 0, 0.6) 100%
-                );
+                background-color: rgba(255, 255, 255, 0.04);
                 border-radius: 1rem;
-                border: 1px solid rgba(99, 102, 241, 0.1);
+                border: 1px solid rgba(255, 255, 255, 0.08);
                 backdrop-filter: blur(12px);
                 -webkit-backdrop-filter: blur(12px);
-                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
-                    0 0 0 1px rgba(99, 102, 241, 0.05),
-                    inset 0 1px 0 rgba(99, 102, 241, 0.1);
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+                color: #d1d5db;
                 transition: all 0.3s ease;
                 position: relative;
                 overflow: hidden;
@@ -188,18 +186,16 @@
                 background: linear-gradient(
                     90deg,
                     transparent,
-                    rgba(99, 102, 241, 0.1),
+                    rgba(165, 180, 252, 0.05),
                     transparent
                 );
                 transition: left 0.5s ease;
             }
 
             .glass:hover {
-                border-color: rgba(99, 102, 241, 0.2);
-                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4),
-                    0 0 0 1px rgba(99, 102, 241, 0.1),
-                    inset 0 1px 0 rgba(99, 102, 241, 0.15);
-                transform: translateY(-2px);
+                background-color: rgba(255, 255, 255, 0.08);
+                border-color: rgba(255, 255, 255, 0.15);
+                color: #e0e7ff;
             }
 
             .glass:hover::before {
@@ -210,10 +206,9 @@
                 position: relative;
                 overflow: hidden;
                 border-radius: 0.75rem;
-                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2),
-                    0 2px 4px -1px rgba(0, 0, 0, 0.1),
-                    0 0 0 1px rgba(99, 102, 241, 0.05);
-                border: 1px solid rgba(99, 102, 241, 0.1);
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+                border: 1px solid rgba(255, 255, 255, 0.08);
             }
 
             .pdf-container:hover,
@@ -245,9 +240,8 @@
             }
 
             iframe:hover {
-                border-color: rgba(99, 102, 241, 0.3);
-                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3),
-                    0 0 0 1px rgba(99, 102, 241, 0.1);
+                border-color: rgba(255, 255, 255, 0.15);
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
             }
 
             iframe.hidden {
@@ -292,85 +286,65 @@
             details summary {
                 font-size: 1.125rem;
                 font-weight: 600;
-                color: #ffd700;
+                color: #a5b4fc;
                 cursor: pointer;
                 transition: all 0.3s ease;
                 padding: 0.75rem 1rem;
                 border-radius: 0.5rem;
-                background: linear-gradient(
-                    135deg,
-                    rgba(0, 0, 0, 0.3) 0%,
-                    rgba(15, 23, 42, 0.2) 100%
-                );
-                border: 1px solid rgba(99, 102, 241, 0.1);
+                background: rgba(79, 70, 229, 0.1);
+                border: 1px solid rgba(79, 70, 229, 0.15);
                 margin-bottom: 0.5rem;
                 position: relative;
                 overflow: hidden;
             }
 
             details summary:hover {
-                background: linear-gradient(
-                    135deg,
-                    rgba(0, 0, 0, 0.4) 0%,
-                    rgba(15, 23, 42, 0.3) 100%
-                );
-                border-color: rgba(99, 102, 241, 0.2);
-                transform: translateY(-1px);
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+                background: rgba(79, 70, 229, 0.2);
+                border-color: rgba(79, 70, 229, 0.25);
+                color: #e0e7ff;
             }
 
             details[open] summary {
-                background: linear-gradient(
-                    135deg,
-                    rgba(99, 102, 241, 0.1) 0%,
-                    rgba(99, 102, 241, 0.05) 100%
-                );
-                border-color: rgba(99, 102, 241, 0.3);
-                color: #ffd700;
-                box-shadow: 0 2px 8px rgba(99, 102, 241, 0.1);
+                background: rgba(79, 70, 229, 0.15);
+                border-color: rgba(79, 70, 229, 0.3);
+                color: #c7d2fe;
+                box-shadow: 0 2px 8px rgba(79, 70, 229, 0.1);
             }
 
             details[open] summary:hover {
-                background: linear-gradient(
-                    135deg,
-                    rgba(99, 102, 241, 0.15) 0%,
-                    rgba(99, 102, 241, 0.08) 100%
-                );
+                background: rgba(79, 70, 229, 0.2);
             }
 
             .line {
-                height: 2px;
+                height: 1px;
                 background: linear-gradient(
                     90deg,
                     transparent,
-                    #ffd700,
+                    rgba(255, 255, 255, 0.1),
                     transparent
                 );
                 margin: 2rem 0;
                 position: relative;
                 border-radius: 1px;
+                border: 0;
             }
 
             .line::after {
                 content: "";
                 position: absolute;
-                top: 0;
+                top: 50%;
                 left: 50%;
-                transform: translateX(-50%);
-                width: 20px;
-                height: 2px;
-                background: #ffd700;
-                border-radius: 1px;
-                box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+                transform: translate(-50%, -50%);
+                width: 4px;
+                height: 4px;
+                background: rgba(255, 255, 255, 0.2);
+                border-radius: 50%;
+                box-shadow: 0 0 10px rgba(165, 180, 252, 0.2);
             }
 
             .stat {
-                background: linear-gradient(
-                    135deg,
-                    rgba(0, 0, 0, 0.4) 0%,
-                    rgba(15, 23, 42, 0.2) 100%
-                );
-                border: 1px solid rgba(99, 102, 241, 0.1);
+                background-color: rgba(255, 255, 255, 0.04);
+                border: 1px solid rgba(255, 255, 255, 0.08);
                 border-radius: 0.75rem;
                 padding: 1rem;
                 margin: 1rem 0;
@@ -389,16 +363,15 @@
                 background: linear-gradient(
                     90deg,
                     transparent,
-                    rgba(99, 102, 241, 0.1),
+                    rgba(165, 180, 252, 0.05),
                     transparent
                 );
                 transition: left 0.5s ease;
             }
 
             .stat:hover {
-                border-color: rgba(99, 102, 241, 0.2);
-                transform: translateY(-2px);
-                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+                background-color: rgba(255, 255, 255, 0.08);
+                border-color: rgba(255, 255, 255, 0.15);
             }
 
             .stat:hover::before {
@@ -427,7 +400,7 @@
             }
 
             *:focus-visible {
-                outline: 2px solid #ffd700;
+                outline: 2px solid #a5b4fc;
                 outline-offset: 2px;
                 border-radius: 4px;
             }
@@ -557,25 +530,25 @@
             }
 
             ::selection {
-                background: rgba(255, 215, 0, 0.3);
-                color: #fff;
+                background: rgba(79, 70, 229, 0.3);
+                color: #e0e7ff;
             }
 
             ::-moz-selection {
-                background: rgba(255, 215, 0, 0.3);
-                color: #fff;
+                background: rgba(79, 70, 229, 0.3);
+                color: #e0e7ff;
             }
 
-            .bg-dreame-yellow {
-                background-color: #ffd700;
+            .bg-space-indigo {
+                background-color: #6366f1;
             }
 
-            .text-dreame-yellow {
-                color: #ffd700;
+            .text-space-indigo {
+                color: #6366f1;
             }
 
-            .border-dreame-yellow {
-                border-color: #ffd700;
+            .border-space-indigo {
+                border-color: #6366f1;
             }
 
             .openai-button {
@@ -583,23 +556,23 @@
                 display: inline-flex;
                 align-items: center;
                 gap: 0.5rem;
-                background: linear-gradient(135deg, #ffd700 0%, #fbbf24 100%);
-                color: #000;
+                background: #4f46e5;
+                color: #e0e7ff;
                 font-weight: 600;
                 padding: 0.75rem 1.5rem;
                 border-radius: 0.75rem;
                 text-decoration: none;
                 transition: all 0.3s ease;
                 overflow: hidden;
-                box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
-                border: 2px solid transparent;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+                border: 1px solid rgba(255, 255, 255, 0.1);
             }
 
             .openai-button:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
-                background: linear-gradient(135deg, #fbbf24 0%, #ffd700 100%);
-                border-color: rgba(255, 215, 0, 0.5);
+                background: #6d28d9;
+                box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+                border-color: rgba(255, 255, 255, 0.15);
+                transform: translateY(-1px);
             }
 
             .openai-button::before {
@@ -609,28 +582,9 @@
                 left: -100%;
                 width: 100%;
                 height: 100%;
-                background: linear-gradient(
-                    90deg,
-                    transparent,
-                    rgba(255, 255, 255, 0.2),
-                    transparent
-                );
-                transition: left 0.5s ease;
-            }
-
-            .openai-button:hover::before {
-                left: 100%;
-            }
-
-            .openai-button .glow {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
                 background: radial-gradient(
                     circle,
-                    rgba(255, 215, 0, 0.3) 0%,
+                    rgba(165, 180, 252, 0.2) 0%,
                     transparent 70%
                 );
                 opacity: 0;
@@ -645,7 +599,7 @@
     </head>
 
     <body
-        class="bg-dreame-dark text-white transition-colors duration-300 animate-fade-in"
+        class="bg-dark-bg text-text-base transition-colors duration-300 animate-fade-in"
     >
         <!-- 공지 팝업 -->
         <div
@@ -655,13 +609,13 @@
             aria-labelledby="notice-title"
         >
             <div
-                class="bg-gradient-to-br from-gray-900/95 via-gray-800/95 to-gray-900/95 p-8 rounded-2xl shadow-2xl max-w-md w-full mx-4 animate-fade-in border border-gray-700/50 backdrop-blur-md"
+                class="bg-zinc-900/80 p-8 rounded-2xl shadow-2xl max-w-md w-full mx-4 animate-fade-in border border-white/10 backdrop-blur-md"
             >
                 <!-- 헤더 -->
                 <div class="flex items-center gap-3 mb-6">
                     <div class="flex-shrink-0">
                         <div
-                            class="w-10 h-10 bg-gradient-to-br from-dreame-yellow to-yellow-500 rounded-full flex items-center justify-center shadow-lg"
+                            class="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center shadow-lg"
                         >
                             <span class="text-lg">📢</span>
                         </div>
@@ -669,7 +623,7 @@
                     <div>
                         <h3
                             id="notice-title"
-                            class="text-xl font-bold text-dreame-yellow"
+                            class="text-xl font-bold text-indigo-300"
                         >
                             공지사항
                         </h3>
@@ -680,45 +634,35 @@
                 <div class="space-y-3 mb-6">
                     <div class="space-y-2">
                         <div class="flex items-start gap-2">
-                            <span class="text-dreame-yellow text-xs mt-1"
-                                >🔸</span
-                            >
+                            <span class="text-indigo-300 text-xs mt-1">🔸</span>
                             <p class="text-sm text-gray-300">
                                 <span class="font-medium">2025-00-00</span> ~
                                 cs부서 url 배포예정
                             </p>
                         </div>
                         <div class="flex items-start gap-2">
-                            <span class="text-dreame-yellow text-xs mt-1"
-                                >🔸</span
-                            >
+                            <span class="text-indigo-300 text-xs mt-1">🔸</span>
                             <p class="text-sm text-gray-300">
                                 <span class="font-medium">2025-05-14</span> ~
                                 AI학습 자료변경
                             </p>
                         </div>
                         <div class="flex items-start gap-2">
-                            <span class="text-dreame-yellow text-xs mt-1"
-                                >🔸</span
-                            >
+                            <span class="text-indigo-300 text-xs mt-1">🔸</span>
                             <p class="text-sm text-gray-300">
                                 <span class="font-medium">2025-05-16</span> ~
                                 DEV VERSION 0.9.0 BETA
                             </p>
                         </div>
                         <div class="flex items-start gap-2">
-                            <span class="text-dreame-yellow text-xs mt-1"
-                                >🔸</span
-                            >
+                            <span class="text-indigo-300 text-xs mt-1">🔸</span>
                             <p class="text-sm text-gray-300">
                                 <span class="font-medium">2025-05-20</span> ~
                                 1차 배포테스트진행
                             </p>
                         </div>
                         <div class="flex items-start gap-2">
-                            <span class="text-dreame-yellow text-xs mt-1"
-                                >🔸</span
-                            >
+                            <span class="text-indigo-300 text-xs mt-1">🔸</span>
                             <p class="text-sm text-gray-300">
                                 <span class="font-medium">2025-06-02</span> ~
                                 AI학습등 검증완료 / 개발완료
@@ -731,7 +675,7 @@
                 <div class="flex justify-end">
                     <button
                         onclick="closeNoticePopup()"
-                        class="bg-gradient-to-r from-dreame-yellow to-yellow-500 hover:from-yellow-400 hover:to-yellow-600 text-black font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 shadow-lg hover:shadow-xl"
+                        class="bg-indigo-600 hover:bg-violet-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 shadow-md hover:shadow-lg"
                         aria-label="공지사항 닫기"
                     >
                         확인
@@ -742,14 +686,14 @@
 
         <!-- 헤더 -->
         <header
-            class="sticky top-0 z-40 bg-gradient-to-r from-gray-900/95 via-gray-800/95 to-gray-900/95 border-b border-gray-700/50 shadow-lg backdrop-blur-md"
+            class="sticky top-0 z-40 bg-zinc-900/60 border-b border-white/10 shadow-lg backdrop-blur-md"
         >
             <div class="container mx-auto px-6 py-4">
                 <!-- 메인 헤더 영역 -->
                 <div class="flex items-center justify-center">
                     <!-- 타이틀 -->
                     <h1
-                        class="text-xl md:text-2xl font-bold text-dreame-yellow leading-tight cursor-pointer hover:text-yellow-400 transition-colors duration-300"
+                        class="text-xl md:text-2xl font-bold text-primary-light leading-tight cursor-pointer hover:text-indigo-200 transition-colors duration-300"
                         onclick="location.reload()"
                         title="클릭하면 새로고침됩니다"
                     >
@@ -760,7 +704,7 @@
         </header>
 
         <!-- 검색 및 네비게이션 영역 -->
-        <div class="bg-black/20 backdrop-blur-sm border-b border-gray-800/30">
+        <div class="bg-black/20 backdrop-blur-sm border-b border-white/5">
             <div class="container mx-auto px-6 py-3">
                 <!-- 검색창 -->
                 <div class="flex justify-center mb-4">
@@ -770,7 +714,7 @@
                             id="search-input"
                             placeholder="검색어를 입력하세요..."
                             oninput="filterContent()"
-                            class="w-full px-4 py-2.5 pl-12 rounded-lg bg-black/30 text-white border border-gray-700/50 focus:border-indigo-500/70 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 transition-all duration-200 placeholder-gray-400 text-sm"
+                            class="w-full px-4 py-2.5 pl-12 rounded-lg bg-zinc-800/60 text-gray-200 border border-white/10 focus:border-indigo-400/70 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 transition-all duration-200 placeholder-gray-500 text-sm"
                             aria-label="콘텐츠 검색"
                         />
                         <div
@@ -788,7 +732,7 @@
                     >
                         <button
                             onclick="showTab('ai')"
-                            class="flex items-center gap-2 hover:text-dreame-yellow transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 rounded-lg px-3 py-2 hover:bg-black/30 text-gray-300"
+                            class="flex items-center gap-2 hover:text-indigo-200 text-gray-300 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 rounded-lg px-3 py-2 hover:bg-white/5"
                             role="tab"
                             aria-selected="true"
                             title="AI 비서"
@@ -816,7 +760,7 @@
                         </button>
                         <button
                             onclick="showTab('promo')"
-                            class="flex items-center gap-2 hover:text-dreame-yellow transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 rounded-lg px-3 py-2 hover:bg-black/30 text-gray-300"
+                            class="flex items-center gap-2 hover:text-indigo-200 text-gray-300 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 rounded-lg px-3 py-2 hover:bg-white/5"
                             role="tab"
                             aria-selected="false"
                             title="Manual"
@@ -839,7 +783,7 @@
                         </button>
                         <button
                             onclick="showTab('notice')"
-                            class="flex items-center gap-2 hover:text-dreame-yellow transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 rounded-lg px-3 py-2 hover:bg-black/30 text-gray-300"
+                            class="flex items-center gap-2 hover:text-indigo-200 text-gray-300 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 rounded-lg px-3 py-2 hover:bg-white/5"
                             role="tab"
                             aria-selected="false"
                             title="이벤트"
@@ -862,7 +806,7 @@
                         </button>
                         <button
                             onclick="showTab('edu')"
-                            class="flex items-center gap-2 hover:text-dreame-yellow transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 rounded-lg px-3 py-2 hover:bg-black/30 text-gray-300"
+                            class="flex items-center gap-2 hover:text-indigo-200 text-gray-300 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 rounded-lg px-3 py-2 hover:bg-white/5"
                             role="tab"
                             aria-selected="false"
                             title="교육"
@@ -917,6 +861,25 @@
 
                     <!-- Right: Content (유동폭) -->
                     <div class="flex-1 space-y-4 lg:space-y-6">
+                        <h2
+                            class="text-indigo-300 text-xl font-semibold flex items-center gap-2"
+                        >
+                            AI 비서
+                            <span class="relative flex items-center gap-1">
+                                <span class="relative flex size-3">
+                                    <span
+                                        class="absolute inline-flex h-full w-full animate-ping rounded-full bg-indigo-400 opacity-75"
+                                    ></span>
+                                    <span
+                                        class="relative inline-flex size-3 rounded-full bg-indigo-500"
+                                    ></span>
+                                </span>
+                                <span class="text-xs text-indigo-300"
+                                    >online</span
+                                >
+                            </span>
+                        </h2>
+
                         <p class="text-xm text-gray-400">
                             AI 서비스 는 더 나은 서비스를 위해 지속적으로
                             업데이트되고 있습니다.<br />
@@ -926,14 +889,14 @@
 
                         <!-- 버튼 & 데이터 현황판 -->
                         <div
-                            class="flex flex-col lg:flex-row items-stretch gap-3"
+                            class="flex flex-col md:flex-row items-stretch gap-3"
                         >
                             <!-- OpenAI 버튼 -->
                             <a
                                 href="https://chatgpt.com/g/g-684941827b2c81918120b22f5504c6ce-dreame-sangdamweonpoteol-ver-2"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                class="openai-button"
+                                class="openai-button flex-shrink-0"
                                 aria-label="OpenAI로 이동"
                             >
                                 <div class="glow"></div>
@@ -941,57 +904,57 @@
                                 <span>Open AI 이동</span>
                             </a>
 
-                            <div class="flex gap-2">
+                            <div class="flex-grow flex gap-2">
                                 <!-- 러닝 데이터 -->
                                 <div
-                                    class="relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 text-white rounded-xl flex flex-col justify-center items-center px-6 py-3 border border-dreame-yellow/50 shadow-lg transition-all duration-300 hover:scale-105 hover:border-dreame-yellow hover:shadow-dreame-yellow/20 group min-w-[100px] h-[60px]"
+                                    class="relative overflow-hidden bg-white/5 hover:bg-white/10 text-gray-300 hover:text-indigo-100 rounded-xl flex flex-col justify-center items-center px-6 py-3 border border-white/10 shadow-md transition-all duration-300 group min-w-[100px] h-[60px] w-1/3"
                                 >
                                     <div
-                                        class="absolute top-0 right-0 w-6 h-6 bg-dreame-yellow/10 rounded-bl-full transition-all duration-300 group-hover:bg-dreame-yellow/20"
+                                        class="absolute top-0 right-0 w-6 h-6 bg-indigo-500/10 rounded-bl-full transition-all duration-300 group-hover:bg-indigo-500/20"
                                     ></div>
                                     <div
-                                        class="text-dreame-yellow text-sm font-bold leading-none mb-1"
+                                        class="text-indigo-300 text-sm font-bold leading-none mb-1"
                                     >
                                         📊 248
                                     </div>
                                     <p
-                                        class="text-xs text-gray-300 font-medium text-center"
+                                        class="text-xs text-gray-400 font-medium text-center"
                                     >
                                         러닝 데이터
                                     </p>
                                 </div>
                                 <!-- 내부 자료 -->
                                 <div
-                                    class="relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 text-white rounded-xl flex flex-col justify-center items-center px-6 py-3 border border-dreame-yellow/50 shadow-lg transition-all duration-300 hover:scale-105 hover:border-dreame-yellow hover:shadow-dreame-yellow/20 group min-w-[100px] h-[60px]"
+                                    class="relative overflow-hidden bg-white/5 hover:bg-white/10 text-gray-300 hover:text-indigo-100 rounded-xl flex flex-col justify-center items-center px-6 py-3 border border-white/10 shadow-md transition-all duration-300 group min-w-[100px] h-[60px] w-1/3"
                                 >
                                     <div
-                                        class="absolute top-0 right-0 w-6 h-6 bg-dreame-yellow/10 rounded-bl-full transition-all duration-300 group-hover:bg-dreame-yellow/20"
+                                        class="absolute top-0 right-0 w-6 h-6 bg-indigo-500/10 rounded-bl-full transition-all duration-300 group-hover:bg-indigo-500/20"
                                     ></div>
                                     <div
-                                        class="text-dreame-yellow text-sm font-bold leading-none mb-1"
+                                        class="text-indigo-300 text-sm font-bold leading-none mb-1"
                                     >
                                         📚 312
                                     </div>
                                     <p
-                                        class="text-xs text-gray-300 font-medium text-center"
+                                        class="text-xs text-gray-400 font-medium text-center"
                                     >
                                         내부 자료
                                     </p>
                                 </div>
                                 <!-- 학습요청 접수 건수 -->
                                 <div
-                                    class="relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 text-white rounded-xl flex flex-col justify-center items-center px-6 py-3 border border-red-500/50 shadow-lg transition-all duration-300 hover:scale-105 hover:border-red-500 hover:shadow-red-500/20 group min-w-[100px] h-[60px]"
+                                    class="relative overflow-hidden bg-white/5 hover:bg-white/10 text-gray-300 hover:text-indigo-100 rounded-xl flex flex-col justify-center items-center px-6 py-3 border border-accent-red/30 shadow-md transition-all duration-300 hover:border-accent-red/50 group min-w-[100px] h-[60px] w-1/3"
                                 >
                                     <div
-                                        class="absolute top-0 right-0 w-6 h-6 bg-red-500/10 rounded-bl-full transition-all duration-300 group-hover:bg-red-500/20"
+                                        class="absolute top-0 right-0 w-6 h-6 bg-accent-red/10 rounded-bl-full transition-all duration-300 group-hover:bg-accent-red/20"
                                     ></div>
                                     <div
-                                        class="text-red-400 text-sm font-bold leading-none mb-1"
+                                        class="text-accent-red text-sm font-bold leading-none mb-1"
                                     >
                                         📝 0
                                     </div>
                                     <p
-                                        class="text-xs text-gray-300 font-medium text-center"
+                                        class="text-xs text-gray-400 font-medium text-center"
                                     >
                                         학습요청 접수 건수
                                     </p>
@@ -1004,36 +967,37 @@
 
                         <!-- 상담가능 품목 -->
                         <div class="stat">
-                            <span class="ml-2 text-sm font-semibold"
+                            <span
+                                class="ml-2 text-sm font-semibold text-indigo-200"
                                 >상담가능 품목</span
                             >
                             <div class="flex flex-wrap gap-2 mt-2">
                                 <span
-                                    class="text-xs bg-blue-500 text-white py-1 px-2 rounded-full"
+                                    class="text-xs bg-zinc-800 text-gray-300 py-1 px-3 rounded-full border border-zinc-700"
                                     >X50sProUltra</span
                                 >
                                 <span
-                                    class="text-xs bg-rose-500 text-white py-1 px-2 rounded-full"
+                                    class="text-xs bg-zinc-800 text-gray-300 py-1 px-3 rounded-full border border-zinc-700"
                                     >X50master</span
                                 >
                                 <span
-                                    class="text-xs bg-orange-500 text-white py-1 px-2 rounded-full"
+                                    class="text-xs bg-zinc-800 text-gray-300 py-1 px-3 rounded-full border border-zinc-700"
                                     >X50Ultra</span
                                 >
                                 <span
-                                    class="text-xs bg-yellow-500 text-black py-1 px-2 rounded-full"
+                                    class="text-xs bg-zinc-800 text-gray-300 py-1 px-3 rounded-full border border-zinc-700"
                                     >X40Ultra</span
                                 >
                                 <span
-                                    class="text-xs bg-lime-500 text-black py-1 px-2 rounded-full"
+                                    class="text-xs bg-zinc-800 text-gray-300 py-1 px-3 rounded-full border border-zinc-700"
                                     >L20Ultra</span
                                 >
                                 <span
-                                    class="text-xs bg-emerald-500 text-white py-1 px-2 rounded-full"
+                                    class="text-xs bg-zinc-800 text-gray-300 py-1 px-3 rounded-full border border-zinc-700"
                                     >L10s히트</span
                                 >
                                 <span
-                                    class="text-xs bg-cyan-500 text-black py-1 px-2 rounded-full"
+                                    class="text-xs bg-zinc-800 text-gray-300 py-1 px-3 rounded-full border border-zinc-700"
                                     >L10Prime</span
                                 >
                             </div>
@@ -1046,7 +1010,7 @@
                     <!-- 사용방법 안내서 -->
                     <details class="mt-4 lg:mt-6">
                         <summary
-                            class="text-lg font-semibold text-dreame-yellow cursor-pointer focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                            class="text-lg font-semibold text-indigo-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 rounded px-2 py-1"
                         >
                             사용방법 안내서
                         </summary>
@@ -1063,11 +1027,11 @@
 
                     <details class="mt-4 lg:mt-6">
                         <summary
-                            class="text-lg font-semibold text-dreame-yellow cursor-pointer focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                            class="text-lg font-semibold text-indigo-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 rounded px-2 py-1"
                         >
                             오류접수 양식
                         </summary>
-                        <div class="mt-4 space-y-2 text-sm">
+                        <div class="mt-4 space-y-2 text-sm text-gray-400">
                             <p>1. 문의 내용</p>
                             <p>2. GPT 답변 내용</p>
                             <p>3. 재학습 요청 내용</p>
@@ -1079,7 +1043,7 @@
                                 📧
                                 <a
                                     href="mailto:jyh@eibe.co.kr"
-                                    class="text-blue-400 hover:text-blue-600 transition-colors duration-200"
+                                    class="text-indigo-300 hover:text-indigo-200 transition-colors duration-200"
                                     >jyh@eibe.co.kr</a
                                 >
                             </p>
@@ -1095,7 +1059,7 @@
                 role="tabpanel"
                 aria-labelledby="promo-tab"
             >
-                <h2 class="text-xl font-bold text-dreame-yellow mb-6">
+                <h2 class="text-xl font-bold text-indigo-300 mb-6">
                     📱 Dreame Manual
                 </h2>
 
@@ -1106,9 +1070,9 @@
                 <!-- X50 (Master,Ultra) -->
                 <details class="mb-4">
                     <summary
-                        class="text-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                        class="text-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 rounded px-2 py-1 hover:text-indigo-200"
                     >
-                        <span class="text-dreame-yellow">X50</span>
+                        <span class="text-indigo-300">X50</span>
                         (Master,Ultra) Dreame Home APP 사용 설명서📱
                     </summary>
                     <div class="mt-4 pdf-container">
@@ -1124,9 +1088,9 @@
 
                 <details class="mb-4">
                     <summary
-                        class="text-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                        class="text-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 rounded px-2 py-1 hover:text-indigo-200"
                     >
-                        <span class="text-dreame-yellow">X50</span>
+                        <span class="text-indigo-300">X50</span>
                         (Master,Ultra) 음성명령어 리스트📱
                     </summary>
                     <div class="mt-4 pdf-container">
@@ -1142,9 +1106,9 @@
 
                 <details class="mb-4">
                     <summary
-                        class="text-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                        class="text-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 rounded px-2 py-1 hover:text-indigo-200"
                     >
-                        <span class="text-dreame-yellow">X50</span>
+                        <span class="text-indigo-300">X50</span>
                         (sProUltra) 사용 설명서📄
                     </summary>
                     <div class="mt-4 pdf-container">
@@ -1160,9 +1124,9 @@
 
                 <details class="mb-4">
                     <summary
-                        class="text-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                        class="text-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 rounded px-2 py-1 hover:text-indigo-200"
                     >
-                        <span class="text-dreame-yellow">X50</span>
+                        <span class="text-indigo-300">X50</span>
                         (Master) 사용 설명서📄
                     </summary>
                     <div class="mt-4 pdf-container">
@@ -1178,9 +1142,9 @@
 
                 <details class="mb-4">
                     <summary
-                        class="text-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                        class="text-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 rounded px-2 py-1 hover:text-indigo-200"
                     >
-                        <span class="text-dreame-yellow">X50</span>
+                        <span class="text-indigo-300">X50</span>
                         (Ultra) 사용 설명서📄
                     </summary>
                     <div class="mt-4 pdf-container">
@@ -1196,9 +1160,9 @@
 
                 <details class="mb-4">
                     <summary
-                        class="text-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                        class="text-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 rounded px-2 py-1 hover:text-indigo-200"
                     >
-                        <span class="text-dreame-yellow">X50</span>
+                        <span class="text-indigo-300">X50</span>
                         (Master) 직배수 키트 가이드🎬
                     </summary>
                     <div class="mt-4 aspect-video">
@@ -1216,9 +1180,9 @@
                 <!-- X40 (Ultra) -->
                 <details class="mb-4">
                     <summary
-                        class="text-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                        class="text-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 rounded px-2 py-1 hover:text-indigo-200"
                     >
-                        <span class="text-green-400">X40</span>
+                        <span class="text-indigo-300">X40</span>
                         (Ultra) Dreame Home APP 사용 설명서📱
                     </summary>
                     <div class="mt-4 pdf-container">
@@ -1234,9 +1198,9 @@
 
                 <details class="mb-4">
                     <summary
-                        class="text-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                        class="text-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 rounded px-2 py-1 hover:text-indigo-200"
                     >
-                        <span class="text-green-400">X40</span>
+                        <span class="text-indigo-300">X40</span>
                         (Ultra) 사용 설명서📄
                     </summary>
                     <div class="mt-4 pdf-container">
@@ -1252,9 +1216,9 @@
 
                 <details class="mb-4">
                     <summary
-                        class="text-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                        class="text-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 rounded px-2 py-1 hover:text-indigo-200"
                     >
-                        <span class="text-green-400">X40</span>
+                        <span class="text-indigo-300">X40</span>
                         (Ultra) L10s히트 직배수 키트 가이드🎬
                     </summary>
                     <div class="mt-4 aspect-video">
@@ -1273,9 +1237,9 @@
                 <!-- L20 (Ultra) -->
                 <details class="mb-4">
                     <summary
-                        class="text-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                        class="text-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 rounded px-2 py-1 hover:text-indigo-200"
                     >
-                        <span class="text-blue-400">L20</span>
+                        <span class="text-indigo-300">L20</span>
                         (Ultra) Dreame Home APP 사용 설명서📱
                     </summary>
                     <div class="mt-4 pdf-container">
@@ -1291,9 +1255,9 @@
 
                 <details class="mb-4">
                     <summary
-                        class="text-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                        class="text-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 rounded px-2 py-1 hover:text-indigo-200"
                     >
-                        <span class="text-blue-400">L20</span>
+                        <span class="text-indigo-300">L20</span>
                         (Ultra) 사용 설명서📄
                     </summary>
                     <div class="mt-4 pdf-container">
@@ -1309,9 +1273,9 @@
 
                 <details class="mb-4">
                     <summary
-                        class="text-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                        class="text-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 rounded px-2 py-1 hover:text-indigo-200"
                     >
-                        <span class="text-blue-400">L20</span>
+                        <span class="text-indigo-300">L20</span>
                         (Ultra) 직배수 키트 가이드🎬
                     </summary>
                     <div class="mt-4 aspect-video">
@@ -1330,9 +1294,9 @@
                 <!-- L10 Prime -->
                 <details class="mb-4">
                     <summary
-                        class="text-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                        class="text-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 rounded px-2 py-1 hover:text-indigo-200"
                     >
-                        <span class="text-pink-400">L10</span>
+                        <span class="text-indigo-300">L10</span>
                         (Prime) 사용 설명서📄
                     </summary>
                     <iframe
@@ -1351,7 +1315,7 @@
                 role="tabpanel"
                 aria-labelledby="notice-tab"
             >
-                <h2 class="text-xl font-bold text-dreame-yellow mb-6">
+                <h2 class="text-xl font-bold text-indigo-300 mb-6">
                     📢 이벤트/참고자료
                 </h2>
 
@@ -1361,7 +1325,7 @@
                 <!-- 이벤트/프로모션 아코디언 -->
                 <details class="mb-4">
                     <summary
-                        class="text-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                        class="text-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 rounded px-2 py-1 hover:text-indigo-200"
                     >
                         이벤트 및 프로모션 URL
                     </summary>
@@ -1370,7 +1334,7 @@
                             href="https://brand.naver.com/dreame?nt_source=sa&nt_medium=bsa&nt_detail=PC_X50s%20Pro%20Ultra&n_media=27758&n_query=%EB%93%9C%EB%A6%AC%EB%AF%B8%EC%B2%AD%EC%86%8C%EA%B8%B0&n_rank=1&n_ad_group=grp-a001-04-000000049414587&n_ad=nad-a001-04-000000379769501&n_keyword_id=nkw-a001-04-000007034726027&n_keyword=%EB%93%9C%EB%A6%AC%EB%AF%B8%EC%B2%AD%EC%86%8C%EA%B8%B0&n_campaign_type=4&n_contract=tct-a001-04-000000001078312&n_ad_group_type=5&NaPm=ct%3Dmam9x8ug%7Cci%3D0yC0001j22bCz1jPsLp7%7Ctr%3Dbrnd%7Chk%3D5737ecd64f80286d53d788f35f618bdcf9162b34%7Cnacn%3DGwtYBoAAwOEg"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="block text-blue-400 underline hover:text-blue-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 rounded px-2 py-1"
+                            class="block text-indigo-300 underline hover:text-indigo-200 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 rounded px-2 py-1"
                         >
                             🏠 공식 홈페이지
                         </a>
@@ -1378,7 +1342,7 @@
                             href="https://brand.naver.com/dreame/shoppingstory/list?cp=1"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="block text-blue-400 underline hover:text-blue-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 rounded px-2 py-1"
+                            class="block text-indigo-300 underline hover:text-indigo-200 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 rounded px-2 py-1"
                         >
                             🎁 지금 진행 중인 쇼핑스토리 & 프로모션 보기
                         </a>
@@ -1386,7 +1350,7 @@
                             href="https://dreametechkorea.com/support/service_center"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="block text-blue-400 underline hover:text-blue-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 rounded px-2 py-1"
+                            class="block text-indigo-300 underline hover:text-indigo-200 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 rounded px-2 py-1"
                         >
                             🛠 가까운 오프라인 매장 및 A/S 센터 찾기
                         </a>
@@ -1394,7 +1358,7 @@
                             href="https://dreametechkorea.com/event/live"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="block text-blue-400 underline hover:text-blue-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 rounded px-2 py-1"
+                            class="block text-indigo-300 underline hover:text-indigo-200 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 rounded px-2 py-1"
                         >
                             📺 지금 바로! 드리미 라이브 방송 보기
                         </a>
@@ -1402,7 +1366,7 @@
                             href="https://dreametechkorea.com/event/benefits"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="block text-blue-400 underline hover:text-blue-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 rounded px-2 py-1"
+                            class="block text-indigo-300 underline hover:text-indigo-200 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 rounded px-2 py-1"
                         >
                             🎉 이달의 특별한 혜택 확인하기
                         </a>
@@ -1417,7 +1381,7 @@
                 role="tabpanel"
                 aria-labelledby="edu-tab"
             >
-                <h2 class="text-xl font-bold text-dreame-yellow mb-6">
+                <h2 class="text-xl font-bold text-indigo-300 mb-6">
                     📚 교육자료
                 </h2>
 
@@ -1427,9 +1391,9 @@
                 <!-- 제품 교육 자료 -->
                 <details class="mb-4">
                     <summary
-                        class="text-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                        class="text-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 rounded px-2 py-1 hover:text-indigo-200"
                     >
-                        <span class="text-blue-400">제품</span>
+                        <span class="text-indigo-300">제품</span>
                         교육 자료📋
                     </summary>
                     <div class="mt-4 space-y-4">
@@ -1447,9 +1411,9 @@
                 <!-- 서비스 교육 자료 -->
                 <details class="mb-4">
                     <summary
-                        class="text-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                        class="text-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 rounded px-2 py-1 hover:text-indigo-200"
                     >
-                        <span class="text-green-400">서비스</span>
+                        <span class="text-indigo-300">서비스</span>
                         교육 자료📖
                     </summary>
                     <div class="mt-4 space-y-4">
@@ -1468,9 +1432,9 @@
                 <!-- 추가 교육 자료 (확장용) -->
                 <details class="mb-4">
                     <summary
-                        class="text-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-dreame-yellow focus:ring-opacity-50 rounded px-2 py-1"
+                        class="text-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 rounded px-2 py-1 hover:text-indigo-200"
                     >
-                        <span class="text-purple-400">기타</span>
+                        <span class="text-indigo-300">기타</span>
                         교육 자료📚
                     </summary>
                     <div class="mt-4 space-y-4">
@@ -1512,8 +1476,8 @@
                 tabButtons.forEach((button) => {
                     button.setAttribute("aria-selected", "false");
                     button.classList.remove(
-                        "text-dreame-yellow",
-                        "bg-black/30",
+                        "text-indigo-300",
+                        "bg-white/10",
                         "border-b-2",
                         "border-indigo-500"
                     );
@@ -1537,8 +1501,8 @@
                     selectedButton.setAttribute("aria-selected", "true");
                     selectedButton.classList.remove("text-gray-300");
                     selectedButton.classList.add(
-                        "text-dreame-yellow",
-                        "bg-black/30",
+                        "text-indigo-300",
+                        "bg-white/10",
                         "border-b-2",
                         "border-indigo-500"
                     );
@@ -1574,7 +1538,7 @@
 
                 const headerTitle = document.querySelector("header h1");
                 if (headerTitle && titleMap[tabName]) {
-                    headerTitle.innerHTML = `<span class="bg-gradient-to-r from-dreame-yellow via-yellow-400 to-dreame-yellow bg-clip-text text-transparent">드리미 상담포털</span>`;
+                    headerTitle.innerHTML = `<span class="bg-gradient-to-r from-primary-light via-indigo-400 to-primary-light bg-clip-text text-transparent">드리미 상담포털</span>`;
                 }
             }
 
