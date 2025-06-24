@@ -22,30 +22,193 @@
                 darkMode: "class",
                 theme: {
                     extend: {
+                        fontFamily: {
+                            sans: [
+                                "Pretendard",
+                                "-apple-system",
+                                "BlinkMacSystemFont",
+                                "Segoe UI",
+                                "Roboto",
+                                "sans-serif",
+                            ],
+                            display: ["Pretendard", "system-ui", "sans-serif"],
+                        },
+                        fontSize: {
+                            xs: ["0.75rem", { lineHeight: "1.4" }],
+                            sm: ["0.875rem", { lineHeight: "1.5" }],
+                            base: ["1rem", { lineHeight: "1.6" }],
+                            lg: ["1.125rem", { lineHeight: "1.6" }],
+                            xl: ["1.25rem", { lineHeight: "1.5" }],
+                            "2xl": ["1.5rem", { lineHeight: "1.4" }],
+                            "3xl": ["1.875rem", { lineHeight: "1.3" }],
+                            "4xl": ["2.25rem", { lineHeight: "1.2" }],
+                            "5xl": ["3rem", { lineHeight: "1.1" }],
+                            "6xl": ["3.75rem", { lineHeight: "1" }],
+                        },
+                        spacing: {
+                            18: "4.5rem",
+                            88: "22rem",
+                            128: "32rem",
+                        },
                         animation: {
                             "fade-in": "fadeIn 0.8s ease forwards",
-                            "slide-in": "slideIn 0.5s ease forwards",
+                            "fade-in-up": "fadeInUp 0.8s ease forwards",
+                            "fade-in-down": "fadeInDown 0.8s ease forwards",
+                            "slide-in-left": "slideInLeft 0.6s ease forwards",
+                            "slide-in-right": "slideInRight 0.6s ease forwards",
+                            "slide-in-up": "slideInUp 0.6s ease forwards",
                             "pulse-slow": "pulse 3s infinite",
+                            "bounce-slow": "bounce 2s infinite",
+                            float: "float 3s ease-in-out infinite",
+                            glow: "glow 2s ease-in-out infinite alternate",
+                            shimmer: "shimmer 2s linear infinite",
+                            "gradient-x": "gradient-x 3s ease infinite",
+                            "gradient-y": "gradient-y 3s ease infinite",
+                            "gradient-xy": "gradient-xy 3s ease infinite",
                         },
                         keyframes: {
                             fadeIn: {
+                                "0%": { opacity: 0 },
+                                "100%": { opacity: 1 },
+                            },
+                            fadeInUp: {
                                 "0%": {
                                     opacity: 0,
-                                    transform: "translateY(20px)",
+                                    transform: "translateY(30px)",
                                 },
                                 "100%": {
                                     opacity: 1,
                                     transform: "translateY(0)",
                                 },
                             },
-                            slideIn: {
+                            fadeInDown: {
+                                "0%": {
+                                    opacity: 0,
+                                    transform: "translateY(-30px)",
+                                },
+                                "100%": {
+                                    opacity: 1,
+                                    transform: "translateY(0)",
+                                },
+                            },
+                            slideInLeft: {
                                 "0%": { transform: "translateX(-100%)" },
                                 "100%": { transform: "translateX(0)" },
                             },
+                            slideInRight: {
+                                "0%": { transform: "translateX(100%)" },
+                                "100%": { transform: "translateX(0)" },
+                            },
+                            slideInUp: {
+                                "0%": { transform: "translateY(100%)" },
+                                "100%": { transform: "translateY(0)" },
+                            },
+                            float: {
+                                "0%, 100%": { transform: "translateY(0px)" },
+                                "50%": { transform: "translateY(-10px)" },
+                            },
+                            glow: {
+                                "0%": {
+                                    boxShadow:
+                                        "0 0 20px rgba(255, 215, 0, 0.3)",
+                                },
+                                "100%": {
+                                    boxShadow:
+                                        "0 0 30px rgba(255, 215, 0, 0.6)",
+                                },
+                            },
+                            shimmer: {
+                                "0%": { backgroundPosition: "-200% 0" },
+                                "100%": { backgroundPosition: "200% 0" },
+                            },
+                            "gradient-x": {
+                                "0%, 100%": { backgroundPosition: "0% 50%" },
+                                "50%": { backgroundPosition: "100% 50%" },
+                            },
+                            "gradient-y": {
+                                "0%, 100%": { backgroundPosition: "50% 0%" },
+                                "50%": { backgroundPosition: "50% 100%" },
+                            },
+                            "gradient-xy": {
+                                "0%, 100%": { backgroundPosition: "0% 0%" },
+                                "25%": { backgroundPosition: "100% 0%" },
+                                "50%": { backgroundPosition: "100% 100%" },
+                                "75%": { backgroundPosition: "0% 100%" },
+                            },
                         },
                         colors: {
+                            dreame: {
+                                50: "#fffbf0",
+                                100: "#fef3c7",
+                                200: "#fde68a",
+                                300: "#fcd34d",
+                                400: "#fbbf24",
+                                500: "#f59e0b",
+                                600: "#d97706",
+                                700: "#b45309",
+                                800: "#92400e",
+                                900: "#78350f",
+                                950: "#451a03",
+                            },
                             "dreame-yellow": "#FFD700",
-                            "dreame-dark": "#121212",
+                            "dreame-dark": "#0a0a0a",
+                            "dreame-darker": "#050505",
+                            "dreame-light": "#fafafa",
+                            "dreame-gray": {
+                                50: "#f9fafb",
+                                100: "#f3f4f6",
+                                200: "#e5e7eb",
+                                300: "#d1d5db",
+                                400: "#9ca3af",
+                                500: "#6b7280",
+                                600: "#4b5563",
+                                700: "#374151",
+                                800: "#1f2937",
+                                900: "#111827",
+                                950: "#030712",
+                            },
+                        },
+                        backgroundImage: {
+                            "gradient-radial":
+                                "radial-gradient(var(--tw-gradient-stops))",
+                            "gradient-conic":
+                                "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+                            "gradient-mesh":
+                                "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                            "gradient-sunset":
+                                "linear-gradient(135deg, #ff6b6b 0%, #feca57 50%, #48dbfb 100%)",
+                            "gradient-ocean":
+                                "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                            "gradient-forest":
+                                "linear-gradient(135deg, #11998e 0%, #38ef7d 100%)",
+                            "gradient-fire":
+                                "linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%)",
+                        },
+                        boxShadow: {
+                            soft: "0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)",
+                            medium: "0 4px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+                            large: "0 10px 40px -10px rgba(0, 0, 0, 0.15), 0 2px 10px -2px rgba(0, 0, 0, 0.05)",
+                            glow: "0 0 20px rgba(255, 215, 0, 0.3)",
+                            "glow-lg": "0 0 40px rgba(255, 215, 0, 0.4)",
+                            "inner-soft":
+                                "inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)",
+                        },
+                        backdropBlur: {
+                            xs: "2px",
+                        },
+                        borderRadius: {
+                            "4xl": "2rem",
+                            "5xl": "2.5rem",
+                        },
+                        transitionDuration: {
+                            400: "400ms",
+                            600: "600ms",
+                            800: "800ms",
+                        },
+                        transitionTimingFunction: {
+                            "bounce-in":
+                                "cubic-bezier(0.68, -0.55, 0.265, 1.55)",
+                            smooth: "cubic-bezier(0.4, 0, 0.2, 1)",
                         },
                     },
                 },
@@ -90,444 +253,653 @@
 
         <!-- 통합 CSS 스타일 -->
         <style>
+            /* CSS 변수 정의 - SaaS 고도화 */
+            :root {
+                /* Primary Colors */
+                --dreame-primary: #ffd700;
+                --dreame-primary-dark: #f59e0b;
+                --dreame-primary-light: #fef3c7;
+                --dreame-secondary: #6366f1;
+                --dreame-accent: #10b981;
+                --dreame-warning: #f59e0b;
+                --dreame-error: #ef4444;
+                --dreame-success: #10b981;
+                --dreame-info: #3b82f6;
+
+                /* Background Colors - Enhanced */
+                --dreame-bg-primary: #0a0a0a;
+                --dreame-bg-secondary: #111111;
+                --dreame-bg-tertiary: #1a1a1a;
+                --dreame-bg-elevated: #1f1f1f;
+                --dreame-bg-overlay: rgba(0, 0, 0, 0.85);
+                --dreame-bg-glass: rgba(31, 31, 31, 0.8);
+                --dreame-bg-card: rgba(31, 31, 31, 0.95);
+
+                /* Text Colors - Enhanced */
+                --dreame-text-primary: #ffffff;
+                --dreame-text-secondary: #e5e7eb;
+                --dreame-text-tertiary: #9ca3af;
+                --dreame-text-muted: #6b7280;
+                --dreame-text-accent: #fbbf24;
+
+                /* Border Colors - Enhanced */
+                --dreame-border-light: rgba(255, 255, 255, 0.08);
+                --dreame-border-medium: rgba(255, 255, 255, 0.15);
+                --dreame-border-strong: rgba(255, 255, 255, 0.25);
+                --dreame-border-primary: rgba(255, 215, 0, 0.3);
+
+                /* Shadow System - Enhanced */
+                --dreame-shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+                --dreame-shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+                    0 1px 2px 0 rgba(0, 0, 0, 0.06);
+                --dreame-shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+                --dreame-shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+                    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+                --dreame-shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+                    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+                --dreame-shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+                --dreame-shadow-glow: 0 0 20px rgba(255, 215, 0, 0.3);
+                --dreame-shadow-glow-lg: 0 0 40px rgba(255, 215, 0, 0.4);
+
+                /* Border Radius - Enhanced */
+                --dreame-radius-xs: 0.25rem;
+                --dreame-radius-sm: 0.375rem;
+                --dreame-radius-md: 0.5rem;
+                --dreame-radius-lg: 0.75rem;
+                --dreame-radius-xl: 1rem;
+                --dreame-radius-2xl: 1.5rem;
+                --dreame-radius-3xl: 2rem;
+
+                /* Transitions - Enhanced */
+                --dreame-transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+                --dreame-transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+                --dreame-transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+                --dreame-transition-bounce: 400ms
+                    cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+                /* Spacing - Enhanced */
+                --dreame-space-xs: 0.5rem;
+                --dreame-space-sm: 0.75rem;
+                --dreame-space-md: 1rem;
+                --dreame-space-lg: 1.5rem;
+                --dreame-space-xl: 2rem;
+                --dreame-space-2xl: 3rem;
+                --dreame-space-3xl: 4rem;
+
+                /* Typography - Enhanced */
+                --dreame-font-size-xs: 0.75rem;
+                --dreame-font-size-sm: 0.875rem;
+                --dreame-font-size-base: 1rem;
+                --dreame-font-size-lg: 1.125rem;
+                --dreame-font-size-xl: 1.25rem;
+                --dreame-font-size-2xl: 1.5rem;
+                --dreame-font-size-3xl: 1.875rem;
+                --dreame-font-size-4xl: 2.25rem;
+                --dreame-font-size-5xl: 3rem;
+
+                /* Line Heights - Enhanced */
+                --dreame-leading-tight: 1.25;
+                --dreame-leading-snug: 1.375;
+                --dreame-leading-normal: 1.5;
+                --dreame-leading-relaxed: 1.625;
+                --dreame-leading-loose: 2;
+            }
+
+            /* 기본 스타일 리셋 및 설정 - Enhanced */
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            *::before,
+            *::after {
+                box-sizing: border-box;
+            }
+
+            html {
+                scroll-behavior: smooth;
+                -webkit-text-size-adjust: 100%;
+                -ms-text-size-adjust: 100%;
+                font-size: 16px;
+            }
+
             body {
                 font-family: "Pretendard", -apple-system, BlinkMacSystemFont,
-                    "Segoe UI", Roboto, sans-serif;
-                line-height: 1.7;
+                    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+                font-size: var(--dreame-font-size-base);
+                line-height: var(--dreame-leading-normal);
                 font-weight: 400;
+                color: #f3f3f3 !important;
+                background: #181a20 !important;
                 -webkit-font-smoothing: antialiased;
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-tap-highlight-color: transparent;
                 touch-action: manipulation;
-                padding-top: 0;
-                margin: 0;
-                background: linear-gradient(
-                    135deg,
-                    #000000 0%,
-                    #0a0a0a 50%,
-                    #000000 100%
-                );
+                overflow-x: hidden;
                 min-height: 100vh;
                 letter-spacing: -0.01em;
-                overflow-x: hidden;
+                text-rendering: optimizeLegibility;
+                background-image: radial-gradient(
+                        circle at 20% 80%,
+                        rgba(255, 215, 0, 0.03) 0%,
+                        transparent 50%
+                    ),
+                    radial-gradient(
+                        circle at 80% 20%,
+                        rgba(99, 102, 241, 0.03) 0%,
+                        transparent 50%
+                    ),
+                    radial-gradient(
+                        circle at 40% 40%,
+                        rgba(16, 185, 129, 0.02) 0%,
+                        transparent 50%
+                    );
             }
 
-            main {
-                min-height: calc(100vh - 60px);
-                padding-bottom: 60px;
+            /* 타이포그래피 개선 - Enhanced */
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                font-family: "Pretendard", system-ui, sans-serif;
+                font-weight: 700;
+                line-height: var(--dreame-leading-tight);
+                letter-spacing: -0.02em;
+                color: #f3f3f3 !important;
+                margin-bottom: var(--dreame-space-md);
             }
 
-            header {
-                position: sticky;
-                top: 0;
-                z-index: 40;
+            h1 {
+                font-size: clamp(1.75rem, 5vw, 3rem);
+                font-weight: 800;
                 background: linear-gradient(
                     135deg,
-                    rgba(0, 0, 0, 0.95) 0%,
-                    rgba(10, 10, 10, 0.95) 50%,
-                    rgba(0, 0, 0, 0.95) 100%
+                    var(--dreame-primary),
+                    var(--dreame-primary-dark)
                 );
-                border-bottom: 1px solid rgba(30, 30, 30, 0.5);
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-                backdrop-filter: blur(12px);
-                -webkit-backdrop-filter: blur(12px);
-                animation: headerSlideDown 0.6s ease-out;
-                transition: all 0.3s ease;
-            }
-
-            @keyframes headerSlideDown {
-                from {
-                    transform: translateY(-100%);
-                    opacity: 0;
-                }
-                to {
-                    transform: translateY(0);
-                    opacity: 1;
-                }
-            }
-
-            header h1 {
-                text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-                font-weight: 700;
-                letter-spacing: -0.02em;
-                user-select: none;
-                font-family: "Pretendard", sans-serif;
-                font-size: 1.75rem;
-                line-height: 1.2;
-                background: linear-gradient(
-                    45deg,
-                    #ffd700,
-                    #fbbf24,
-                    #f59e0b,
-                    #ffd700,
-                    #fbbf24
-                );
-                background-size: 300% 300%;
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
                 background-clip: text;
-                animation: gradientShift 3s ease-in-out infinite;
+            }
+
+            h2 {
+                font-size: clamp(1.5rem, 4vw, 2.5rem);
+                font-weight: 700;
+            }
+
+            h3 {
+                font-size: clamp(1.25rem, 3vw, 2rem);
+                font-weight: 600;
+            }
+
+            h4 {
+                font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+                font-weight: 600;
+            }
+
+            h5 {
+                font-size: clamp(1rem, 2vw, 1.25rem);
+                font-weight: 500;
+            }
+
+            h6 {
+                font-size: clamp(0.875rem, 1.5vw, 1rem);
+                font-weight: 500;
+            }
+
+            p {
+                margin-bottom: var(--dreame-space-md);
+                line-height: var(--dreame-leading-relaxed);
+                color: #b0b3b8 !important;
+                font-size: var(--dreame-font-size-base);
+            }
+
+            a {
+                color: #6366f1 !important;
+                text-decoration: none;
+                transition: all var(--dreame-transition-normal);
                 position: relative;
+            }
+
+            a:hover {
+                color: #a5b4fc !important;
+                text-decoration: none;
+            }
+
+            /* 버튼 스타일 - Enhanced */
+            button {
+                font-family: inherit;
+                font-size: inherit;
+                line-height: inherit;
+                color: inherit;
+                background: none;
+                border: none;
                 cursor: pointer;
-                transition: all 0.3s ease;
+                transition: all var(--dreame-transition-normal);
+                outline: none;
+                border-radius: var(--dreame-radius-lg);
             }
 
-            header h1:hover {
-                animation: gradientShift 1.5s ease-in-out infinite;
-                transform: scale(1.02);
-                filter: brightness(1.1);
+            button:focus-visible {
+                outline: 2px solid var(--dreame-primary);
+                outline-offset: 2px;
             }
 
-            @keyframes gradientShift {
-                0% {
+            /* 입력 필드 스타일 - Enhanced */
+            input,
+            textarea,
+            select {
+                font-family: inherit;
+                font-size: inherit;
+                line-height: inherit;
+                color: #f3f3f3 !important;
+                background: #23262f !important;
+                border: 1px solid #23262f !important;
+                border-radius: var(--dreame-radius-lg);
+                padding: var(--dreame-space-md) var(--dreame-space-lg);
+                transition: all var(--dreame-transition-normal);
+                outline: none;
+                backdrop-filter: blur(10px);
+            }
+
+            input:focus,
+            textarea:focus,
+            select:focus {
+                border-color: var(--dreame-primary);
+                box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+                background: var(--dreame-bg-tertiary);
+                transform: translateY(-1px);
+            }
+
+            input::placeholder,
+            textarea::placeholder {
+                color: var(--dreame-text-muted);
+            }
+
+            /* 레이아웃 컨테이너 - Enhanced */
+            .container {
+                width: 100%;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 var(--dreame-space-lg);
+            }
+
+            @media (min-width: 640px) {
+                .container {
+                    padding: 0 var(--dreame-space-2xl);
+                }
+            }
+
+            @media (min-width: 1024px) {
+                .container {
+                    padding: 0 var(--dreame-space-3xl);
+                }
+            }
+
+            /* 헤더 스타일 - Enhanced */
+            header {
+                position: sticky;
+                top: 0;
+                z-index: 50;
+                background: #181a20 !important;
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border-bottom: none !important;
+                box-shadow: none !important;
+                transition: all var(--dreame-transition-normal);
+            }
+
+            header.scrolled {
+                background: rgba(10, 10, 10, 0.98);
+                box-shadow: var(--dreame-shadow-xl);
+            }
+
+            /* 메인 콘텐츠 - Enhanced */
+            main {
+                min-height: calc(100vh - 200px);
+                padding: var(--dreame-space-2xl) 0;
+            }
+
+            @media (min-width: 768px) {
+                main {
+                    padding: var(--dreame-space-3xl) 0;
+                }
+            }
+
+            /* 카드 스타일 - Enhanced */
+            .card {
+                background: #181a20 !important;
+                border: none !important;
+                border-radius: var(--dreame-radius-2xl);
+                padding: var(--dreame-space-2xl);
+                box-shadow: none !important;
+                transition: all var(--dreame-transition-normal);
+                position: relative;
+                overflow: hidden;
+                backdrop-filter: blur(10px);
+            }
+
+            .card::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.03),
+                    transparent
+                );
+                transition: left var(--dreame-transition-slow);
+            }
+
+            .card:hover {
+                border-color: var(--dreame-border-medium);
+                box-shadow: var(--dreame-shadow-large);
+                transform: translateY(-4px);
+            }
+
+            .card:hover::before {
+                left: 100%;
+            }
+
+            /* 글래스모피즘 효과 - Enhanced */
+            .glass {
+                background: #181a20 !important;
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border: none !important;
+                border-radius: var(--dreame-radius-2xl);
+                box-shadow: none !important;
+                transition: all var(--dreame-transition-normal);
+            }
+
+            .glass:hover {
+                background: rgba(31, 31, 31, 0.95);
+                border-color: var(--dreame-border-medium);
+                box-shadow: var(--dreame-shadow-large);
+                transform: translateY(-2px);
+            }
+
+            /* 그라디언트 텍스트 - Enhanced */
+            .gradient-text {
+                background: linear-gradient(
+                    135deg,
+                    var(--dreame-primary),
+                    var(--dreame-primary-dark),
+                    var(--dreame-text-accent)
+                );
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                background-size: 200% 200%;
+                animation: gradient-shift 4s ease-in-out infinite;
+            }
+
+            @keyframes gradient-shift {
+                0%,
+                100% {
                     background-position: 0% 50%;
                 }
                 50% {
                     background-position: 100% 50%;
                 }
-                100% {
-                    background-position: 0% 50%;
-                }
             }
 
-            /* 헤더 타이틀에 글로우 효과 추가 */
-            header h1::before {
+            /* 버튼 컴포넌트 - Enhanced */
+            .btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: var(--dreame-space-sm);
+                padding: var(--dreame-space-md) var(--dreame-space-xl);
+                font-size: var(--dreame-font-size-sm);
+                font-weight: 600;
+                border-radius: var(--dreame-radius-xl);
+                transition: all var(--dreame-transition-normal);
+                cursor: pointer;
+                text-decoration: none;
+                border: none;
+                outline: none;
+                position: relative;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+
+            .btn::before {
                 content: "";
                 position: absolute;
                 top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
                 background: linear-gradient(
-                    45deg,
-                    rgba(255, 215, 0, 0.3),
-                    rgba(251, 191, 36, 0.3),
-                    rgba(245, 158, 11, 0.3),
-                    rgba(255, 215, 0, 0.3)
+                    90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.1),
+                    transparent
                 );
-                background-size: 300% 300%;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-clip: text;
-                animation: gradientShift 3s ease-in-out infinite;
-                opacity: 0;
-                transition: opacity 0.3s ease;
-                z-index: -1;
+                transition: left var(--dreame-transition-slow);
             }
 
-            header h1:hover::before {
-                opacity: 0.5;
+            .btn:hover::before {
+                left: 100%;
             }
 
-            /* 헤더 타이틀에 펄스 효과 추가 */
-            header h1::after {
+            .btn-primary {
+                background: #23262f !important;
+                color: #f3f3f3 !important;
+                box-shadow: none !important;
+            }
+
+            .btn-primary:hover {
+                transform: translateY(-2px);
+                box-shadow: var(--dreame-shadow-glow);
+            }
+
+            .btn-secondary {
+                background: #23262f !important;
+                color: #f3f3f3 !important;
+                border: 1px solid #23262f !important;
+            }
+
+            .btn-secondary:hover {
+                background: var(--dreame-bg-tertiary);
+                border-color: var(--dreame-border-medium);
+                transform: translateY(-1px);
+                box-shadow: var(--dreame-shadow-medium);
+            }
+
+            .btn-ghost {
+                background: transparent;
+                color: #666 !important;
+                border: 1px solid transparent;
+            }
+
+            .btn-ghost:hover {
+                background: #f3f3f3 !important;
+                color: #444 !important;
+                border-color: #e0e0e0 !important;
+            }
+
+            /* 탭 버튼 스타일 - Enhanced */
+            .btn-tab {
+                display: inline-flex;
+                align-items: center;
+                gap: var(--dreame-space-sm);
+                padding: var(--dreame-space-md) var(--dreame-space-xl);
+                font-size: var(--dreame-font-size-sm);
+                font-weight: 600;
+                color: #666 !important;
+                background: transparent;
+                border: none;
+                border-radius: var(--dreame-radius-xl);
+                transition: all var(--dreame-transition-normal);
+                cursor: pointer;
+                position: relative;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+
+            .btn-tab:hover {
+                color: #444 !important;
+                background: rgba(255, 255, 255, 0.05);
+                transform: translateY(-1px);
+            }
+
+            .btn-tab.active {
+                color: #22242c !important;
+                background: #23262f !important;
+                border-bottom: 2px solid #6366f1 !important;
+                box-shadow: none !important;
+                transform: translateY(-1px);
+            }
+
+            .btn-tab.active .tab-icon {
+                transform: scale(1.1);
+            }
+
+            .tab-icon {
+                font-size: 1.1em;
+                transition: transform var(--dreame-transition-normal);
+            }
+
+            .tab-text {
+                font-weight: 600;
+                letter-spacing: -0.01em;
+            }
+
+            @media (max-width: 768px) {
+                .btn-tab {
+                    padding: var(--dreame-space-sm) var(--dreame-space-lg);
+                    font-size: var(--dreame-font-size-xs);
+                    gap: var(--dreame-space-xs);
+                }
+
+                .tab-text {
+                    display: none;
+                }
+
+                .tab-icon {
+                    font-size: 1.2em;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .btn-tab {
+                    padding: var(--dreame-space-xs) var(--dreame-space-md);
+                    font-size: var(--dreame-font-size-xs);
+                }
+            }
+
+            /* 배지 스타일 - Enhanced */
+            .badge {
+                display: inline-flex;
+                align-items: center;
+                padding: var(--dreame-space-xs) var(--dreame-space-md);
+                font-size: var(--dreame-font-size-xs);
+                font-weight: 600;
+                border-radius: var(--dreame-radius-lg);
+                background: #f3f3f3 !important;
+                color: #666 !important;
+                border: 1px solid #e0e0e0 !important;
+                transition: all var(--dreame-transition-normal);
+            }
+
+            .badge:hover {
+                transform: translateY(-1px);
+                box-shadow: var(--dreame-shadow-soft);
+            }
+
+            .badge-primary {
+                background: rgba(255, 215, 0, 0.1);
+                color: var(--dreame-primary);
+                border-color: rgba(255, 215, 0, 0.3);
+            }
+
+            .badge-primary:hover {
+                background: rgba(255, 215, 0, 0.15);
+                border-color: rgba(255, 215, 0, 0.4);
+            }
+
+            /* 구분선 - Enhanced */
+            .divider {
+                height: 1px;
+                background: linear-gradient(
+                    90deg,
+                    transparent,
+                    var(--dreame-border-light),
+                    transparent
+                );
+                margin: var(--dreame-space-2xl) 0;
+                position: relative;
+            }
+
+            .divider::after {
                 content: "";
                 position: absolute;
                 top: 50%;
                 left: 50%;
-                width: 100%;
-                height: 100%;
-                background: radial-gradient(
-                    circle,
-                    rgba(255, 215, 0, 0.1) 0%,
-                    transparent 70%
-                );
                 transform: translate(-50%, -50%);
-                opacity: 0;
-                animation: pulse 2s ease-in-out infinite;
-                pointer-events: none;
-            }
-
-            @keyframes pulse {
-                0%,
-                100% {
-                    opacity: 0;
-                    transform: translate(-50%, -50%) scale(1);
-                }
-                50% {
-                    opacity: 0.3;
-                    transform: translate(-50%, -50%) scale(1.1);
-                }
-            }
-
-            .bg-gradient-to-r {
-                background: linear-gradient(
-                    135deg,
-                    #ffd700 0%,
-                    #fbbf24 50%,
-                    #ffd700 100%
-                );
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-clip: text;
-            }
-
-            .glass {
-                background: linear-gradient(
-                    135deg,
-                    rgba(0, 0, 0, 0.8) 0%,
-                    rgba(20, 20, 20, 0.6) 50%,
-                    rgba(0, 0, 0, 0.8) 100%
-                );
-                border-radius: 1rem;
-                border: 1px solid rgba(255, 255, 255, 0.1);
-                backdrop-filter: blur(12px);
-                -webkit-backdrop-filter: blur(12px);
-                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
-                    0 0 0 1px rgba(255, 255, 255, 0.05),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-                transition: all 0.3s ease;
-                position: relative;
-                overflow: hidden;
-            }
-
-            .glass::before {
-                content: "";
-                position: absolute;
-                top: 0;
-                left: -100%;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(
-                    90deg,
-                    transparent,
-                    rgba(255, 255, 255, 0.05),
-                    transparent
-                );
-                transition: left 0.5s ease;
-            }
-
-            .glass:hover {
-                border-color: rgba(255, 255, 255, 0.2);
-                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5),
-                    0 0 0 1px rgba(255, 255, 255, 0.1),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-                transform: translateY(-2px);
-            }
-
-            .glass:hover::before {
-                left: 100%;
-            }
-
-            .pdf-container {
-                position: relative;
-                overflow: hidden;
-                border-radius: 0.75rem;
-                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3),
-                    0 2px 4px -1px rgba(0, 0, 0, 0.2),
-                    0 0 0 1px rgba(255, 255, 255, 0.05);
-                border: 1px solid rgba(255, 255, 255, 0.1);
-            }
-
-            .pdf-container:hover,
-            .pdf-container:hover iframe,
-            .pdf-container iframe:hover {
-                filter: none !important;
-                opacity: 1 !important;
-                backdrop-filter: none !important;
-                -webkit-backdrop-filter: none !important;
-            }
-
-            .pdf-container iframe {
-                filter: none !important;
-                backdrop-filter: none !important;
-                -webkit-backdrop-filter: none !important;
-            }
-
-            iframe {
-                width: 100%;
-                height: auto;
-                aspect-ratio: 16 / 9;
-                border-radius: 0.75rem;
-                border: 1px solid rgba(30, 30, 30, 0.5);
-                transition: all 0.3s ease;
-                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2),
-                    0 2px 4px -1px rgba(0, 0, 0, 0.1);
-                -webkit-overflow-scrolling: touch;
-                overscroll-behavior: contain;
-            }
-
-            iframe:hover {
-                border-color: rgba(255, 255, 255, 0.3);
-                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4),
-                    0 0 0 1px rgba(255, 255, 255, 0.1);
-            }
-
-            iframe.hidden {
-                opacity: 0;
-            }
-
-            @keyframes flicker-loop {
-                0%,
-                100% {
-                    opacity: 1;
-                }
-                50% {
-                    opacity: 0.4;
-                }
-            }
-
-            .flicker-always {
-                animation: flicker-loop 1.5s infinite;
-            }
-
-            footer {
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                background: linear-gradient(
-                    135deg,
-                    rgba(0, 0, 0, 0.9) 0%,
-                    rgba(10, 10, 10, 0.9) 100%
-                );
-                color: #fff;
-                text-align: center;
-                padding: 12px 0;
-                font-size: 14px;
-                z-index: 10;
-                backdrop-filter: blur(12px);
-                -webkit-backdrop-filter: blur(12px);
-            }
-
-            details summary {
-                font-size: 1.125rem;
-                font-weight: 600;
-                font-family: "Pretendard", sans-serif;
-                letter-spacing: -0.01em;
-                color: #ffd700;
-                cursor: pointer;
-                transition: all 0.3s ease;
-                padding: 0.75rem 1rem;
-                border-radius: 0.5rem;
-                background: linear-gradient(
-                    135deg,
-                    rgba(0, 0, 0, 0.6) 0%,
-                    rgba(20, 20, 20, 0.4) 100%
-                );
-                border: 1px solid rgba(255, 255, 255, 0.1);
-                margin-bottom: 0.5rem;
-                position: relative;
-                overflow: hidden;
-            }
-
-            details summary:hover {
-                background: linear-gradient(
-                    135deg,
-                    rgba(0, 0, 0, 0.7) 0%,
-                    rgba(20, 20, 20, 0.5) 100%
-                );
-                border-color: rgba(255, 255, 255, 0.2);
-                transform: translateY(-1px);
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            }
-
-            details[open] summary {
-                background: linear-gradient(
-                    135deg,
-                    rgba(255, 215, 0, 0.1) 0%,
-                    rgba(255, 215, 0, 0.05) 100%
-                );
-                border-color: rgba(255, 215, 0, 0.3);
-                color: #ffd700;
-                box-shadow: 0 2px 8px rgba(255, 215, 0, 0.1);
-            }
-
-            details[open] summary:hover {
-                background: linear-gradient(
-                    135deg,
-                    rgba(255, 215, 0, 0.15) 0%,
-                    rgba(255, 215, 0, 0.08) 100%
-                );
-            }
-
-            .line {
-                height: 2px;
-                background: linear-gradient(
-                    90deg,
-                    transparent,
-                    #ffd700,
-                    transparent
-                );
-                margin: 2rem 0;
-                position: relative;
-                border-radius: 1px;
-            }
-
-            .line::after {
-                content: "";
-                position: absolute;
-                top: 0;
-                left: 50%;
-                transform: translateX(-50%);
                 width: 20px;
-                height: 2px;
-                background: #ffd700;
-                border-radius: 1px;
+                height: 1px;
+                background: var(--dreame-primary);
                 box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
             }
 
-            .stat {
-                background: linear-gradient(
-                    135deg,
-                    rgba(0, 0, 0, 0.6) 0%,
-                    rgba(20, 20, 20, 0.4) 100%
-                );
-                border: 1px solid rgba(255, 255, 255, 0.1);
-                border-radius: 0.75rem;
-                padding: 1rem;
-                margin: 1rem 0;
-                position: relative;
-                overflow: hidden;
-                transition: all 0.3s ease;
-            }
-
-            .stat::before {
-                content: "";
-                position: absolute;
-                top: 0;
-                left: -100%;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(
-                    90deg,
-                    transparent,
-                    rgba(255, 255, 255, 0.05),
-                    transparent
-                );
-                transition: left 0.5s ease;
-            }
-
-            .stat:hover {
-                border-color: rgba(255, 255, 255, 0.2);
-                transform: translateY(-2px);
-                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-            }
-
-            .stat:hover::before {
-                left: 100%;
-            }
-
+            /* 스크롤바 스타일 - Enhanced */
             ::-webkit-scrollbar {
                 width: 8px;
+                height: 8px;
             }
 
             ::-webkit-scrollbar-track {
-                background: transparent;
+                background: var(--dreame-bg-secondary);
             }
 
             ::-webkit-scrollbar-thumb {
-                background: rgba(100, 100, 100, 0.1);
+                background: var(--dreame-border-medium);
                 border-radius: 4px;
-                transition: background 0.2s ease-in-out;
+                transition: background var(--dreame-transition-normal);
             }
 
             ::-webkit-scrollbar-thumb:hover {
-                background: rgba(100, 100, 100, 0.3);
+                background: var(--dreame-border-strong);
             }
 
-            *:focus {
-                outline: none;
+            /* 선택 텍스트 스타일 - Enhanced */
+            ::selection {
+                background: rgba(255, 215, 0, 0.3);
+                color: var(--dreame-text-primary);
+            }
+
+            ::-moz-selection {
+                background: rgba(255, 215, 0, 0.3);
+                color: var(--dreame-text-primary);
+            }
+
+            /* 포커스 스타일 - Enhanced */
+            :focus-visible {
+                outline: 2px solid var(--dreame-primary);
+                outline-offset: 2px;
+            }
+
+            /* 로딩 애니메이션 - Enhanced */
+            .loading {
+                background: linear-gradient(
+                    90deg,
+                    var(--dreame-bg-elevated) 25%,
+                    var(--dreame-bg-tertiary) 50%,
+                    var(--dreame-bg-elevated) 75%
+                );
+                background-size: 200px 100%;
+                animation: shimmer 1.5s infinite;
             }
 
             @keyframes shimmer {
@@ -539,106 +911,54 @@
                 }
             }
 
-            .loading {
-                background: linear-gradient(
-                    90deg,
-                    #f0f0f0 25%,
-                    #e0e0e0 50%,
-                    #f0f0f0 75%
-                );
-                background-size: 200px 100%;
-                animation: shimmer 1.5s infinite;
-            }
-
+            /* 모바일 최적화 - Enhanced */
             @media (max-width: 768px) {
-                .glass {
-                    margin: 0.5rem;
-                    padding: 1rem;
+                body {
+                    font-size: var(--dreame-font-size-sm);
                 }
 
-                details summary {
-                    font-size: 1rem;
-                    padding: 0.5rem 0.75rem;
-                    margin-bottom: 0.25rem;
+                .container {
+                    padding: 0 var(--dreame-space-lg);
                 }
 
-                iframe {
-                    height: 250px;
-                    aspect-ratio: auto;
+                .card {
+                    padding: var(--dreame-space-xl);
+                    margin: var(--dreame-space-sm);
                 }
 
-                .pdf-container {
-                    margin: 0.5rem 0;
+                .btn {
+                    padding: var(--dreame-space-sm) var(--dreame-space-xl);
+                    font-size: var(--dreame-font-size-sm);
                 }
 
-                nav {
-                    flex-wrap: wrap;
+                h1 {
+                    font-size: 1.75rem;
                 }
-
-                nav button {
-                    font-size: 0.875rem;
-                    padding: 0.5rem 0.75rem;
+                h2 {
+                    font-size: 1.5rem;
                 }
-
-                #search-input {
-                    width: 280px;
-                }
-
-                header h1 {
+                h3 {
                     font-size: 1.25rem;
-                }
-
-                header p {
-                    font-size: 0.875rem;
-                    line-height: 1.4;
                 }
             }
 
             @media (max-width: 480px) {
-                #search-input {
-                    width: 240px;
+                .container {
+                    padding: 0 var(--dreame-space-md);
+                }
+
+                .card {
+                    padding: var(--dreame-space-lg);
+                    margin: var(--dreame-space-xs);
+                }
+
+                .btn {
+                    padding: var(--dreame-space-xs) var(--dreame-space-lg);
+                    font-size: var(--dreame-font-size-xs);
                 }
             }
 
-            @media (max-width: 320px) {
-                .glass {
-                    margin: 0.25rem;
-                    padding: 0.75rem;
-                }
-
-                details summary {
-                    font-size: 0.875rem;
-                    padding: 0.5rem;
-                }
-
-                nav button {
-                    font-size: 0.75rem;
-                    padding: 0.25rem 0.5rem;
-                }
-
-                header h1 {
-                    font-size: 1.125rem;
-                }
-            }
-
-            @media print {
-                .glass {
-                    box-shadow: none;
-                    border: 1px solid #ccc;
-                }
-
-                footer {
-                    position: static;
-                    background: none;
-                    color: #000;
-                }
-
-                details[open] summary {
-                    background: #f0f0f0;
-                    color: #000;
-                }
-            }
-
+            /* 접근성 개선 - Enhanced */
             @media (prefers-reduced-motion: reduce) {
                 * {
                     animation-duration: 0.01ms !important;
@@ -648,178 +968,139 @@
             }
 
             @media (prefers-contrast: high) {
-                .glass {
-                    border: 2px solid #000;
+                .card {
+                    border: 2px solid var(--dreame-text-primary);
                 }
 
-                details summary {
-                    border: 2px solid #000;
-                    background: #fff;
-                    color: #000;
+                .btn {
+                    border: 2px solid var(--dreame-text-primary);
                 }
             }
 
-            ::selection {
-                background: rgba(255, 215, 0, 0.3);
-                color: #fff;
+            /* 다크모드 강제 적용 - Enhanced */
+            html.dark {
+                color-scheme: dark;
             }
 
-            ::-moz-selection {
-                background: rgba(255, 215, 0, 0.3);
-                color: #fff;
+            /* 인쇄 스타일 - Enhanced */
+            @media print {
+                .card {
+                    box-shadow: none;
+                    border: 1px solid #ccc;
+                }
+
+                .btn {
+                    background: #f0f0f0 !important;
+                    color: #000 !important;
+                    border: 1px solid #ccc !important;
+                }
             }
 
-            .bg-dreame-yellow {
-                background-color: #ffd700;
+            /* 추가 SaaS 스타일 요소들 */
+            .hero-section {
+                background: linear-gradient(
+                    135deg,
+                    rgba(255, 215, 0, 0.05) 0%,
+                    rgba(99, 102, 241, 0.05) 50%,
+                    rgba(16, 185, 129, 0.05) 100%
+                );
+                border-radius: var(--dreame-radius-3xl);
+                padding: var(--dreame-space-3xl);
+                margin-bottom: var(--dreame-space-3xl);
             }
 
-            .text-dreame-yellow {
-                color: #ffd700;
+            .stats-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: var(--dreame-space-xl);
+                margin: var(--dreame-space-2xl) 0;
             }
 
-            .border-dreame-yellow {
-                border-color: #ffd700;
-            }
-
-            .openai-button {
+            .feature-card {
+                background: #181a20 !important;
+                border: none !important;
+                border-radius: var(--dreame-radius-2xl);
+                padding: var(--dreame-space-2xl);
+                transition: all var(--dreame-transition-normal);
                 position: relative;
-                display: inline-flex;
-                align-items: center;
-                gap: 0.5rem;
-                background: linear-gradient(135deg, #ffd700 0%, #fbbf24 100%);
-                color: #000;
-                font-weight: 600;
-                padding: 0.75rem 1.5rem;
-                border-radius: 0.75rem;
-                text-decoration: none;
-                transition: all 0.3s ease;
                 overflow: hidden;
-                box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
-                border: 2px solid transparent;
             }
 
-            .openai-button:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
-                background: linear-gradient(135deg, #fbbf24 0%, #ffd700 100%);
-                border-color: rgba(255, 215, 0, 0.5);
+            .feature-card:hover {
+                transform: translateY(-4px);
+                box-shadow: var(--dreame-shadow-large);
+                border-color: var(--dreame-border-medium);
             }
 
-            .openai-button::before {
+            .feature-card::before {
                 content: "";
                 position: absolute;
                 top: 0;
-                left: -100%;
-                width: 100%;
-                height: 100%;
+                left: 0;
+                right: 0;
+                height: 3px;
                 background: linear-gradient(
                     90deg,
-                    transparent,
-                    rgba(255, 255, 255, 0.2),
-                    transparent
+                    var(--dreame-primary),
+                    var(--dreame-secondary)
                 );
-                transition: left 0.5s ease;
+                transform: scaleX(0);
+                transition: transform var(--dreame-transition-normal);
             }
 
-            .openai-button:hover::before {
-                left: 100%;
+            .feature-card:hover::before {
+                transform: scaleX(1);
             }
 
-            .openai-button .glow {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: radial-gradient(
-                    circle,
-                    rgba(255, 215, 0, 0.3) 0%,
-                    transparent 70%
-                );
-                opacity: 0;
-                transition: opacity 0.3s ease;
-                pointer-events: none;
+            .floating-animation {
+                animation: float 3s ease-in-out infinite;
             }
 
-            .openai-button:hover .glow {
-                opacity: 1;
+            @keyframes float {
+                0%,
+                100% {
+                    transform: translateY(0px);
+                }
+                50% {
+                    transform: translateY(-10px);
+                }
             }
 
-            #search-input {
-                font-family: "Pretendard", sans-serif;
-                font-weight: 400;
-                letter-spacing: -0.01em;
-                background: linear-gradient(
-                    135deg,
-                    rgba(0, 0, 0, 0.4) 0%,
-                    rgba(20, 20, 20, 0.3) 100%
-                );
-                border: 1px solid rgba(255, 255, 255, 0.1);
-                backdrop-filter: blur(12px);
-                -webkit-backdrop-filter: blur(12px);
-                transition: all 0.3s ease;
-                width: 320px;
-                max-width: 100%;
+            .pulse-glow {
+                animation: pulse-glow 2s ease-in-out infinite alternate;
             }
 
-            #search-input:focus {
-                background: linear-gradient(
-                    135deg,
-                    rgba(0, 0, 0, 0.6) 0%,
-                    rgba(20, 20, 20, 0.5) 100%
-                );
-                border-color: rgba(255, 215, 0, 0.3);
-                box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
-                transform: translateY(-1px);
+            @keyframes pulse-glow {
+                0% {
+                    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+                }
+                100% {
+                    box-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
+                }
             }
 
-            #search-input::placeholder {
-                font-weight: 400;
-                color: rgba(156, 163, 175, 0.7);
+            .hero-section-unified {
+                background: #22242c !important;
+                border-radius: 1.2rem !important;
+                padding: 32px 0 !important;
+                margin-bottom: 32px !important;
+                text-align: center !important;
+                box-shadow: none !important;
             }
-
-            nav button {
-                font-family: "Pretendard", sans-serif;
-                font-weight: 500;
-                letter-spacing: -0.01em;
-                background: linear-gradient(
-                    135deg,
-                    rgba(0, 0, 0, 0.3) 0%,
-                    rgba(20, 20, 20, 0.2) 100%
-                );
-                border: 1px solid rgba(255, 255, 255, 0.05);
-                backdrop-filter: blur(8px);
-                -webkit-backdrop-filter: blur(8px);
-                transition: all 0.3s ease;
+            .hero-section-unified h2 {
+                font-size: 2rem !important;
+                font-weight: bold !important;
+                color: #f3f3f3 !important;
+                margin-bottom: 12px !important;
+                background: none !important;
+                -webkit-background-clip: unset !important;
+                -webkit-text-fill-color: unset !important;
+                background-clip: unset !important;
             }
-
-            nav button:hover {
-                background: linear-gradient(
-                    135deg,
-                    rgba(0, 0, 0, 0.5) 0%,
-                    rgba(20, 20, 20, 0.4) 100%
-                );
-                border-color: rgba(255, 215, 0, 0.2);
-                transform: translateY(-1px);
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            }
-
-            nav button.text-dreame-yellow {
-                background: linear-gradient(
-                    135deg,
-                    rgba(255, 215, 0, 0.1) 0%,
-                    rgba(255, 215, 0, 0.05) 100%
-                );
-                border-color: rgba(255, 215, 0, 0.3);
-                box-shadow: 0 2px 8px rgba(255, 215, 0, 0.1);
-            }
-
-            section h2 {
-                font-family: "Pretendard", sans-serif;
-                font-weight: 700;
-                letter-spacing: -0.02em;
-                line-height: 1.3;
-                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            .hero-section-unified p {
+                font-size: 1.1rem !important;
+                color: #b0b3b8 !important;
+                margin-bottom: 0 !important;
             }
         </style>
     </head>
@@ -922,697 +1203,1381 @@
 
         <!-- 헤더 -->
         <header
-            class="sticky top-0 z-40 bg-black/20 backdrop-blur-sm border-b border-white/10"
+            class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-xs"
         >
-            <div class="container mx-auto px-6 py-4">
-                <!-- 메인 헤더 영역 -->
-                <div class="flex flex-col items-center space-y-4">
-                    <!-- 타이틀 -->
+            <div
+                class="container mx-auto px-4 py-8 flex flex-col items-center gap-8"
+            >
+                <!-- 타이틀/서브타이틀만 -->
+                <div>
                     <h1
-                        class="text-xl md:text-2xl font-bold text-dreame-yellow leading-tight cursor-pointer hover:text-yellow-400 transition-colors duration-300"
-                        onclick="reloadPage()"
-                        title="클릭하면 새로고침됩니다"
+                        class="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent tracking-wide"
                     >
-                        Dreame 상담포털 ver1.2.0
+                        Dreame 상담포털
                     </h1>
-
-                    <!-- 검색창 -->
-                    <div class="w-auto">
+                </div>
+                <!-- 검색창 -->
+                <div class="w-full max-w-lg">
+                    <div class="relative">
                         <input
                             type="text"
                             id="search-input"
                             placeholder="검색어를 입력하세요..."
-                            oninput="filterContent()"
-                            class="w-full px-4 py-2.5 rounded-lg text-white focus:outline-none transition-all duration-200 placeholder-gray-400 text-sm"
-                            aria-label="콘텐츠 검색"
+                            class="w-full px-5 py-3 pl-12 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition"
                         />
-                    </div>
-
-                    <!-- 탭 메뉴 -->
-                    <nav class="flex justify-center" role="tablist">
-                        <div
-                            class="flex space-x-1 md:space-x-2 text-sm md:text-base flex-wrap justify-center"
+                        <span
+                            class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
                         >
-                            <button
-                                onclick="showTab('ai')"
-                                class="hover:text-dreame-yellow transition-colors duration-200 focus:outline-none rounded-lg px-3 py-2 text-gray-300"
-                                role="tab"
-                                aria-selected="true"
+                            <svg
+                                class="w-5 h-5"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                viewBox="0 0 24 24"
                             >
-                                A.I
-                            </button>
-                            <button
-                                onclick="showTab('promo')"
-                                class="hover:text-dreame-yellow transition-colors duration-200 focus:outline-none rounded-lg px-3 py-2 text-gray-300"
-                                role="tab"
-                                aria-selected="false"
-                            >
-                                Dreame Manual
-                            </button>
-                            <button
-                                onclick="showTab('notice')"
-                                class="hover:text-dreame-yellow transition-colors duration-200 focus:outline-none rounded-lg px-3 py-2 text-gray-300"
-                                role="tab"
-                                aria-selected="false"
-                            >
-                                이벤트
-                            </button>
-                            <button
-                                onclick="showTab('edu')"
-                                class="hover:text-dreame-yellow transition-colors duration-200 focus:outline-none rounded-lg px-3 py-2 text-gray-300"
-                                role="tab"
-                                aria-selected="false"
-                            >
-                                교육자료
-                            </button>
-                        </div>
-                    </nav>
+                                <circle cx="11" cy="11" r="7" />
+                                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                            </svg>
+                        </span>
+                    </div>
                 </div>
+                <!-- 탭 -->
+                <nav class="w-full max-w-2xl mt-2">
+                    <div class="flex justify-center gap-2">
+                        <button
+                            onclick="showTab('ai')"
+                            class="px-5 py-2 font-semibold text-gray-400 border-b-2 border-transparent bg-transparent transition hover:text-blue-500 focus:outline-none"
+                            aria-selected="true"
+                        >
+                            A.I
+                        </button>
+                        <button
+                            onclick="showTab('promo')"
+                            class="px-5 py-2 font-semibold text-gray-400 border-b-2 border-transparent bg-transparent transition hover:text-blue-500 focus:outline-none"
+                            aria-selected="false"
+                        >
+                            Manual
+                        </button>
+                        <button
+                            onclick="showTab('notice')"
+                            class="px-5 py-2 font-semibold text-gray-400 border-b-2 border-transparent bg-transparent transition hover:text-blue-500 focus:outline-none"
+                            aria-selected="false"
+                        >
+                            이벤트
+                        </button>
+                        <button
+                            onclick="showTab('edu')"
+                            class="px-5 py-2 font-semibold text-gray-400 border-b-2 border-transparent bg-transparent transition hover:text-blue-500 focus:outline-none"
+                            aria-selected="false"
+                        >
+                            교육자료
+                        </button>
+                    </div>
+                </nav>
             </div>
         </header>
 
         <!-- 콘텐츠 영역 -->
-        <main class="px-6 md:px-16 lg:px-32 py-8 space-y-8 animate-fade-in">
+        <main class="container mx-auto px-4 py-8 space-y-8 animate-fade-in">
             <!-- Dreame A.I 탭 -->
             <section
                 id="tab-ai"
-                class="glass p-6 hidden animate-fade-in w-full max-w-[1200px] mx-auto"
+                class="hidden animate-fade-in"
                 role="tabpanel"
                 aria-labelledby="ai-tab"
             >
-                <!-- Hero Layout: Lottie on left, content on right -->
+                <!-- Hero Section -->
                 <div
-                    class="flex flex-col lg:flex-row items-center gap-2 lg:gap-4"
+                    class="hero-section-unified"
+                    style="
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                    "
                 >
-                    <!-- Left: Lottie Animation (고정폭) -->
-                    <div
-                        class="w-full lg:w-[350px] flex justify-center lg:justify-start"
+                    <h2
+                        style="
+                            font-size: 2rem;
+                            font-weight: bold;
+                            color: #f3f3f3;
+                            margin-bottom: 12px;
+                        "
                     >
-                        <dotlottie-player
-                            src="https://lottie.host/1e954c8c-b315-439b-aadb-64a1a5f1d36b/8XkLe4bwpR.lottie"
-                            background="transparent"
-                            speed="1"
-                            style="width: 300px; height: 300px"
-                            loop
-                            autoplay
-                        ></dotlottie-player>
+                        AI-Powered Consultation
+                    </h2>
+                    <p
+                        style="
+                            font-size: 1.1rem;
+                            color: #b0b3b8;
+                            margin-bottom: 24px;
+                            max-width: 600px;
+                        "
+                    >
+                        Dreame AI는 지속적으로 학습하고 발전하는 인공지능
+                        서비스입니다. <br />
+                        더 정확하고 유용한 상담 서비스를 제공하기 위해 끊임없이
+                        업데이트되고 있습니다.
+                    </p>
+                    <div
+                        style="
+                            display: flex;
+                            gap: 16px;
+                            justify-content: center;
+                            margin-top: 32px;
+                        "
+                    >
+                        <a
+                            href="https://chatgpt.com/g/g-684941827b2c81918120b22f5504c6ce-dreame-sangdamweonpoteol-ver-2"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn btn-primary"
+                            style="
+                                font-size: 1rem;
+                                padding: 20px 40px;
+                                display: flex;
+                                align-items: center;
+                                gap: 16px;
+                                background: linear-gradient(
+                                    135deg,
+                                    #667eea 0%,
+                                    #764ba2 50%,
+                                    #f093fb 100%
+                                ) !important;
+                                background-size: 200% 200% !important;
+                                color: #ffffff !important;
+                                border-radius: 1.5rem !important;
+                                font-weight: 700 !important;
+                                text-decoration: none !important;
+                                border: 2px solid rgba(255, 255, 255, 0.2) !important;
+                                box-shadow: 0 20px 40px -10px rgba(102, 126, 234, 0.5),
+                                    0 10px 20px -5px rgba(0, 0, 0, 0.2),
+                                    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+                                transition: all 0.4s
+                                    cubic-bezier(0.4, 0, 0.2, 1) !important;
+                                position: relative !important;
+                                overflow: hidden !important;
+                                backdrop-filter: blur(20px) !important;
+                                -webkit-backdrop-filter: blur(20px) !important;
+                                animation: gradient-shift 3s ease infinite !important;
+                            "
+                            onmouseover="
+                                this.style.transform='translateY(-8px) scale(1.05)';
+                                this.style.boxShadow='0 30px 60px -15px rgba(102, 126, 234, 0.7), 0 15px 30px -10px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3)';
+                                this.style.borderColor='rgba(255, 255, 255, 0.4)';
+                                this.querySelector('.shimmer-effect').style.left='100%';
+                                this.querySelector('.particle-container').style.opacity='1';
+                            "
+                            onmouseout="
+                                this.style.transform='translateY(0) scale(1)';
+                                this.style.boxShadow='0 20px 40px -10px rgba(102, 126, 234, 0.5), 0 10px 20px -5px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2)';
+                                this.style.borderColor='rgba(255, 255, 255, 0.2)';
+                                this.querySelector('.shimmer-effect').style.left='-100%';
+                                this.querySelector('.particle-container').style.opacity='0';
+                            "
+                            onclick="
+                                this.style.transform='translateY(-4px) scale(0.98)';
+                                setTimeout(() => {
+                                    this.style.transform='translateY(-8px) scale(1.05)';
+                                }, 150);
+                                this.querySelector('.ripple-effect').style.animation='ripple 0.6s ease-out';
+                            "
+                        >
+                            <!-- 파티클 효과 -->
+                            <div
+                                class="particle-container"
+                                style="
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    width: 100%;
+                                    height: 100%;
+                                    opacity: 0;
+                                    transition: opacity 0.3s ease;
+                                    pointer-events: none;
+                                "
+                            >
+                                <div
+                                    class="particle"
+                                    style="
+                                        position: absolute;
+                                        width: 4px;
+                                        height: 4px;
+                                        background: rgba(255, 255, 255, 0.8);
+                                        border-radius: 50%;
+                                        animation: particle-float 2s ease-in-out
+                                            infinite;
+                                    "
+                                ></div>
+                                <div
+                                    class="particle"
+                                    style="
+                                        position: absolute;
+                                        width: 3px;
+                                        height: 3px;
+                                        background: rgba(255, 255, 255, 0.6);
+                                        border-radius: 50%;
+                                        animation: particle-float 2.5s
+                                            ease-in-out infinite;
+                                        animation-delay: 0.5s;
+                                    "
+                                ></div>
+                                <div
+                                    class="particle"
+                                    style="
+                                        position: absolute;
+                                        width: 2px;
+                                        height: 2px;
+                                        background: rgba(255, 255, 255, 0.4);
+                                        border-radius: 50%;
+                                        animation: particle-float 3s ease-in-out
+                                            infinite;
+                                        animation-delay: 1s;
+                                    "
+                                ></div>
+                            </div>
+
+                            <!-- 그라디언트 오버레이 -->
+                            <div
+                                class="shimmer-effect"
+                                style="
+                                    position: absolute;
+                                    top: 0;
+                                    left: -100%;
+                                    width: 100%;
+                                    height: 100%;
+                                    background: linear-gradient(
+                                        90deg,
+                                        transparent,
+                                        rgba(255, 255, 255, 0.3),
+                                        transparent
+                                    );
+                                    transition: left 0.8s ease;
+                                    pointer-events: none;
+                                "
+                            ></div>
+
+                            <!-- 클릭 리플 효과 -->
+                            <div
+                                class="ripple-effect"
+                                style="
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    width: 0;
+                                    height: 0;
+                                    border-radius: 50%;
+                                    background: rgba(255, 255, 255, 0.3);
+                                    transform: translate(-50%, -50%);
+                                    pointer-events: none;
+                                "
+                            ></div>
+
+                            <!-- AI 아이콘 -->
+                            <div
+                                style="
+                                    width: 32px;
+                                    height: 32px;
+                                    background: rgba(255, 255, 255, 0.2);
+                                    border-radius: 50%;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    z-index: 2;
+                                    position: relative;
+                                    animation: pulse-glow 2s ease-in-out
+                                        infinite;
+                                "
+                            >
+                                <svg
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <path
+                                        d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"
+                                    />
+                                    <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                                    <line x1="12" y1="19" x2="12" y2="23" />
+                                    <line x1="8" y1="23" x2="16" y2="23" />
+                                </svg>
+                            </div>
+
+                            <!-- 텍스트 -->
+                            <span
+                                style="
+                                    font-weight: 700;
+                                    letter-spacing: -0.02em;
+                                    z-index: 2;
+                                    position: relative;
+                                    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+                                    font-size: 1.1rem;
+                                "
+                                >Dreame AI 시작하기</span
+                            >
+
+                            <!-- 화살표 아이콘 -->
+                            <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                style="
+                                    z-index: 2;
+                                    position: relative;
+                                    transition: all 0.3s ease;
+                                    animation: arrow-bounce 2s ease-in-out
+                                        infinite;
+                                "
+                            >
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12,5 19,12 12,19" />
+                            </svg>
+                        </a>
                     </div>
 
-                    <!-- Right: Content (유동폭) -->
-                    <div class="flex-1 space-y-4 lg:space-y-6">
-                        <p class="text-xm text-gray-400">
-                            A.I 서비스는 더 나은 서비스를 위해 지속적으로
-                            업데이트되고 있습니다.<br />
-                            유용하게 활용하실 수 있지만, 일부 정보는 정확한
-                            정보를 검증 중이니 가볍게 참고해 주세요.
-                        </p>
+                    <style>
+                        @keyframes gradient-shift {
+                            0%,
+                            100% {
+                                background-position: 0% 50%;
+                            }
+                            50% {
+                                background-position: 100% 50%;
+                            }
+                        }
 
-                        <!-- 버튼 & 데이터 현황판 -->
-                        <div
-                            class="flex flex-col items-center lg:flex-row lg:items-stretch gap-3"
+                        @keyframes particle-float {
+                            0%,
+                            100% {
+                                transform: translateY(0px) translateX(0px);
+                                opacity: 0;
+                            }
+                            25% {
+                                opacity: 1;
+                            }
+                            50% {
+                                transform: translateY(-20px) translateX(10px);
+                                opacity: 0.8;
+                            }
+                            75% {
+                                opacity: 1;
+                            }
+                        }
+
+                        @keyframes pulse-glow {
+                            0%,
+                            100% {
+                                box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+                            }
+                            50% {
+                                box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+                            }
+                        }
+
+                        @keyframes arrow-bounce {
+                            0%,
+                            100% {
+                                transform: translateX(0px);
+                            }
+                            50% {
+                                transform: translateX(4px);
+                            }
+                        }
+
+                        @keyframes ripple {
+                            0% {
+                                width: 0;
+                                height: 0;
+                                opacity: 1;
+                            }
+                            100% {
+                                width: 300px;
+                                height: 300px;
+                                opacity: 0;
+                            }
+                        }
+                    </style>
+                </div>
+
+                <!-- 상담가능 품목 -->
+                <div
+                    class="card p-6 mb-8"
+                    style="
+                        background: #22242c;
+                        border-radius: 1.2rem;
+                        box-shadow: none;
+                    "
+                >
+                    <h3
+                        class="text-lg font-bold mb-4 flex items-center gap-2"
+                        style="color: #f3f3f3"
+                    >
+                        <span
+                            style="
+                                width: 10px;
+                                height: 10px;
+                                background: #6366f1;
+                                border-radius: 50%;
+                                display: inline-block;
+                            "
+                        ></span>
+                        상담가능 품목
+                    </h3>
+                    <div
+                        style="
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 18px;
+                            justify-content: center;
+                            align-items: center;
+                        "
+                    >
+                        <span
+                            style="
+                                display: inline-block;
+                                padding: 10px 22px;
+                                border-radius: 2rem;
+                                font-weight: 600;
+                                font-size: 1rem;
+                                background: linear-gradient(
+                                    90deg,
+                                    #6366f1,
+                                    #7c3aed
+                                );
+                                color: #fff;
+                                transition: filter 0.2s;
+                            "
+                            >X50sProUltra</span
                         >
-                            <!-- OpenAI 버튼 -->
-                            <a
-                                href="https://chatgpt.com/g/g-684941827b2c81918120b22f5504c6ce-dreame-sangdamweonpoteol-ver-2"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="openai-button"
-                                aria-label="OpenAI로 이동"
-                            >
-                                <div class="glow"></div>
-                                <dotlottie-player
-                                    src="https://lottie.host/34ed2b04-38e0-4a18-ad34-68a6cf30be53/HpqKcqOGW6.lottie"
-                                    background="transparent"
-                                    speed="1"
-                                    style="width: 28px; height: 28px"
-                                    loop
-                                    autoplay
-                                ></dotlottie-player>
-                                <span>Dreame AI 이동</span>
-                            </a>
-
-                            <div class="flex gap-2">
-                                <!-- 러닝 데이터 -->
-                                <div
-                                    class="relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 text-white rounded-xl flex flex-col justify-center items-center px-6 py-3 border border-dreame-yellow/50 shadow-lg transition-all duration-300 hover:scale-105 hover:border-dreame-yellow hover:shadow-dreame-yellow/20 group min-w-[100px] h-[60px]"
-                                >
-                                    <div
-                                        class="absolute top-0 right-0 w-6 h-6 bg-dreame-yellow/10 rounded-bl-full transition-all duration-300 group-hover:bg-dreame-yellow/20"
-                                    ></div>
-                                    <div
-                                        class="text-dreame-yellow text-sm font-bold leading-none mb-1"
-                                    >
-                                        📊 248
-                                    </div>
-                                    <p
-                                        class="text-xs text-gray-300 font-medium text-center"
-                                    >
-                                        러닝 데이터
-                                    </p>
-                                </div>
-                                <!-- 내부 자료 -->
-                                <div
-                                    class="relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 text-white rounded-xl flex flex-col justify-center items-center px-6 py-3 border border-dreame-yellow/50 shadow-lg transition-all duration-300 hover:scale-105 hover:border-dreame-yellow hover:shadow-dreame-yellow/20 group min-w-[100px] h-[60px]"
-                                >
-                                    <div
-                                        class="absolute top-0 right-0 w-6 h-6 bg-dreame-yellow/10 rounded-bl-full transition-all duration-300 group-hover:bg-dreame-yellow/20"
-                                    ></div>
-                                    <div
-                                        class="text-dreame-yellow text-sm font-bold leading-none mb-1"
-                                    >
-                                        📚 312
-                                    </div>
-                                    <p
-                                        class="text-xs text-gray-300 font-medium text-center"
-                                    >
-                                        내부 자료
-                                    </p>
-                                </div>
-                                <!-- 학습요청 접수 건수 -->
-                                <div
-                                    class="relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 text-white rounded-xl flex flex-col justify-center items-center px-6 py-3 border border-red-500/50 shadow-lg transition-all duration-300 hover:scale-105 hover:border-red-500 hover:shadow-red-500/20 group min-w-[100px] h-[60px]"
-                                >
-                                    <div
-                                        class="absolute top-0 right-0 w-6 h-6 bg-red-500/10 rounded-bl-full transition-all duration-300 group-hover:bg-red-500/20"
-                                    ></div>
-                                    <div
-                                        class="text-red-400 text-sm font-bold leading-none mb-1"
-                                    >
-                                        📝 0
-                                    </div>
-                                    <p
-                                        class="text-xs text-gray-300 font-medium text-center"
-                                    >
-                                        학습요청 접수 건수
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 구분선 -->
-                        <div class="line"></div>
-
-                        <!-- 상담가능 품목 -->
-                        <div class="stat">
-                            <span class="ml-2 text-sm font-semibold"
-                                >상담가능 품목</span
-                            >
-                            <div class="flex flex-wrap gap-2 mt-2">
-                                <span
-                                    class="text-xs bg-blue-500 text-white py-1 px-2 rounded-full"
-                                    >X50sProUltra</span
-                                >
-                                <span
-                                    class="text-xs bg-rose-500 text-white py-1 px-2 rounded-full"
-                                    >X50master</span
-                                >
-                                <span
-                                    class="text-xs bg-orange-500 text-white py-1 px-2 rounded-full"
-                                    >X50Ultra</span
-                                >
-                                <span
-                                    class="text-xs bg-yellow-500 text-black py-1 px-2 rounded-full"
-                                    >X40Ultra</span
-                                >
-                                <span
-                                    class="text-xs bg-lime-500 text-black py-1 px-2 rounded-full"
-                                    >L20Ultra</span
-                                >
-                                <span
-                                    class="text-xs bg-emerald-500 text-white py-1 px-2 rounded-full"
-                                    >L10s히트</span
-                                >
-                                <span
-                                    class="text-xs bg-cyan-500 text-black py-1 px-2 rounded-full"
-                                    >L10Prime</span
-                                >
-                                <span
-                                    class="text-xs bg-yellow-900 text-white py-1 px-2 rounded-full"
-                                    >LIVO</span
-                                >
-                            </div>
-                        </div>
+                        <span
+                            style="
+                                display: inline-block;
+                                padding: 10px 22px;
+                                border-radius: 2rem;
+                                font-weight: 600;
+                                font-size: 1rem;
+                                background: linear-gradient(
+                                    90deg,
+                                    #6366f1,
+                                    #7c3aed
+                                );
+                                color: #fff;
+                                transition: filter 0.2s;
+                            "
+                            >X50master</span
+                        >
+                        <span
+                            style="
+                                display: inline-block;
+                                padding: 10px 22px;
+                                border-radius: 2rem;
+                                font-weight: 600;
+                                font-size: 1rem;
+                                background: linear-gradient(
+                                    90deg,
+                                    #6366f1,
+                                    #7c3aed
+                                );
+                                color: #fff;
+                                transition: filter 0.2s;
+                            "
+                            >X50Ultra</span
+                        >
+                        <span
+                            style="
+                                display: inline-block;
+                                padding: 10px 22px;
+                                border-radius: 2rem;
+                                font-weight: 600;
+                                font-size: 1rem;
+                                background: linear-gradient(
+                                    90deg,
+                                    #10b981,
+                                    #3b82f6
+                                );
+                                color: #fff;
+                                transition: filter 0.2s;
+                            "
+                            >X40Ultra</span
+                        >
+                        <span
+                            style="
+                                display: inline-block;
+                                padding: 10px 22px;
+                                border-radius: 2rem;
+                                font-weight: 600;
+                                font-size: 1rem;
+                                background: linear-gradient(
+                                    90deg,
+                                    #3b82f6,
+                                    #10b981
+                                );
+                                color: #fff;
+                                transition: filter 0.2s;
+                            "
+                            >L20Ultra</span
+                        >
+                        <span
+                            style="
+                                display: inline-block;
+                                padding: 10px 22px;
+                                border-radius: 2rem;
+                                font-weight: 600;
+                                font-size: 1rem;
+                                background: linear-gradient(
+                                    90deg,
+                                    #a78bfa,
+                                    #f472b6
+                                );
+                                color: #fff;
+                                transition: filter 0.2s;
+                            "
+                            >L10s히트</span
+                        >
+                        <span
+                            style="
+                                display: inline-block;
+                                padding: 10px 22px;
+                                border-radius: 2rem;
+                                font-weight: 600;
+                                font-size: 1rem;
+                                background: linear-gradient(
+                                    90deg,
+                                    #a78bfa,
+                                    #f472b6
+                                );
+                                color: #fff;
+                                transition: filter 0.2s;
+                            "
+                            >L10Prime</span
+                        >
+                        <span
+                            style="
+                                display: inline-block;
+                                padding: 10px 22px;
+                                border-radius: 2rem;
+                                font-weight: 600;
+                                font-size: 1rem;
+                                background: linear-gradient(
+                                    90deg,
+                                    #fbbf24,
+                                    #f59e42
+                                );
+                                color: #fff;
+                                transition: filter 0.2s;
+                            "
+                            >LIVO</span
+                        >
                     </div>
                 </div>
 
-                <!-- Full width sections below -->
-                <div class="mt-6 lg:mt-8 space-y-4 lg:space-y-6">
-                    <!-- 사용방법 안내서 -->
-                    <details class="mt-4 lg:mt-6">
+                <!-- 구분선 -->
+                <div class="divider"></div>
+
+                <!-- 사용방법 안내서 -->
+                <div class="card p-6 mb-6">
+                    <details class="group">
                         <summary
-                            class="text-lg font-semibold text-dreame-yellow cursor-pointer rounded px-2 py-1"
+                            class="text-xl font-bold text-dreame-primary cursor-pointer flex items-center justify-between p-4 rounded-xl bg-dreame-bg-elevated hover:bg-dreame-bg-tertiary transition-colors duration-300"
                         >
-                            사용방법 안내서
+                            <span class="flex items-center gap-3">
+                                <span class="text-2xl">📖</span>
+                                사용방법 안내서
+                            </span>
+                            <svg
+                                class="w-6 h-6 transition-transform group-open:rotate-180"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M19 9l-7 7-7-7"
+                                ></path>
+                            </svg>
                         </summary>
-                        <div class="mt-4 pdf-container">
-                            <iframe
-                                src="./appmanual/agentforumguide.pdf"
-                                title="AI 사용법 가이드"
-                                class="w-full h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px] xl:h-[500px] rounded-lg border border-gray-600"
-                                loading="lazy"
-                                allowfullscreen
-                            ></iframe>
+                        <div class="mt-6">
+                            <div
+                                class="pdf-container rounded-xl overflow-hidden"
+                            >
+                                <iframe
+                                    src="./appmanual/agentforumguide.pdf"
+                                    title="AI 사용법 가이드"
+                                    class="w-full h-[500px] md:h-[600px] lg:h-[700px]"
+                                    loading="lazy"
+                                    allowfullscreen
+                                ></iframe>
+                            </div>
                         </div>
                     </details>
+                </div>
 
-                    <details class="mt-4 lg:mt-6">
+                <!-- 오류접수 양식 -->
+                <div class="card p-6">
+                    <details class="group">
                         <summary
-                            class="text-lg font-semibold text-dreame-yellow cursor-pointer rounded px-2 py-1"
+                            class="text-xl font-bold text-dreame-warning cursor-pointer flex items-center justify-between p-4 rounded-xl bg-dreame-bg-elevated hover:bg-dreame-bg-tertiary transition-colors duration-300"
                         >
-                            오류접수 양식
+                            <span class="flex items-center gap-3">
+                                <span class="text-2xl">📋</span>
+                                오류접수 양식
+                            </span>
+                            <svg
+                                class="w-6 h-6 transition-transform group-open:rotate-180"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M19 9l-7 7-7-7"
+                                ></path>
+                            </svg>
                         </summary>
-                        <div class="mt-4 space-y-2 text-sm">
-                            <p>1. 내가 문의했던 내용</p>
-                            <p>2. GPT 가 답변해준 내용</p>
-                            <p>3. 수정 후 재학습 해야할 내용</p>
-                            <p class="mt-4">
-                                <strong>■ 접수 방법:</strong> 매일 Daily로
-                                취합하여 아래 메일 주소로 발송해 주세요.
-                            </p>
-                            <p>
-                                📧
+                        <div class="mt-6 space-y-4">
+                            <div
+                                class="bg-dreame-bg-elevated p-6 rounded-xl border border-dreame-border-light"
+                            >
+                                <h4
+                                    class="text-lg font-semibold text-dreame-text-primary mb-4"
+                                >
+                                    접수 양식
+                                </h4>
+                                <div
+                                    class="space-y-3 text-dreame-text-secondary"
+                                >
+                                    <div class="flex items-start gap-3">
+                                        <span
+                                            class="text-dreame-primary font-bold"
+                                            >1.</span
+                                        >
+                                        <p>내가 문의했던 내용</p>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <span
+                                            class="text-dreame-primary font-bold"
+                                            >2.</span
+                                        >
+                                        <p>GPT가 답변해준 내용</p>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <span
+                                            class="text-dreame-primary font-bold"
+                                            >3.</span
+                                        >
+                                        <p>수정 후 재학습 해야할 내용</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                class="bg-gradient-to-r from-dreame-primary/10 to-dreame-primary/5 p-6 rounded-xl border border-dreame-primary/20"
+                            >
+                                <h4
+                                    class="text-lg font-semibold text-dreame-primary mb-3"
+                                >
+                                    접수 방법
+                                </h4>
+                                <p class="text-dreame-text-secondary mb-4">
+                                    매일 Daily로 취합하여 아래 메일 주소로
+                                    발송해 주세요.
+                                </p>
                                 <a
                                     href="mailto:jyh@eibe.co.kr"
-                                    class="text-blue-400 hover:text-blue-600 transition-colors duration-200"
-                                    >jyh@eibe.co.kr</a
+                                    class="inline-flex items-center gap-2 text-dreame-primary hover:text-dreame-primary-dark transition-colors duration-300 font-medium"
                                 >
-                            </p>
+                                    <span class="text-xl">📧</span>
+                                    <span>jyh@eibe.co.kr</span>
+                                    <svg
+                                        class="w-4 h-4"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                                        ></path>
+                                    </svg>
+                                </a>
+                            </div>
                         </div>
                     </details>
                 </div>
             </section>
 
-            <!-- Dreame UI 탭 -->
+            <!-- Dreame Manual 탭 -->
             <section
                 id="tab-promo"
-                class="glass p-6 hidden animate-fade-in"
+                class="hidden animate-fade-in"
                 role="tabpanel"
                 aria-labelledby="promo-tab"
             >
-                <h2 class="text-xl font-bold text-dreame-yellow mb-6">
-                    📱 Dreame Manual
-                </h2>
+                <!-- Hero Section -->
+                <div class="hero-section-unified">
+                    <h2>제품별 Dreame Manual</h2>
+                    <p>제품별 매뉴얼을 한눈에 확인하세요.</p>
+                </div>
 
-                <!-- 구분선 -->
-                <div class="line"></div>
-
-                <!-- Dreame UI 아코디언 -->
-                <!-- X50 (Master,Ultra) -->
-                <details class="mb-4">
-                    <summary
-                        class="text-lg text-gray-100 focus:outline-none rounded px-2 py-1"
-                    >
-                        <span class="text-dreame-yellow">X50</span>
-                        (Master,Ultra) Dreame Home APP 사용 설명서📱
-                    </summary>
-                    <div class="mt-4 pdf-container">
-                        <iframe
-                            src="./appmanual/X50(Master,ultra) Dreame Home APP 사용 설명서.pdf"
-                            title="X50(Master,ultra) Dreame Home APP 사용 설명서"
-                            class="w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] xl:h-[800px] rounded-lg border border-gray-600"
-                            loading="lazy"
-                            allowfullscreen
-                        ></iframe>
-                    </div>
-                </details>
-
-                <details class="mb-4">
-                    <summary
-                        class="text-lg text-gray-100 focus:outline-none rounded px-2 py-1"
-                    >
-                        <span class="text-dreame-yellow">X50</span>
-                        (Master,Ultra) 음성명령어 리스트📱
-                    </summary>
-                    <div class="mt-4 pdf-container">
-                        <iframe
-                            src="./appmanual/X50(Master,Ultra) 음성명령어 리스트.pdf"
-                            title="X50(Master,Ultra) 음성명령어 리스트"
-                            class="w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] xl:h-[800px] rounded-lg border border-gray-600"
-                            loading="lazy"
-                            allowfullscreen
-                        ></iframe>
-                    </div>
-                </details>
-
-                <details class="mb-4">
-                    <summary
-                        class="text-lg text-gray-100 focus:outline-none rounded px-2 py-1"
-                    >
-                        <span class="text-dreame-yellow">X50</span>
-                        (sProUltra) 사용 설명서📄
-                    </summary>
-                    <div class="mt-4 pdf-container">
-                        <iframe
-                            src="./appmanual/X50sProUltra 사용설명서.pdf"
-                            title="X50s Pro Ultra 사용 설명서"
-                            class="w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] xl:h-[800px] rounded-lg border border-gray-600"
-                            loading="lazy"
-                            allowfullscreen
-                        ></iframe>
-                    </div>
-                </details>
-
-                <details class="mb-4">
-                    <summary
-                        class="text-lg text-gray-100 focus:outline-none rounded px-2 py-1"
-                    >
-                        <span class="text-dreame-yellow">X50</span>
-                        (Master) 사용 설명서📄
-                    </summary>
-                    <div class="mt-4 pdf-container">
-                        <iframe
-                            src="./appmanual/X50Master 사용 설명서.pdf"
-                            title="X50 Master 사용 설명서"
-                            class="w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] xl:h-[800px] rounded-lg border border-gray-600"
-                            loading="lazy"
-                            allowfullscreen
-                        ></iframe>
-                    </div>
-                </details>
-
-                <details class="mb-4">
-                    <summary
-                        class="text-lg text-gray-100 focus:outline-none rounded px-2 py-1"
-                    >
-                        <span class="text-dreame-yellow">X50</span>
-                        (Ultra) 사용 설명서📄
-                    </summary>
-                    <div class="mt-4 pdf-container">
-                        <iframe
-                            src="./appmanual/X50Ultra 사용 설명서.pdf"
-                            title="X50 Ultra 사용 설명서"
-                            class="w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] xl:h-[800px] rounded-lg border border-gray-600"
-                            loading="lazy"
-                            allowfullscreen
-                        ></iframe>
-                    </div>
-                </details>
-
-                <details class="mb-4">
-                    <summary
-                        class="text-lg text-gray-100 focus:outline-none rounded px-2 py-1"
-                    >
-                        <span class="text-dreame-yellow">X50</span>
-                        (Master) 직배수 키트 가이드🎬
-                    </summary>
-                    <div class="mt-4 aspect-video">
-                        <iframe
-                            src="https://www.youtube.com/embed/6ma-ta-_zg4?rel=0&modestbranding=1"
-                            title="X50 Ultra Master 설치 방법 안내"
-                            class="w-full h-full rounded-lg"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen
-                            loading="lazy"
-                        ></iframe>
-                    </div>
-                </details>
-
-                <!-- X40 (Ultra) -->
-                <details class="mb-4">
-                    <summary
-                        class="text-lg text-gray-100 focus:outline-none rounded px-2 py-1"
-                    >
-                        <span class="text-green-400">X40</span>
-                        (Ultra) Dreame Home APP 사용 설명서📱
-                    </summary>
-                    <div class="mt-4 pdf-container">
-                        <iframe
-                            src="./appmanual/X40Ultra Dreame Home APP 사용 설명서.pdf"
-                            title="X40 (Ultra) Dreame Home APP 사용 설명서"
-                            class="w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] xl:h-[800px] rounded-lg border border-gray-600"
-                            loading="lazy"
-                            allowfullscreen
-                        ></iframe>
-                    </div>
-                </details>
-
-                <details class="mb-4">
-                    <summary
-                        class="text-lg text-gray-100 focus:outline-none rounded px-2 py-1"
-                    >
-                        <span class="text-green-400">X40</span>
-                        (Ultra) 사용 설명서📄
-                    </summary>
-                    <div class="mt-4 pdf-container">
-                        <iframe
-                            src="./appmanual/X40Ultra 사용 설명서.pdf"
-                            title="X40 Ultra 사용 설명서"
-                            class="w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] xl:h-[800px] rounded-lg border border-gray-600"
-                            loading="lazy"
-                            allowfullscreen
-                        ></iframe>
-                    </div>
-                </details>
-
-                <details class="mb-4">
-                    <summary
-                        class="text-lg text-gray-100 focus:outline-none rounded px-2 py-1"
-                    >
-                        <span class="text-green-400">X40</span>
-                        (Ultra) L10s히트 직배수 키트 가이드🎬
-                    </summary>
-                    <div class="mt-4 aspect-video">
-                        <iframe
-                            src="https://www.youtube.com/embed/eF1rPZ7goLQ?rel=0&modestbranding=1"
-                            title="드리미 L10s 히트 전용 직배수 키트 설치 지도"
-                            class="w-full h-full rounded-lg"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen
-                            referrerpolicy="strict-origin-when-cross-origin"
-                            loading="lazy"
-                        ></iframe>
-                    </div>
-                </details>
-
-                <!-- L20 (Ultra) -->
-                <details class="mb-4">
-                    <summary
-                        class="text-lg text-gray-100 focus:outline-none rounded px-2 py-1"
-                    >
-                        <span class="text-blue-400">L20</span>
-                        (Ultra) Dreame Home APP 사용 설명서📱
-                    </summary>
-                    <div class="mt-4 pdf-container">
-                        <iframe
-                            src="./appmanual/L20Ultra Dreame Home APP 사용 설명서.pdf"
-                            title="L20 Ultra Dreame Home APP 사용 설명서"
-                            class="w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] xl:h-[800px] rounded-lg border border-gray-600"
-                            loading="lazy"
-                            allowfullscreen
-                        ></iframe>
-                    </div>
-                </details>
-
-                <details class="mb-4">
-                    <summary
-                        class="text-lg text-gray-100 focus:outline-none rounded px-2 py-1"
-                    >
-                        <span class="text-blue-400">L20</span>
-                        (Ultra) 사용 설명서📄
-                    </summary>
-                    <div class="mt-4 pdf-container">
-                        <iframe
-                            src="./appmanual/L20 Ultra 사용 설명서.pdf"
-                            title="L20 Ultra 사용 설명서"
-                            class="w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] xl:h-[800px] rounded-lg border border-gray-600"
-                            loading="lazy"
-                            allowfullscreen
-                        ></iframe>
-                    </div>
-                </details>
-
-                <details class="mb-4">
-                    <summary
-                        class="text-lg text-gray-100 focus:outline-none rounded px-2 py-1"
-                    >
-                        <span class="text-blue-400">L20</span>
-                        (Ultra) 직배수 키트 가이드🎬
-                    </summary>
-                    <div class="mt-4 aspect-video">
-                        <iframe
-                            src="https://www.youtube.com/embed/xeUibNf0WgM?rel=0&modestbranding=1"
-                            title="드리미 L20 Ultra 직배수 키트 설치 지도"
-                            class="w-full h-full rounded-lg"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen
-                            referrerpolicy="strict-origin-when-cross-origin"
-                            loading="lazy"
-                        ></iframe>
-                    </div>
-                </details>
-
-                <!-- L10 Prime -->
-                <details class="mb-4">
-                    <summary
-                        class="text-lg text-gray-100 focus:outline-none rounded px-2 py-1"
-                    >
-                        <span class="text-pink-400">L10</span>
-                        (Prime) 사용 설명서📄
-                    </summary>
-                    <iframe
-                        src="./appmanual/L10 Prime 사용 설명서.pdf"
-                        title="L10 Prime 사용 설명서"
-                        class="mt-4 w-full h-[500px] sm:h-[600px] md:h-[700px] lg:h-[800px]"
-                        loading="lazy"
-                    ></iframe>
-                </details>
+                <!-- X50 시리즈 -->
+                <div class="mb-8">
+                    <h3 class="text-lg font-bold text-yellow-400 mb-2">
+                        X50 시리즈
+                    </h3>
+                    <ul class="space-y-2">
+                        <li>
+                            <details>
+                                <summary
+                                    class="font-semibold text-yellow-400 cursor-pointer"
+                                >
+                                    X50 (Master,Ultra) Dreame Home APP 사용
+                                    설명서 📄
+                                </summary>
+                                <div class="mt-2">
+                                    <iframe
+                                        src="./appmanual/X50(Master,ultra) Dreame Home APP 사용 설명서.pdf"
+                                        class="w-full"
+                                        style="height: 600px"
+                                    ></iframe>
+                                </div>
+                            </details>
+                        </li>
+                        <li>
+                            <details>
+                                <summary
+                                    class="font-semibold text-yellow-400 cursor-pointer"
+                                >
+                                    X50 (Master,Ultra) 음성명령어 리스트 📄
+                                </summary>
+                                <div class="mt-2">
+                                    <iframe
+                                        src="./appmanual/X50(Master,Ultra) 음성명령어 리스트.pdf"
+                                        class="w-full"
+                                        style="height: 600px"
+                                    ></iframe>
+                                </div>
+                            </details>
+                        </li>
+                        <li>
+                            <details>
+                                <summary
+                                    class="font-semibold text-yellow-400 cursor-pointer"
+                                >
+                                    X50sProUltra 사용 설명서 📄
+                                </summary>
+                                <div class="mt-2">
+                                    <iframe
+                                        src="./appmanual/X50sProUltra 사용설명서.pdf"
+                                        class="w-full"
+                                        style="height: 600px"
+                                    ></iframe>
+                                </div>
+                            </details>
+                        </li>
+                        <li>
+                            <details>
+                                <summary
+                                    class="font-semibold text-yellow-400 cursor-pointer"
+                                >
+                                    X50Master 사용 설명서 📄
+                                </summary>
+                                <div class="mt-2">
+                                    <iframe
+                                        src="./appmanual/X50Master 사용 설명서.pdf"
+                                        class="w-full"
+                                        style="height: 600px"
+                                    ></iframe>
+                                </div>
+                            </details>
+                        </li>
+                        <li>
+                            <details>
+                                <summary
+                                    class="font-semibold text-yellow-400 cursor-pointer"
+                                >
+                                    X50Ultra 사용 설명서 📄
+                                </summary>
+                                <div class="mt-2">
+                                    <iframe
+                                        src="./appmanual/X50Ultra 사용 설명서.pdf"
+                                        class="w-full"
+                                        style="height: 600px"
+                                    ></iframe>
+                                </div>
+                            </details>
+                        </li>
+                        <li>
+                            <details>
+                                <summary
+                                    class="font-semibold text-yellow-400 cursor-pointer"
+                                >
+                                    X50 (Master) 직배수 키트 가이드 🎬
+                                </summary>
+                                <div class="mt-2">
+                                    <iframe
+                                        src="https://www.youtube.com/embed/6ma-ta-_zg4?rel=0&modestbranding=1"
+                                        class="w-full"
+                                        style="height: 600px"
+                                    ></iframe>
+                                </div>
+                            </details>
+                        </li>
+                    </ul>
+                </div>
+                <!-- X40 시리즈 -->
+                <div class="mb-8">
+                    <h3 class="text-lg font-bold text-green-400 mb-2">
+                        X40 시리즈
+                    </h3>
+                    <ul class="space-y-2">
+                        <li>
+                            <details>
+                                <summary
+                                    class="font-semibold text-green-400 cursor-pointer"
+                                >
+                                    X40 (Ultra) Dreame Home APP 사용 설명서 📄
+                                </summary>
+                                <div class="mt-2">
+                                    <iframe
+                                        src="./appmanual/X40Ultra Dreame Home APP 사용 설명서.pdf"
+                                        class="w-full"
+                                        style="height: 600px"
+                                    ></iframe>
+                                </div>
+                            </details>
+                        </li>
+                        <li>
+                            <details>
+                                <summary
+                                    class="font-semibold text-green-400 cursor-pointer"
+                                >
+                                    X40Ultra 사용 설명서 📄
+                                </summary>
+                                <div class="mt-2">
+                                    <iframe
+                                        src="./appmanual/X40Ultra 사용 설명서.pdf"
+                                        class="w-full"
+                                        style="height: 600px"
+                                    ></iframe>
+                                </div>
+                            </details>
+                        </li>
+                        <li>
+                            <details>
+                                <summary
+                                    class="font-semibold text-green-400 cursor-pointer"
+                                >
+                                    X40 (Ultra) L10s히트 직배수 키트 가이드 🎬
+                                </summary>
+                                <div class="mt-2">
+                                    <iframe
+                                        src="https://www.youtube.com/embed/eF1rPZ7goLQ?rel=0&modestbranding=1"
+                                        class="w-full"
+                                        style="height: 600px"
+                                    ></iframe>
+                                </div>
+                            </details>
+                        </li>
+                    </ul>
+                </div>
+                <!-- L20 시리즈 -->
+                <div class="mb-8">
+                    <h3 class="text-lg font-bold text-blue-400 mb-2">
+                        L20 시리즈
+                    </h3>
+                    <ul class="space-y-2">
+                        <li>
+                            <details>
+                                <summary
+                                    class="font-semibold text-blue-400 cursor-pointer"
+                                >
+                                    L20 (Ultra) Dreame Home APP 사용 설명서 📄
+                                </summary>
+                                <div class="mt-2">
+                                    <iframe
+                                        src="./appmanual/L20Ultra Dreame Home APP 사용 설명서.pdf"
+                                        class="w-full"
+                                        style="height: 600px"
+                                    ></iframe>
+                                </div>
+                            </details>
+                        </li>
+                        <li>
+                            <details>
+                                <summary
+                                    class="font-semibold text-blue-400 cursor-pointer"
+                                >
+                                    L20Ultra 사용 설명서 📄
+                                </summary>
+                                <div class="mt-2">
+                                    <iframe
+                                        src="./appmanual/L20 Ultra 사용 설명서.pdf"
+                                        class="w-full"
+                                        style="height: 600px"
+                                    ></iframe>
+                                </div>
+                            </details>
+                        </li>
+                        <li>
+                            <details>
+                                <summary
+                                    class="font-semibold text-blue-400 cursor-pointer"
+                                >
+                                    L20 (Ultra) 직배수 키트 가이드 🎬
+                                </summary>
+                                <div class="mt-2">
+                                    <iframe
+                                        src="https://www.youtube.com/embed/xeUibNf0WgM?rel=0&modestbranding=1"
+                                        class="w-full"
+                                        style="height: 600px"
+                                    ></iframe>
+                                </div>
+                            </details>
+                        </li>
+                    </ul>
+                </div>
+                <!-- L10 시리즈 -->
+                <div class="mb-8">
+                    <h3 class="text-lg font-bold text-purple-400 mb-2">
+                        L10 시리즈
+                    </h3>
+                    <ul class="space-y-2">
+                        <li>
+                            <details>
+                                <summary
+                                    class="font-semibold text-purple-400 cursor-pointer"
+                                >
+                                    L10 Prime 사용 설명서 📄
+                                </summary>
+                                <div class="mt-2">
+                                    <iframe
+                                        src="./appmanual/L10 Prime 사용 설명서.pdf"
+                                        class="w-full"
+                                        style="height: 600px"
+                                    ></iframe>
+                                </div>
+                            </details>
+                        </li>
+                    </ul>
+                </div>
             </section>
 
             <!-- 이벤트/프로모션 탭 -->
             <section
                 id="tab-notice"
-                class="glass p-6 hidden animate-fade-in"
+                class="hidden animate-fade-in"
                 role="tabpanel"
                 aria-labelledby="notice-tab"
             >
-                <h2 class="text-xl font-bold text-dreame-yellow mb-6">
-                    📢 이벤트/참고자료
-                </h2>
+                <!-- Hero Section -->
+                <div class="hero-section-unified">
+                    <h2>이벤트 & 프로모션</h2>
+                    <p>
+                        Dreame의 최신 이벤트와 프로모션을 확인하세요. 특별한
+                        혜택과 라이브 방송, 오프라인 매장 정보를 제공합니다.
+                    </p>
+                </div>
 
-                <!-- 구분선 -->
-                <div class="line"></div>
-
-                <!-- 이벤트/프로모션 아코디언 -->
-                <details class="mb-4">
-                    <summary
-                        class="text-lg text-gray-100 focus:outline-none rounded px-2 py-1"
-                    >
-                        이벤트 및 프로모션 URL
-                    </summary>
-                    <div class="mt-4 space-y-3">
+                <!-- 이벤트 링크 그리드 -->
+                <div class="stats-grid">
+                    <!-- 공식 홈페이지 -->
+                    <div class="feature-card group">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div
+                                class="w-16 h-16 bg-gradient-to-br from-dreame-primary/20 to-dreame-primary/10 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
+                            >
+                                <span class="text-3xl">🏠</span>
+                            </div>
+                            <div>
+                                <h3
+                                    class="text-lg font-bold text-dreame-text-primary"
+                                >
+                                    공식 홈페이지
+                                </h3>
+                                <p class="text-xs text-dreame-text-muted">
+                                    Dreame <br />
+                                    브랜드 스토어
+                                </p>
+                            </div>
+                        </div>
                         <a
                             href="https://brand.naver.com/dreame?nt_source=sa&nt_medium=bsa&nt_detail=PC_X50s%20Pro%20Ultra&n_media=27758&n_query=%EB%93%9C%EB%A6%AC%EB%AF%B8%EC%B2%AD%EC%86%8C%EA%B8%B0&n_rank=1&n_ad_group=grp-a001-04-000000049414587&n_ad=nad-a001-04-000000379769501&n_keyword_id=nkw-a001-04-000007034726027&n_keyword=%EB%93%9C%EB%A6%AC%EB%AF%B8%EC%B2%AD%EC%86%8C%EA%B8%B0&n_campaign_type=4&n_contract=tct-a001-04-000000001078312&n_ad_group_type=5&NaPm=ct%3Dmam9x8ug%7Cci%3D0yC0001j22bCz1jPsLp7%7Ctr%3Dbrnd%7Chk%3D5737ecd64f80286d53d788f35f618bdcf9162b34%7Cnacn%3DGwtYBoAAwOEg"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="block text-blue-400 underline hover:text-blue-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 rounded px-2 py-1"
+                            class="btn btn-primary w-full justify-center text-sm"
                         >
-                            🏠 공식 홈페이지
+                            방문하기
+                            <svg
+                                class="w-4 h-4"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                                ></path>
+                            </svg>
                         </a>
+                    </div>
+
+                    <!-- 쇼핑스토리 & 프로모션 -->
+                    <div class="feature-card group">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div
+                                class="w-16 h-16 bg-gradient-to-br from-dreame-secondary/20 to-dreame-secondary/10 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
+                            >
+                                <span class="text-3xl">🎁</span>
+                            </div>
+                            <div>
+                                <h3
+                                    class="text-lg font-bold text-dreame-text-primary"
+                                >
+                                    프로모션
+                                </h3>
+                                <p class="text-xs text-dreame-text-muted">
+                                    쇼핑스토리 <br />
+                                    진행 중인 특별 혜택
+                                </p>
+                            </div>
+                        </div>
                         <a
                             href="https://brand.naver.com/dreame/shoppingstory/list?cp=1"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="block text-blue-400 underline hover:text-blue-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 rounded px-2 py-1"
+                            class="btn btn-secondary w-full justify-center text-sm"
                         >
-                            🎁 지금 진행 중인 쇼핑스토리 & 프로모션 보기
+                            확인하기
+                            <svg
+                                class="w-4 h-4"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                                ></path>
+                            </svg>
                         </a>
+                    </div>
+
+                    <!-- A/S 센터 찾기 -->
+                    <div class="feature-card group">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div
+                                class="w-16 h-16 bg-gradient-to-br from-dreame-accent/20 to-dreame-accent/10 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
+                            >
+                                <span class="text-3xl">🛠</span>
+                            </div>
+                            <div>
+                                <h3
+                                    class="text-lg font-bold text-dreame-text-primary"
+                                >
+                                    A/S 센터 찾기
+                                </h3>
+                                <p class="text-xs text-dreame-text-muted">
+                                    가까운 오프라인 매장
+                                </p>
+                            </div>
+                        </div>
                         <a
                             href="https://dreametechkorea.com/support/service_center"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="block text-blue-400 underline hover:text-blue-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 rounded px-2 py-1"
+                            class="btn btn-secondary w-full justify-center text-sm"
                         >
-                            🛠 가까운 오프라인 매장 및 A/S 센터 찾기
+                            찾아보기
+                            <svg
+                                class="w-4 h-4"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                                ></path>
+                            </svg>
                         </a>
+                    </div>
+
+                    <!-- 라이브 방송 -->
+                    <div class="feature-card group">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div
+                                class="w-16 h-16 bg-gradient-to-br from-dreame-warning/20 to-dreame-warning/10 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
+                            >
+                                <span class="text-3xl">📺</span>
+                            </div>
+                            <div>
+                                <h3
+                                    class="text-lg font-bold text-dreame-text-primary"
+                                >
+                                    라이브 방송
+                                </h3>
+                                <p class="text-xs text-dreame-text-muted">
+                                    실시간 제품 소개
+                                </p>
+                            </div>
+                        </div>
                         <a
                             href="https://dreametechkorea.com/event/live"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="block text-blue-400 underline hover:text-blue-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 rounded px-2 py-1"
+                            class="btn btn-primary w-full justify-center text-sm"
                         >
-                            📺 지금 바로! 드리미 라이브 방송 보기
+                            시청하기
+                            <svg
+                                class="w-4 h-4"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                                ></path>
+                            </svg>
                         </a>
+                    </div>
+
+                    <!-- 이달의 혜택 -->
+                    <div class="feature-card group">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div
+                                class="w-16 h-16 bg-gradient-to-br from-dreame-error/20 to-dreame-error/10 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
+                            >
+                                <span class="text-3xl">🎉</span>
+                            </div>
+                            <div>
+                                <h3
+                                    class="text-lg font-bold text-dreame-text-primary"
+                                >
+                                    이달의 혜택
+                                </h3>
+                                <p class="text-xs text-dreame-text-muted">
+                                    특별한 할인 혜택
+                                </p>
+                            </div>
+                        </div>
                         <a
                             href="https://dreametechkorea.com/event/benefits"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="block text-blue-400 underline hover:text-blue-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 rounded px-2 py-1"
+                            class="btn btn-primary w-full justify-center text-sm"
                         >
-                            🎉 이달의 특별한 혜택 확인하기
+                            확인하기
+                            <svg
+                                class="w-4 h-4"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                                ></path>
+                            </svg>
                         </a>
                     </div>
-                </details>
+                </div>
             </section>
 
             <!-- 교육자료 탭 -->
             <section
                 id="tab-edu"
-                class="glass p-6 hidden animate-fade-in"
+                class="hidden animate-fade-in"
                 role="tabpanel"
                 aria-labelledby="edu-tab"
             >
-                <h2 class="text-xl font-bold text-dreame-yellow mb-6">
-                    📚 교육자료
-                </h2>
+                <!-- Hero Section -->
+                <div class="hero-section-unified">
+                    <h2>교육자료</h2>
+                    <p>
+                        Dreame 제품과 서비스에 대한 전문적인 교육 자료를
+                        제공합니다. 체계적인 학습을 통해 더 나은 서비스를
+                        제공하세요.
+                    </p>
+                </div>
 
-                <!-- 구분선 -->
-                <div class="line"></div>
+                <!-- 교육자료 카테고리 -->
+                <div class="stats-grid">
+                    <!-- 제품 교육 자료 -->
+                    <div class="feature-card">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div
+                                class="w-16 h-16 bg-gradient-to-br from-dreame-primary/20 to-dreame-primary/10 rounded-2xl flex items-center justify-center"
+                            >
+                                <span class="text-3xl">📋</span>
+                            </div>
+                            <div>
+                                <h3
+                                    class="text-xl font-bold text-dreame-text-primary"
+                                >
+                                    제품 교육
+                                </h3>
+                                <p class="text-dreame-text-muted">
+                                    제품 상세 정보
+                                </p>
+                            </div>
+                        </div>
 
-                <!-- 제품 교육 자료 -->
-                <details class="mb-4">
-                    <summary
-                        class="text-lg text-gray-100 focus:outline-none rounded px-2 py-1"
-                    >
-                        <span class="text-blue-400">제품</span>
-                        교육 자료📋
-                    </summary>
-                    <div class="mt-4 space-y-4">
-                        <div class="text-center text-gray-400">
-                            <p>
-                                📝 제품 교육 자료가 준비되면 여기에 추가됩니다.
-                            </p>
-                            <p class="text-sm mt-2">
-                                새로운 자료는 언제든지 쉽게 추가할 수 있습니다.
-                            </p>
+                        <div class="space-y-4">
+                            <div
+                                class="bg-dreame-bg-elevated p-8 rounded-2xl border border-dreame-border-light text-center"
+                            >
+                                <div
+                                    class="w-20 h-20 bg-gradient-to-br from-dreame-primary/10 to-dreame-primary/5 rounded-full flex items-center justify-center mx-auto mb-6"
+                                >
+                                    <span class="text-3xl">📝</span>
+                                </div>
+                                <h4
+                                    class="text-xl font-semibold text-dreame-text-primary mb-3"
+                                >
+                                    준비 중
+                                </h4>
+                                <p class="text-dreame-text-secondary text-base">
+                                    제품 교육 자료가 준비되면 여기에 추가됩니다.
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </details>
 
-                <!-- 서비스 교육 자료 -->
-                <details class="mb-4">
-                    <summary
-                        class="text-lg text-gray-100 focus:outline-none rounded px-2 py-1"
-                    >
-                        <span class="text-green-400">서비스</span>
-                        교육 자료📖
-                    </summary>
-                    <div class="mt-4 space-y-4">
-                        <div class="text-center text-gray-400">
-                            <p>
-                                📝 서비스 교육 자료가 준비되면 여기에
-                                추가됩니다.
-                            </p>
-                            <p class="text-sm mt-2">
-                                새로운 자료는 언제든지 쉽게 추가할 수 있습니다.
-                            </p>
+                    <!-- 서비스 교육 자료 -->
+                    <div class="feature-card">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div
+                                class="w-16 h-16 bg-gradient-to-br from-dreame-secondary/20 to-dreame-secondary/10 rounded-2xl flex items-center justify-center"
+                            >
+                                <span class="text-3xl">📖</span>
+                            </div>
+                            <div>
+                                <h3
+                                    class="text-xl font-bold text-dreame-text-primary"
+                                >
+                                    서비스 교육
+                                </h3>
+                                <p class="text-dreame-text-muted">
+                                    고객 서비스 가이드
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div
+                                class="bg-dreame-bg-elevated p-8 rounded-2xl border border-dreame-border-light text-center"
+                            >
+                                <div
+                                    class="w-20 h-20 bg-gradient-to-br from-dreame-secondary/10 to-dreame-secondary/5 rounded-full flex items-center justify-center mx-auto mb-6"
+                                >
+                                    <span class="text-3xl">📝</span>
+                                </div>
+                                <h4
+                                    class="text-xl font-semibold text-dreame-text-primary mb-3"
+                                >
+                                    준비 중
+                                </h4>
+                                <p class="text-dreame-text-secondary text-base">
+                                    서비스 교육 자료가 준비되면 여기에
+                                    추가됩니다.
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </details>
 
-                <!-- 추가 교육 자료 (확장용) -->
-                <details class="mb-4">
-                    <summary
-                        class="text-lg text-gray-100 focus:outline-none rounded px-2 py-1"
-                    >
-                        <span class="text-purple-400">기타</span>
-                        교육 자료📚
-                    </summary>
-                    <div class="mt-4 space-y-4">
-                        <div class="text-center text-gray-400">
-                            <p>
-                                📝 추가 교육 자료가 준비되면 여기에 추가됩니다.
-                            </p>
-                            <p class="text-sm mt-2">
-                                새로운 자료는 언제든지 쉽게 추가할 수 있습니다.
-                            </p>
+                    <!-- 기타 교육 자료 -->
+                    <div class="feature-card">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div
+                                class="w-16 h-16 bg-gradient-to-br from-dreame-accent/20 to-dreame-accent/10 rounded-2xl flex items-center justify-center"
+                            >
+                                <span class="text-3xl">📚</span>
+                            </div>
+                            <div>
+                                <h3
+                                    class="text-xl font-bold text-dreame-text-primary"
+                                >
+                                    기타 자료
+                                </h3>
+                                <p class="text-dreame-text-muted">
+                                    추가 학습 자료
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div
+                                class="bg-dreame-bg-elevated p-8 rounded-2xl border border-dreame-border-light text-center"
+                            >
+                                <div
+                                    class="w-20 h-20 bg-gradient-to-br from-dreame-accent/10 to-dreame-accent/5 rounded-full flex items-center justify-center mx-auto mb-6"
+                                >
+                                    <span class="text-3xl">📝</span>
+                                </div>
+                                <h4
+                                    class="text-xl font-semibold text-dreame-text-primary mb-3"
+                                >
+                                    준비 중
+                                </h4>
+                                <p class="text-dreame-text-secondary text-base">
+                                    추가 교육 자료가 준비되면 여기에 추가됩니다.
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </details>
+                </div>
             </section>
         </main>
 
         <!-- Footer -->
-        <footer class="animate-fade-in">
-            <div class="text-center space-y-1">
-                <p class="text-xs text-gray-400">
-                    © 2025 Yoonwhan Ji. All rights reserved. For inquiries,
-                    contact: jyh@eibe.co.kr
-                </p>
+        <footer class="bg-[#181A20] border-t border-gray-200 mt-16">
+            <div
+                class="container mx-auto px-4 py-8"
+                style="background: #181a20; color: #f3f3f3"
+            >
+                <div class="text-center">
+                    <p class="text-base text-gray-400">
+                        © 2025 Yoonwhan Ji. All rights reserved. • For
+                        inquiries, contact: jyh@eibe.co.kr
+                    </p>
+                </div>
             </div>
         </footer>
 
         <!-- 통합 JavaScript -->
         <script>
+            // 전역 변수
+            let currentTab = "ai";
+            const isMobile =
+                /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+                    navigator.userAgent
+                );
+
             // 탭 전환 함수
             function showTab(tabName) {
                 // 모든 탭 콘텐츠 숨기기
@@ -1622,11 +2587,13 @@
                 });
 
                 // 모든 탭 버튼 비활성화
-                const tabButtons = document.querySelectorAll('[role="tab"]');
+                const tabButtons = document.querySelectorAll(
+                    '[role="tab"], nav button'
+                );
                 tabButtons.forEach((button) => {
                     button.setAttribute("aria-selected", "false");
-                    button.classList.remove("text-dreame-yellow");
-                    button.classList.add("text-gray-300");
+                    button.classList.remove("text-blue-600", "border-blue-500");
+                    button.classList.add("text-gray-400", "border-transparent");
                 });
 
                 // 선택된 탭 콘텐츠 표시
@@ -1644,8 +2611,14 @@
                 );
                 if (selectedButton) {
                     selectedButton.setAttribute("aria-selected", "true");
-                    selectedButton.classList.remove("text-gray-300");
-                    selectedButton.classList.add("text-dreame-yellow");
+                    selectedButton.classList.remove(
+                        "text-gray-400",
+                        "border-transparent"
+                    );
+                    selectedButton.classList.add(
+                        "text-blue-600",
+                        "border-blue-500"
+                    );
                 }
 
                 // URL 해시 업데이트 (선택사항)
@@ -1750,12 +2723,6 @@
                     }
                 }
             }
-
-            // 모바일 환경 감지
-            const isMobile =
-                /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-                    navigator.userAgent
-                );
 
             // 모바일 최적화 설정
             if (isMobile) {
