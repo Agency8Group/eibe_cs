@@ -830,27 +830,60 @@
 
             /* 구분선 - Enhanced */
             .divider {
-                height: 1px;
+                height: 2px;
                 background: linear-gradient(
                     90deg,
-                    transparent,
-                    var(--dreame-border-light),
-                    transparent
+                    transparent 0%,
+                    rgba(255, 215, 0, 0.1) 20%,
+                    rgba(99, 102, 241, 0.2) 50%,
+                    rgba(255, 215, 0, 0.1) 80%,
+                    transparent 100%
                 );
                 margin: var(--dreame-space-2xl) 0;
                 position: relative;
+                overflow: hidden;
+                border-radius: 1px;
+                animation: divider-glow 3s ease-in-out infinite;
             }
 
-            .divider::after {
+            .divider::before {
                 content: "";
                 position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 20px;
-                height: 1px;
-                background: var(--dreame-primary);
-                box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.4),
+                    rgba(255, 215, 0, 0.6),
+                    rgba(255, 255, 255, 0.4),
+                    transparent
+                );
+                animation: divider-shimmer 2s ease-in-out infinite;
+            }
+
+            @keyframes divider-glow {
+                0%,
+                100% {
+                    box-shadow: 0 0 5px rgba(255, 215, 0, 0.3),
+                        0 0 10px rgba(99, 102, 241, 0.2);
+                }
+                50% {
+                    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5),
+                        0 0 25px rgba(99, 102, 241, 0.4),
+                        0 0 35px rgba(255, 215, 0, 0.3);
+                }
+            }
+
+            @keyframes divider-shimmer {
+                0% {
+                    left: -100%;
+                }
+                100% {
+                    left: 100%;
+                }
             }
 
             /* 스크롤바 스타일 - Enhanced */
@@ -1268,68 +1301,45 @@
             class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-xs"
         >
             <div
-                class="container mx-auto px-4 py-8 flex flex-col items-center gap-8"
+                class="container mx-auto px-4 py-6 flex flex-col items-center gap-6"
             >
                 <!-- 타이틀/서브타이틀만 -->
                 <div>
                     <h1
-                        class="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent tracking-wide"
+                        onclick="location.reload()"
+                        class="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent tracking-wide cursor-pointer hover:opacity-80 transition-opacity"
+                        style="cursor: pointer"
                     >
                         Dreame 상담포털
                     </h1>
                 </div>
-                <!-- 검색창 -->
-                <div class="w-full max-w-lg">
-                    <div class="relative">
-                        <input
-                            type="text"
-                            id="search-input"
-                            placeholder="검색어를 입력하세요..."
-                            class="w-full px-5 py-3 pl-12 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition"
-                        />
-                        <span
-                            class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
-                        >
-                            <svg
-                                class="w-5 h-5"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                viewBox="0 0 24 24"
-                            >
-                                <circle cx="11" cy="11" r="7" />
-                                <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                            </svg>
-                        </span>
-                    </div>
-                </div>
                 <!-- 탭 -->
-                <nav class="w-full max-w-2xl mt-2">
-                    <div class="flex justify-center gap-2">
+                <nav class="w-full max-w-2xl">
+                    <div class="flex justify-center gap-4">
                         <button
                             onclick="showTab('ai')"
-                            class="px-5 py-2 font-semibold text-gray-400 border-b-2 border-transparent bg-transparent transition hover:text-blue-500 focus:outline-none"
+                            class="px-6 py-3 text-lg font-semibold text-gray-400 border-b-2 border-transparent bg-transparent transition hover:text-blue-500 focus:outline-none"
                             aria-selected="true"
                         >
                             A.I
                         </button>
                         <button
                             onclick="showTab('promo')"
-                            class="px-5 py-2 font-semibold text-gray-400 border-b-2 border-transparent bg-transparent transition hover:text-blue-500 focus:outline-none"
+                            class="px-6 py-3 text-lg font-semibold text-gray-400 border-b-2 border-transparent bg-transparent transition hover:text-blue-500 focus:outline-none"
                             aria-selected="false"
                         >
                             Manual
                         </button>
                         <button
                             onclick="showTab('notice')"
-                            class="px-5 py-2 font-semibold text-gray-400 border-b-2 border-transparent bg-transparent transition hover:text-blue-500 focus:outline-none"
+                            class="px-6 py-3 text-lg font-semibold text-gray-400 border-b-2 border-transparent bg-transparent transition hover:text-blue-500 focus:outline-none"
                             aria-selected="false"
                         >
                             이벤트
                         </button>
                         <button
                             onclick="showTab('edu')"
-                            class="px-5 py-2 font-semibold text-gray-400 border-b-2 border-transparent bg-transparent transition hover:text-blue-500 focus:outline-none"
+                            class="px-6 py-3 text-lg font-semibold text-gray-400 border-b-2 border-transparent bg-transparent transition hover:text-blue-500 focus:outline-none"
                             aria-selected="false"
                         >
                             교육자료
@@ -1381,6 +1391,165 @@
                         더 정확하고 유용한 상담 서비스를 제공하기 위해 끊임없이
                         업데이트되고 있습니다.
                     </p>
+
+                    <!-- 상담가능 제품들 -->
+                    <div
+                        style="
+                            display: flex;
+                            gap: 4px;
+                            flex-wrap: wrap;
+                            justify-content: center;
+                            align-items: center;
+                            margin-bottom: 24px;
+                            max-width: 100%;
+                        "
+                    >
+                        <span
+                            style="
+                                display: inline-block;
+                                font-size: 0.75rem;
+                                padding: 2px 8px;
+                                border-radius: 1rem;
+                                border: 1px solid #444;
+                                font-weight: 400;
+                                background: linear-gradient(
+                                    90deg,
+                                    #6366f1,
+                                    #7c3aed
+                                );
+                                color: #fff;
+                                margin: 0;
+                            "
+                            >X50sProUltra</span
+                        >
+                        <span
+                            style="
+                                display: inline-block;
+                                font-size: 0.75rem;
+                                padding: 2px 8px;
+                                border-radius: 1rem;
+                                border: 1px solid #444;
+                                font-weight: 400;
+                                background: linear-gradient(
+                                    90deg,
+                                    #6366f1,
+                                    #7c3aed
+                                );
+                                color: #fff;
+                                margin: 0;
+                            "
+                            >X50master</span
+                        >
+                        <span
+                            style="
+                                display: inline-block;
+                                font-size: 0.75rem;
+                                padding: 2px 8px;
+                                border-radius: 1rem;
+                                border: 1px solid #444;
+                                font-weight: 400;
+                                background: linear-gradient(
+                                    90deg,
+                                    #6366f1,
+                                    #7c3aed
+                                );
+                                color: #fff;
+                                margin: 0;
+                            "
+                            >X50Ultra</span
+                        >
+                        <span
+                            style="
+                                display: inline-block;
+                                font-size: 0.75rem;
+                                padding: 2px 8px;
+                                border-radius: 1rem;
+                                border: 1px solid #444;
+                                font-weight: 400;
+                                background: linear-gradient(
+                                    90deg,
+                                    #10b981,
+                                    #3b82f6
+                                );
+                                color: #fff;
+                                margin: 0;
+                            "
+                            >X40Ultra</span
+                        >
+                        <span
+                            style="
+                                display: inline-block;
+                                font-size: 0.75rem;
+                                padding: 2px 8px;
+                                border-radius: 1rem;
+                                border: 1px solid #444;
+                                font-weight: 400;
+                                background: linear-gradient(
+                                    90deg,
+                                    #3b82f6,
+                                    #10b981
+                                );
+                                color: #fff;
+                                margin: 0;
+                            "
+                            >L20Ultra</span
+                        >
+                        <span
+                            style="
+                                display: inline-block;
+                                font-size: 0.75rem;
+                                padding: 2px 8px;
+                                border-radius: 1rem;
+                                border: 1px solid #444;
+                                font-weight: 400;
+                                background: linear-gradient(
+                                    90deg,
+                                    #a78bfa,
+                                    #f472b6
+                                );
+                                color: #fff;
+                                margin: 0;
+                            "
+                            >L10s히트</span
+                        >
+                        <span
+                            style="
+                                display: inline-block;
+                                font-size: 0.75rem;
+                                padding: 2px 8px;
+                                border-radius: 1rem;
+                                border: 1px solid #444;
+                                font-weight: 400;
+                                background: linear-gradient(
+                                    90deg,
+                                    #a78bfa,
+                                    #f472b6
+                                );
+                                color: #fff;
+                                margin: 0;
+                            "
+                            >L10Prime</span
+                        >
+                        <span
+                            style="
+                                display: inline-block;
+                                font-size: 0.75rem;
+                                padding: 2px 8px;
+                                border-radius: 1rem;
+                                border: 1px solid #444;
+                                font-weight: 400;
+                                background: linear-gradient(
+                                    90deg,
+                                    #fbbf24,
+                                    #f59e42
+                                );
+                                color: #fff;
+                                margin: 0;
+                            "
+                            >LIVO</span
+                        >
+                    </div>
+
                     <div
                         style="
                             display: flex;
@@ -1670,176 +1839,6 @@
                 </div>
 
                 <!-- 상담가능 품목 -->
-                <div
-                    class="card p-6 mb-8"
-                    style="
-                        background: #22242c;
-                        border-radius: 1.2rem;
-                        box-shadow: none;
-                    "
-                >
-                    <h3
-                        class="text-lg font-bold mb-4 flex items-center gap-2"
-                        style="color: #f3f3f3"
-                    >
-                        <span
-                            style="
-                                width: 10px;
-                                height: 10px;
-                                background: #6366f1;
-                                border-radius: 50%;
-                                display: inline-block;
-                            "
-                        ></span>
-                        상담가능 품목
-                    </h3>
-                    <div
-                        style="
-                            display: flex;
-                            flex-wrap: wrap;
-                            gap: 18px;
-                            justify-content: center;
-                            align-items: center;
-                        "
-                    >
-                        <span
-                            style="
-                                display: inline-block;
-                                padding: 10px 22px;
-                                border-radius: 2rem;
-                                font-weight: 600;
-                                font-size: 1rem;
-                                background: linear-gradient(
-                                    90deg,
-                                    #6366f1,
-                                    #7c3aed
-                                );
-                                color: #fff;
-                                transition: filter 0.2s;
-                            "
-                            >X50sProUltra</span
-                        >
-                        <span
-                            style="
-                                display: inline-block;
-                                padding: 10px 22px;
-                                border-radius: 2rem;
-                                font-weight: 600;
-                                font-size: 1rem;
-                                background: linear-gradient(
-                                    90deg,
-                                    #6366f1,
-                                    #7c3aed
-                                );
-                                color: #fff;
-                                transition: filter 0.2s;
-                            "
-                            >X50master</span
-                        >
-                        <span
-                            style="
-                                display: inline-block;
-                                padding: 10px 22px;
-                                border-radius: 2rem;
-                                font-weight: 600;
-                                font-size: 1rem;
-                                background: linear-gradient(
-                                    90deg,
-                                    #6366f1,
-                                    #7c3aed
-                                );
-                                color: #fff;
-                                transition: filter 0.2s;
-                            "
-                            >X50Ultra</span
-                        >
-                        <span
-                            style="
-                                display: inline-block;
-                                padding: 10px 22px;
-                                border-radius: 2rem;
-                                font-weight: 600;
-                                font-size: 1rem;
-                                background: linear-gradient(
-                                    90deg,
-                                    #10b981,
-                                    #3b82f6
-                                );
-                                color: #fff;
-                                transition: filter 0.2s;
-                            "
-                            >X40Ultra</span
-                        >
-                        <span
-                            style="
-                                display: inline-block;
-                                padding: 10px 22px;
-                                border-radius: 2rem;
-                                font-weight: 600;
-                                font-size: 1rem;
-                                background: linear-gradient(
-                                    90deg,
-                                    #3b82f6,
-                                    #10b981
-                                );
-                                color: #fff;
-                                transition: filter 0.2s;
-                            "
-                            >L20Ultra</span
-                        >
-                        <span
-                            style="
-                                display: inline-block;
-                                padding: 10px 22px;
-                                border-radius: 2rem;
-                                font-weight: 600;
-                                font-size: 1rem;
-                                background: linear-gradient(
-                                    90deg,
-                                    #a78bfa,
-                                    #f472b6
-                                );
-                                color: #fff;
-                                transition: filter 0.2s;
-                            "
-                            >L10s히트</span
-                        >
-                        <span
-                            style="
-                                display: inline-block;
-                                padding: 10px 22px;
-                                border-radius: 2rem;
-                                font-weight: 600;
-                                font-size: 1rem;
-                                background: linear-gradient(
-                                    90deg,
-                                    #a78bfa,
-                                    #f472b6
-                                );
-                                color: #fff;
-                                transition: filter 0.2s;
-                            "
-                            >L10Prime</span
-                        >
-                        <span
-                            style="
-                                display: inline-block;
-                                padding: 10px 22px;
-                                border-radius: 2rem;
-                                font-weight: 600;
-                                font-size: 1rem;
-                                background: linear-gradient(
-                                    90deg,
-                                    #fbbf24,
-                                    #f59e42
-                                );
-                                color: #fff;
-                                transition: filter 0.2s;
-                            "
-                            >LIVO</span
-                        >
-                    </div>
-                </div>
 
                 <!-- 구분선 -->
                 <div class="divider"></div>
@@ -2687,9 +2686,8 @@
                 <div class="hero-section-unified">
                     <h2>교육자료</h2>
                     <p>
-                        Dreame 제품과 서비스에 대한 전문적인 교육 자료를
-                        제공합니다. 체계적인 학습을 통해 더 나은 서비스를
-                        제공하세요.
+                        Dreame 제품과 서비스에 대한 교육자료가 있다면 추가
+                        해주세요.
                     </p>
                 </div>
 
@@ -2823,15 +2821,14 @@
         </main>
 
         <!-- Footer -->
-        <footer class="bg-[#181A20] border-t border-gray-200 mt-16">
+        <footer class="bg-[#181A20] mt-8">
             <div
-                class="container mx-auto px-4 py-8"
+                class="container mx-auto px-4 py-4"
                 style="background: #181a20; color: #f3f3f3"
             >
                 <div class="text-center">
-                    <p class="text-base text-gray-400">
-                        © 2025 Yoonwhan Ji. All rights reserved. • For
-                        inquiries, contact: jyh@eibe.co.kr
+                    <p class="text-xs text-gray-500">
+                        © 2025 Yoonwhan Ji • jyh@eibe.co.kr
                     </p>
                 </div>
             </div>
@@ -2923,38 +2920,6 @@
                 }
             }
 
-            // 입력된 텍스트 정규화 함수 (소문자화, 공백 제거, 특수 문자 제거)
-            function normalize(text) {
-                return text
-                    .toLowerCase() // 소문자로 변환
-                    .replace(/\s+/g, "") // 모든 공백 제거
-                    .replace(/[^a-z0-9가-힣]/g, ""); // 특수문자 제거
-            }
-
-            // 검색어를 이용하여 콘텐츠 필터링
-            function filterContent() {
-                const rawQuery = document.getElementById("search-input").value; // 입력된 검색어 가져오기
-                const query = normalize(rawQuery); // 정규화 처리
-
-                // 모든 섹션을 순회하면서 필터링
-                document.querySelectorAll("section").forEach((section) => {
-                    section.classList.remove("hidden"); // 우선 모든 섹션을 보이게 설정
-
-                    const detailsList = section.querySelectorAll("details"); // 섹션 내 details 요소들 가져오기
-                    let hasMatch = false; // 해당 섹션 내에서 일치하는 항목이 있는지 체크
-
-                    detailsList.forEach((detail) => {
-                        const text = normalize(detail.textContent); // detail의 텍스트 정규화
-                        const isMatch = text.includes(query); // 검색어와 일치하는지 확인
-                        detail.classList.toggle("hidden", !isMatch); // 일치하지 않으면 숨김 처리
-                        if (isMatch) hasMatch = true; // 일치하는 항목이 있으면 hasMatch를 true로 설정
-                    });
-
-                    // 일치하는 항목이 없다면 해당 섹션 숨기기
-                    if (!hasMatch) section.classList.add("hidden");
-                });
-            }
-
             // 알림 팝업 표시
             function showNoticePopup() {
                 const popup = document.getElementById("notice-popup");
@@ -2974,15 +2939,6 @@
 
             // 키보드 단축키 처리
             function handleKeyboardShortcuts(event) {
-                // Ctrl/Cmd + K: 검색창 포커스
-                if ((event.ctrlKey || event.metaKey) && event.key === "k") {
-                    event.preventDefault();
-                    const searchInput = document.getElementById("search-input");
-                    if (searchInput) {
-                        searchInput.focus();
-                    }
-                }
-
                 // Escape: 팝업 닫기
                 if (event.key === "Escape") {
                     const popup = document.getElementById("notice-popup");
@@ -3026,18 +2982,6 @@
 
                 // 키보드 이벤트 리스너 추가
                 document.addEventListener("keydown", handleKeyboardShortcuts);
-
-                // 검색 입력 필드에 이벤트 리스너 추가
-                const searchInput = document.getElementById("search-input");
-                if (searchInput) {
-                    searchInput.addEventListener("input", filterContent);
-                    searchInput.addEventListener("keydown", function (e) {
-                        if (e.key === "Enter") {
-                            e.preventDefault();
-                            filterContent();
-                        }
-                    });
-                }
 
                 // URL 해시가 있으면 해당 탭으로 이동
                 const hash = window.location.hash.substring(1);
